@@ -3,84 +3,174 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Guía de Raid Cresselia - Turno por Turno</title>
+    <title>Guía de Raid Cresselia - Con Imágenes</title>
     <style>
         :root {
-            --bg-color: #121214;
-            --card-bg: #1a1a1e;
-            --text-color: #ffffff;
-            --border-color: #2d2d34;
-            --blue-header: #0044ff;
+            --bg-color: #0f1115;
+            --card-bg: #161920;
+            --text-color: #f0f3f8;
+            --border-color: #2a3142;
+            --blue-header: #1e40af;
+            --accent-yellow: #eab308;
             
-            /* Colores de las celdas basados en la guía */
-            --col-j1-t1: #f1dfaa;
-            --col-j1-t2: #ebd89f;
-            --col-j1-t3: #ff00ff;
-            --col-j1-t4: #e60000;
-            --col-j1-t5: #7f7f7f;
-            --col-j1-t6: #e4be7b;
-            --col-j1-t7: #cca043;
-            --col-j1-t8: #38761d;
-            --col-j1-t9: #7f7f7f;
-            
-            --col-j2-t1: #7f7f7f;
-            --col-j2-t4: #3d85c6;
-            --col-j2-t6: #6fa8dc;
-            
-            --col-j3-t1: #ff00ff;
-            --col-j3-t4: #9900ff;
-            --col-j3-t6: #e06666;
-            --col-j3-t7: #f1dfaa;
-            --col-j3-t8: #bf9000;
-            
-            --col-j4-t1: #ff00ff;
-            --col-j4-t2: #434343;
-            --col-j4-t4: #351c75;
-            --col-j4-t5: #1c0d3a;
-            --col-j4-t6: #ff00ff;
-            --col-j4-t7: #b45f06;
+            /* Colores de las celdas */
+            --t-seduccion: #fef08a;
+            --t-lanzamiento: #9ca3af;
+            --t-velosagrado: #f472b6;
+            --t-conjuro: #e879f9;
+            --t-deaday: #fde047;
+            --t-golpebajo: #4b5563;
+            --t-pantalla: #ff00ff;
+            --t-envite: #dc2626;
+            --t-buenabaza: #3b82f6;
+            --t-bomba: #8b5cf6;
+            --t-infortunio: #4c1d95;
+            --t-bola: #2e1065;
+            --t-salmuera: #60a5fa;
+            --t-chapoteo: #d97706;
         }
 
         body {
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            font-family: 'Segoe UI', system-ui, sans-serif;
             background-color: var(--bg-color);
             color: var(--text-color);
             margin: 0;
             padding: 20px;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
         }
 
         .container {
-            width: 100%;
             max-width: 1200px;
+            margin: 0 auto;
             background: var(--card-bg);
-            padding: 20px;
-            border-radius: 8px;
-            box-shadow: 0 4px 15px rgba(0,0,0,0.5);
+            padding: 30px;
+            border-radius: 12px;
+            box-shadow: 0 10px 25px rgba(0,0,0,0.5);
         }
 
         h1 {
             text-align: center;
-            color: #ffcc00;
+            color: var(--accent-yellow);
             margin-bottom: 5px;
-            font-size: 24px;
             text-transform: uppercase;
+            font-size: 28px;
+            letter-spacing: 1px;
         }
 
         h2 {
             text-align: center;
-            color: #aaaaaa;
+            color: #94a3b8;
             font-size: 16px;
             margin-top: 0;
-            margin-bottom: 25px;
+            margin-bottom: 35px;
             font-weight: 400;
         }
 
+        h3 {
+            color: var(--accent-yellow);
+            border-bottom: 2px solid var(--border-color);
+            padding-bottom: 8px;
+            margin-top: 40px;
+            margin-bottom: 20px;
+            text-transform: uppercase;
+            font-size: 18px;
+        }
+
+        /* --- ESTILOS DE EQUIPOS CON IMÁGENES (PDF 1) --- */
+        .grid-equipos {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 20px;
+        }
+
+        .jugador-card {
+            background: #1e2430;
+            border: 1px solid var(--border-color);
+            border-radius: 8px;
+            padding: 15px;
+        }
+
+        .jugador-card h4 {
+            margin: 0 0 15px 0;
+            color: #38bdf8;
+            text-align: center;
+            font-size: 18px;
+            border-bottom: 1px solid var(--border-color);
+            padding-bottom: 5px;
+        }
+
+        .pkmn-list {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+
+        .pkmn-item {
+            background: #11151d;
+            margin-bottom: 10px;
+            padding: 10px;
+            border-radius: 6px;
+            border-left: 4px solid var(--blue-header);
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        /* Contenedores para los sprites y los items */
+        .pkmn-sprite-container {
+            width: 50px;
+            height: 50px;
+            background: #1a1f29;
+            border-radius: 4px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border: 1px dashed #3b4252;
+            overflow: hidden;
+        }
+
+        .pkmn-sprite-container img {
+            max-width: 100%;
+            max-height: 100%;
+            object-fit: contain;
+        }
+
+        .item-sprite-container {
+            width: 32px;
+            height: 32px;
+            background: #1a1f29;
+            border-radius: 4px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border: 1px dashed #3b4252;
+        }
+
+        .item-sprite-container img {
+            max-width: 100%;
+            max-height: 100%;
+        }
+
+        .pkmn-info {
+            flex-grow: 1;
+        }
+
+        .pkmn-name {
+            font-weight: bold;
+            color: #fff;
+            font-size: 14px;
+        }
+
+        .pkmn-details {
+            color: #94a3b8;
+            font-size: 11px;
+            margin-top: 2px;
+        }
+
+
+        /* --- ESTILOS DE TABLA TURNO A TURNO (PDF 2) --- */
         .table-responsive {
             overflow-x: auto;
-            border-radius: 6px;
+            border-radius: 8px;
             border: 1px solid var(--border-color);
         }
 
@@ -90,72 +180,151 @@
             text-align: center;
             font-size: 13px;
             font-weight: bold;
-            min-width: 800px;
+            min-width: 950px;
         }
 
         th {
             background-color: var(--blue-header);
             color: white;
-            padding: 12px;
-            font-size: 14px;
+            padding: 14px;
+            font-size: 15px;
             text-transform: uppercase;
             border: 1px solid var(--border-color);
         }
 
         td {
-            padding: 14px 10px;
+            padding: 10px 8px;
             border: 1px solid var(--border-color);
-            color: #000000; /* Texto oscuro para contrastar con los fondos de colores */
+            color: #000000; 
             text-transform: uppercase;
         }
 
-        /* Estilos específicos de las filas de Turnos (T1-T10) y Boss HP */
+        /* Estructura de celda interna para meter sprite + movimiento */
+        .celda-flex {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 6px;
+            min-height: 38px;
+            padding: 0 4px;
+        }
+
+        .celda-flex span {
+            flex-grow: 1;
+            text-align: center;
+        }
+
+        .table-pkmn-thumb {
+            width: 35px;
+            height: 35px;
+            background: rgba(255, 255, 255, 0.15);
+            border-radius: 4px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-shrink: 0;
+        }
+
+        .table-pkmn-thumb img {
+            max-width: 100%;
+            max-height: 100%;
+            object-fit: contain;
+        }
+
         .turno-cell {
-            background-color: var(--blue-header) !important;
-            color: white !important;
+            background-color: #1e2430 !important;
+            color: var(--accent-yellow) !important;
+            font-size: 14px;
         }
 
         .hp-cell {
-            background-color: #000033 !important;
-            color: #00ff00 !important;
+            background-color: #090d16 !important;
+            color: #22c55e !important;
             font-family: monospace;
             font-size: 14px;
         }
 
-        /* Clases de colores personalizados basados en la matriz original */
-        .bg-j1-t1 { background-color: var(--col-j1-t1); }
-        .bg-j1-t2 { background-color: var(--col-j1-t2); }
-        .bg-j1-t3 { background-color: var(--col-j1-t3); color: white; }
-        .bg-j1-t4 { background-color: var(--col-j1-t4); color: white; }
-        .bg-j1-t5 { background-color: var(--col-j1-t5); color: white; }
-        .bg-j1-t6 { background-color: var(--col-j1-t6); }
-        .bg-j1-t7 { background-color: var(--col-j1-t7); }
-        .bg-j1-t8 { background-color: var(--col-j1-t8); color: white; }
-        
-        .bg-j2-t1 { background-color: var(--col-j2-t1); color: white; }
-        .bg-j2-t4 { background-color: var(--col-j2-t4); color: white; }
-        .bg-j2-t6 { background-color: var(--col-j2-t6); }
-
-        .bg-j3-t1 { background-color: var(--col-j3-t1); color: white; }
-        .bg-j3-t4 { background-color: var(--col-j3-t4); color: white; }
-        .bg-j3-t6 { background-color: var(--col-j3-t6); color: white; }
-        .bg-j3-t7 { background-color: var(--col-j3-t7); }
-        .bg-j3-t8 { background-color: var(--col-j3-t8); color: white; }
-
-        .bg-j4-t1 { background-color: var(--col-j4-t1); color: white; }
-        .bg-j4-t2 { background-color: var(--col-j4-t2); color: white; }
-        .bg-j4-t4 { background-color: var(--col-j4-t4); color: white; }
-        .bg-j4-t5 { background-color: var(--col-j4-t5); color: white; }
-        .bg-j4-t6 { background-color: var(--col-j4-t6); color: white; }
-        .bg-j4-t7 { background-color: var(--col-j4-t7); color: white; }
+        /* Clases de colores */
+        .seduccion { background-color: var(--t-seduccion); }
+        .lanzamiento { background-color: var(--t-lanzamiento); }
+        .velosagrado { background-color: var(--t-velosagrado); }
+        .conjuro { background-color: var(--t-conjuro); }
+        .deaday { background-color: var(--t-deaday); }
+        .golpebajo { background-color: var(--t-golpebajo); color: white; }
+        .pantallaluz { background-color: var(--t-pantallaluz); color: white; }
+        .enviteigneo { background-color: var(--t-envite); color: white; }
+        .buenabaza { background-color: var(--t-buenabaza); color: white; }
+        .bombaacida { background-color: var(--t-bomba); color: white; }
+        .infortunio { background-color: var(--t-infortunio); color: white; }
+        .bolasombra { background-color: var(--t-bola); color: white; }
+        .salmuera { background-color: var(--t-salmuera); }
+        .chapoteolodo { background-color: var(--t-chapoteo); color: white; }
     </style>
 </head>
 <body>
 
 <div class="container">
     <h1>Guía para Raid de Cresselia</h1>
-    <h2>Estrategia Turno por Turno — AngryPlayer321</h2>
+    <h2>Estrategia Completa — AngryPlayer321</h2>
 
+    <h3>Fichas de Equipos para la Raid</h3>
+    <div class="grid-equipos">
+        
+        <div class="jugador-card">
+            <h4>JUGADOR 1 (J1)</h4>
+            <ul class="pkmn-list">
+                <li class="pkmn-item">
+                    <div class="pkmn-sprite-container"><img src="ruta/al/sprite/pkmn1.png" alt="Pkmn"></div>
+                    <div class="pkmn-info">
+                        <div class="pkmn-name">Pokémon 1</div>
+                        <div class="pkmn-details">Seducción / Pantalla Luz</div>
+                    </div>
+                    <div class="item-sprite-container"><img src="ruta/al/objeto/objeto1.png" alt="Item"></div>
+                </li>
+                <li class="pkmn-item">
+                    <div class="pkmn-sprite-container"><img src="ruta/al/sprite/pkmn2.png" alt="Pkmn"></div>
+                    <div class="pkmn-info">
+                        <div class="pkmn-name">Pokémon 2</div>
+                        <div class="pkmn-details">Dead Ay Ay</div>
+                    </div>
+                    <div class="item-sprite-container"><img src="ruta/al/objeto/objeto2.png" alt="Item"></div>
+                </li>
+                <li class="pkmn-item">
+                    <div class="pkmn-sprite-container"><img src="ruta/al/sprite/pkmn3.png" alt="Pkmn"></div>
+                    <div class="pkmn-info">
+                        <div class="pkmn-name">Pokémon 3</div>
+                        <div class="pkmn-details">Envite Ígneo</div>
+                    </div>
+                    <div class="item-sprite-container"><img src="ruta/al/objeto/objeto3.png" alt="Item"></div>
+                </li>
+                </ul>
+        </div>
+
+        <div class="jugador-card">
+            <h4>JUGADOR 2 (J2)</h4>
+            <ul class="pkmn-list">
+                <li class="pkmn-item">
+                    <div class="pkmn-sprite-container"><img src="ruta/al/sprite/pkmn_j2_1.png" alt="Pkmn"></div>
+                    <div class="pkmn-info">
+                        <div class="pkmn-name">Pokémon 1</div>
+                        <div class="pkmn-details">Lanzamiento</div>
+                    </div>
+                    <div class="item-sprite-container"><img src="ruta/al/objeto/objeto.png" alt="Item"></div>
+                </li>
+                <li class="pkmn-item">
+                    <div class="pkmn-sprite-container"><img src="ruta/al/sprite/pkmn_j2_2.png" alt="Pkmn"></div>
+                    <div class="pkmn-info">
+                        <div class="pkmn-name">Pokémon 2</div>
+                        <div class="pkmn-details">Golpe Bajo</div>
+                    </div>
+                    <div class="item-sprite-container"><img src="ruta/al/objeto/objeto.png" alt="Item"></div>
+                </li>
+            </ul>
+        </div>
+
+        </div>
+
+    <h3>Estrategia Turno por Turno</h3>
     <div class="table-responsive">
         <table>
             <thead>
@@ -171,88 +340,59 @@
             <tbody>
                 <tr>
                     <td class="turno-cell">T1</td>
-                    <td class="bg-j1-t1">Seducción</td>
-                    <td class="bg-j2-t1">Lanzamiento</td>
-                    <td class="bg-j3-t1">Velosagrado</td>
-                    <td class="bg-j4-t1">Conjuro</td>
-                    <td class="hp-cell">98%</td>
+                    <td class="seduccion">
+                        <div class="celda-flex">
+                            <div class="table-pkmn-thumb"><img src="sprites/j1_t1.png" alt=""></div>
+                            <span>Seducción</span>
+                        </div>
+                    </td>
+                    <td class="lanzamiento">
+                        <div class="celda-flex">
+                            <div class="table-pkmn-thumb"><img src="sprites/j2_t1.png" alt=""></div>
+                            <span>Lanzamiento</span>
+                        </div>
+                    </td>
+                    <td class="velosagrado">
+                        <div class="celda-flex">
+                            <div class="table-pkmn-thumb"><img src="sprites/j3_t1.png" alt=""></div>
+                            <span>Velosagrado</span>
+                        </div>
+                    </td>
+                    <td class="conjuro">
+                        <div class="celda-flex">
+                            <div class="table-pkmn-thumb"><img src="sprites/j4_t1.png" alt=""></div>
+                            <span>Conjuro</span>
+                        </div>
+                    </td>
+                    <td class="hp-cell"> 98%</td>
                 </tr>
                 <tr>
                     <td class="turno-cell">T2</td>
-                    <td class="bg-j1-t2">Dead Ay Ay</td>
-                    <td class="bg-j2-t1">Golpe Bajo</td>
-                    <td class="bg-j2-t1">Golpe Bajo</td>
-                    <td class="bg-j2-t1">Golpe Bajo</td>
-                    <td class="hp-cell">85%</td>
+                    <td class="deaday">
+                        <div class="celda-flex">
+                            <div class="table-pkmn-thumb"><img src="sprites/j1_t2.png" alt=""></div>
+                            <span>Dead Ay Ay</span>
+                        </div>
+                    </td>
+                    <td class="golpebajo">
+                        <div class="celda-flex">
+                            <div class="table-pkmn-thumb"><img src="sprites/j2_t2.png" alt=""></div>
+                            <span>Golpe Bajo</span>
+                        </div>
+                    </td>
+                    <td class="golpebajo">
+                        <div class="celda-flex">
+                            <div class="table-pkmn-thumb"><img src="sprites/j3_t2.png" alt=""></div>
+                            <span>Golpe Bajo</span>
+                        </div>
+                    </td>
+                    <td class="golpebajo">
+                        <div class="celda-flex">
+                            <div class="table-pkmn-thumb"><img src="sprites/j4_t2.png" alt=""></div>
+                            <span>Golpe Bajo</span>
+                        </div>
+                    </td>
+                    <td class="hp-cell"> 85%</td>
                 </tr>
                 <tr>
-                    <td class="turno-cell">T3</td>
-                    <td class="bg-j1-t3">Pantalla Luz</td>
-                    <td class="bg-j2-t1">Golpe Bajo</td>
-                    <td class="bg-j2-t1">Golpe Bajo</td>
-                    <td class="bg-j2-t1">Golpe Bajo</td>
-                    <td class="hp-cell">72%</td>
-                </tr>
-                <tr>
-                    <td class="turno-cell">T4</td>
-                    <td class="bg-j1-t4">Envite Ígneo</td>
-                    <td class="bg-j2-t4">Buena Baza</td>
-                    <td class="bg-j3-t4">Bomba Ácida</td>
-                    <td class="bg-j4-t4">Infortunio</td>
-                    <td class="hp-cell">63%</td>
-                </tr>
-                <tr>
-                    <td class="turno-cell">T5</td>
-                    <td class="bg-j1-t5">Buena Baza</td>
-                    <td class="bg-j1-t5">Buena Baza</td>
-                    <td class="bg-j4-t5">Bola Sombra</td>
-                    <td class="bg-j4-t5">Bola Sombra</td>
-                    <td class="hp-cell">45%</td>
-                </tr>
-                <tr>
-                    <td class="turno-cell">T6</td>
-                    <td class="bg-j1-t6">Velosagrado</td>
-                    <td class="bg-j2-t6">Salmuera</td>
-                    <td class="bg-j3-t6">Lanzamiento</td>
-                    <td class="bg-j4-t6">Conjuro</td>
-                    <td class="hp-cell">39%</td>
-                </tr>
-                <tr>
-                    <td class="turno-cell">T7</td>
-                    <td class="bg-j1-t7">Chapoteolodo</td>
-                    <td class="bg-j2-t6">Salmuera</td>
-                    <td class="bg-j3-t7">Seducción</td>
-                    <td class="bg-j4-t7">Buena Baza</td>
-                    <td class="hp-cell">33%</td>
-                </tr>
-                <tr>
-                    <td class="turno-cell">T8</td>
-                    <td class="bg-j1-t8">Salmuera</td>
-                    <td class="bg-j2-t6">Salmuera</td>
-                    <td class="bg-j3-t8">Buena Baza</td>
-                    <td class="bg-j4-t7">Buena Baza</td>
-                    <td class="hp-cell">22%</td>
-                </tr>
-                <tr>
-                    <td class="turno-cell">T9</td>
-                    <td class="bg-j1-t5">Salmuera</td>
-                    <td class="bg-j2-t6">Salmuera</td>
-                    <td class="bg-j3-t8">Buena Baza</td>
-                    <td class="bg-j4-t7">Buena Baza</td>
-                    <td class="hp-cell">11%</td>
-                </tr>
-                <tr>
-                    <td class="turno-cell">T10</td>
-                    <td class="bg-j1-t5">Salmuera</td>
-                    <td class="bg-j2-t6">Salmuera</td>
-                    <td class="bg-j3-t8">Buena Baza</td>
-                    <td class="bg-j4-t7">Buena Baza</td>
-                    <td class="hp-cell">-</td>
-                </tr>
-            </tbody>
-        </table>
-    </div>
-</div>
-
-</body>
-</html>
+                    <td class="turno-
