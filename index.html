@@ -1,393 +1,825 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Guía de Raid de Cresselia</title>
-  <script src="https://cdn.tailwindcss.com"></script>
-  <style>
-    /* Efecto de fondo de galaxia con CSS puro para evitar errores de carga en GitHub */
-    .bg-galaxy {
-      background-color: #0b0b1e;
-      background-image: 
-        radial-gradient(white, rgba(255,255,255,.2) 2px, transparent 40px),
-        radial-gradient(white, rgba(255,255,255,.15) 1px, transparent 30px),
-        radial-gradient(white, rgba(255,255,255,.1) 2px, transparent 40px),
-        radial-gradient(rgba(138,43,226,.2), transparent 400px);
-      background-size: 550px 550px, 350px 350px, 250px 250px, 100% 100%;
-      background-position: 0 0, 40px 60px, 130px 270px, center;
-    }
-  </style>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Estrategias de Combate - Jugadores</title>
+    <style>
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        body {
+            background-color: #1e222b;
+            color: #ffffff;
+            padding: 20px;
+        }
+
+        .container {
+            max-width: 1000px;
+            margin: 0 auto;
+            background-color: #282c34;
+            border-radius: 12px;
+            box-shadow: 0 8px 24px rgba(0,0,0,0.3);
+            overflow: hidden;
+            border: 1px solid #3e4451;
+        }
+
+        .main-header {
+            background-color: #1a1d24;
+            text-align: center;
+            padding: 20px;
+            font-size: 24px;
+            font-weight: bold;
+            letter-spacing: 1px;
+            border-bottom: 2px solid #3e4451;
+            text-transform: uppercase;
+        }
+
+        .player-section {
+            border-bottom: 3px solid #1a1d24;
+        }
+
+        .player-section:last-child {
+            border-bottom: none;
+        }
+
+        .player-title {
+            background-color: #353b48;
+            padding: 12px 20px;
+            font-size: 18px;
+            font-weight: bold;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            border-bottom: 1px solid #485460;
+        }
+
+        .pokemon-row {
+            display: grid;
+            grid-template-columns: 140px 1fr 140px 140px 110px;
+            border-bottom: 1px solid #3e4451;
+            background-color: #2f3542;
+        }
+
+        .pokemon-row:last-child {
+            border-bottom: none;
+        }
+
+        .cell {
+            padding: 10px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            border-right: 1px solid #3e4451;
+            font-size: 13px;
+        }
+
+        .cell:last-child {
+            border-right: none;
+        }
+
+        .poke-name {
+            font-weight: bold;
+            background-color: #1e222b;
+            color: #74b9ff;
+            text-transform: uppercase;
+            font-size: 14px;
+        }
+
+        .stats-table {
+            width: 100%;
+            border-collapse: collapse;
+            font-size: 11px;
+        }
+
+        .stats-table th, .stats-table td {
+            border: 1px solid #485460;
+            padding: 3px 5px;
+            text-align: center;
+        }
+
+        .stats-table th {
+            background-color: #1e222b;
+            font-weight: 600;
+        }
+
+        .green-bg { background-color: #26de81; color: #000; font-weight: bold; }
+        .red-bg { background-color: #ff5252; color: #fff; font-weight: bold; }
+        .blue-bg { background-color: #4b7bec; color: #fff; }
+
+        .move-badge {
+            background-color: #485460;
+            padding: 5px 8px;
+            border-radius: 4px;
+            margin: 2px 0;
+            width: 100%;
+            font-size: 11px;
+            text-transform: uppercase;
+            font-weight: 500;
+        }
+
+        .nature-box {
+            width: 100%;
+        }
+
+        .nature-title {
+            font-weight: bold;
+            margin-bottom: 5px;
+            color: #ff9f43;
+            text-transform: uppercase;
+            font-size: 11px;
+        }
+
+        .ability-box {
+            background-color: #1e222b;
+            width: 100%;
+            padding: 4px;
+            margin-top: 5px;
+            border-radius: 4px;
+            font-size: 11px;
+            border: 1px solid #485460;
+        }
+
+        .notes-cell {
+            font-size: 11px;
+            color: #dcdde1;
+            align-items: flex-start;
+            text-align: left;
+            overflow-y: auto;
+        }
+
+        .item-box img, .poke-sprite img {
+            max-width: 55px;
+            max-height: 55px;
+            object-fit: contain;
+            margin-bottom: 5px;
+        }
+
+        .poke-sprite img {
+            max-width: 75px;
+            max-height: 75px;
+        }
+
+        .item-name {
+            font-size: 11px;
+            color: #a5b1c2;
+            font-weight: 500;
+        }
+    </style>
 </head>
-<body class="bg-galaxy min-h-screen p-4 font-sans select-none">
+<body>
 
-  <div class="w-full max-w-6xl mx-auto space-y-6">
-    
-    <div class="bg-[#3366FF] text-white text-center py-1 font-bold text-sm tracking-widest border-2 border-black uppercase shadow-lg">
-      Guia de Raid de Cresselia - JUGADOR 1
+<div class="container">
+    <div class="main-header">Panel de Equipos Competitivos</div>
+
+    <div class="player-section">
+        <div class="player-title">Jugador 1</div>
+        
+        <div class="pokemon-row">
+            <div class="cell poke-name">
+                <span>Hippowdon</span>
+            </div>
+            <div class="cell">
+                <table class="stats-table">
+                    <tr><th>STATS</th><th>IVs</th><th>EVs</th></tr>
+                    <tr><td>PS</td><td class="green-bg">31</td><td>-</td></tr>
+                    <tr><td>ATK</td><td>-</td><td>-</td></tr>
+                    <tr><td>DEF</td><td>-</td><td>238</td></tr>
+                    <tr><td>ATK ESP</td><td>-</td><td>-</td></tr>
+                    <tr><td>DEF ESP</td><td class="green-bg">31</td><td>20</td></tr>
+                    <tr><td>VEL</td><td class="green-bg">31</td><td>252</td></tr>
+                </table>
+            </div>
+            <div class="cell">
+                <div class="move-badge">Seducción</div>
+                <div class="nature-box">
+                    <div class="nature-title">Cauta (+Def Esp -Atk Esp)</div>
+                    <div class="ability-box">Chorro Arena</div>
+                </div>
+            </div>
+            <div class="cell notes-cell">
+                Se pueden disminuir los EVs de DEF para igualar los 31 IVs en PS y DEF.ESP si no se llega al requerimiento.
+            </div>
+            <div class="cell item-box">
+                <span class="item-name">Amuleto Puro</span>
+            </div>
+        </div>
+
+        <div class="pokemon-row">
+            <div class="cell poke-name">Whimsicott</div>
+            <div class="cell">
+                <table class="stats-table">
+                    <tr><th>STATS</th><th>IVs</th><th>EVs</th></tr>
+                    <tr><td>PS</td><td>-</td><td>-</td></tr>
+                    <tr><td>ATK</td><td>-</td><td>-</td></tr>
+                    <tr><td>DEF</td><td>-</td><td>-</td></tr>
+                    <tr><td>ATK ESP</td><td>-</td><td>-</td></tr>
+                    <tr><td>DEF ESP</td><td>-</td><td>-</td></tr>
+                    <tr><td>VEL</td><td>-</td><td>-</td></tr>
+                </table>
+            </div>
+            <div class="cell">
+                <div class="move-badge">Pantalla Luz</div>
+                <div class="nature-box">
+                    <div class="nature-title">-</div>
+                    <div class="ability-box">Bromista</div>
+                </div>
+            </div>
+            <div class="cell notes-cell">Evitar IVs en DEF ESP.</div>
+            <div class="cell item-box">
+                <span class="item-name">Refleluz</span>
+            </div>
+        </div>
+
+        <div class="pokemon-row">
+            <div class="cell poke-name">Darmanitan</div>
+            <div class="cell">
+                <table class="stats-table">
+                    <tr><th>STATS</th><th>IVs</th><th>EVs</th></tr>
+                    <tr><td>PS</td><td>-</td><td>-</td></tr>
+                    <tr><td>ATK</td><td class="green-bg">31</td><td>252</td></tr>
+                    <tr><td>DEF</td><td>-</td><td>90</td></tr>
+                    <tr><td>ATK ESP</td><td>-</td><td>-</td></tr>
+                    <tr><td>DEF ESP</td><td>-</td><td>-</td></tr>
+                    <tr><td>VEL</td><td class="green-bg">31</td><td>168</td></tr>
+                </table>
+            </div>
+            <div class="cell">
+                <div class="move-badge">Envite Ígneo</div>
+                <div class="nature-box">
+                    <div class="nature-title">Firme (+Atk -Atk Esp)</div>
+                    <div class="ability-box">Potencia Bruta</div>
+                </div>
+            </div>
+            <div class="cell notes-cell">La estadística de velocidad al nivel 100 debe ser menor de 269.</div>
+            <div class="cell item-box">
+                <span class="item-name">Cinta Elegida</span>
+            </div>
+        </div>
+
+        <div class="pokemon-row">
+            <div class="cell poke-name">Braviary</div>
+            <div class="cell">
+                <table class="stats-table">
+                    <tr><th>STATS</th><th>IVs</th><th>EVs</th></tr>
+                    <tr><td>PS</td><td>-</td><td>6</td></tr>
+                    <tr><td>ATK</td><td class="green-bg">31</td><td>252</td></tr>
+                    <tr><td>DEF</td><td>-</td><td>-</td></tr>
+                    <tr><td>ATK ESP</td><td>-</td><td>-</td></tr>
+                    <tr><td>DEF ESP</td><td>-</td><td>-</td></tr>
+                    <tr><td>VEL</td><td class="green-bg">31</td><td>252</td></tr>
+                </table>
+            </div>
+            <div class="cell">
+                <div class="move-badge">Buena Baza</div>
+                <div class="nature-box">
+                    <div class="nature-title">Firme (+Atk -Atk Esp)</div>
+                    <div class="ability-box">Competitivo (HO)</div>
+                </div>
+            </div>
+            <div class="cell notes-cell">-</div>
+            <div class="cell item-box">
+                <span class="item-name">Baya Magua</span>
+            </div>
+        </div>
+
+        <div class="pokemon-row">
+            <div class="cell poke-name">Milotic</div>
+            <div class="cell">
+                <table class="stats-table">
+                    <tr><th>STATS</th><th>IVs</th><th>EVs</th></tr>
+                    <tr><td>PS</td><td class="green-bg">31</td><td>6</td></tr>
+                    <tr><td>ATK</td><td>-</td><td>-</td></tr>
+                    <tr><td>DEF</td><td>-</td><td>-</td></tr>
+                    <tr><td>ATK ESP</td><td class="green-bg">31</td><td>252</td></tr>
+                    <tr><td>DEF ESP</td><td class="green-bg">31</td><td>252</td></tr>
+                    <tr><td>VEL</td><td class="red-bg">0</td><td>-</td></tr>
+                </table>
+            </div>
+            <div class="cell">
+                <div class="move-badge">Salmuera</div>
+                <div class="move-badge">Velo Sagrado</div>
+                <div class="move-badge">Chapoteolodo</div>
+                <div class="nature-box">
+                    <div class="nature-title">Mansa (+Atk Esp -Vel)</div>
+                    <div class="ability-box">Competitivo</div>
+                </div>
+            </div>
+            <div class="cell notes-cell">-</div>
+            <div class="cell item-box">
+                <span class="item-name">Manto Encubierto</span>
+            </div>
+        </div>
+
+        <div class="pokemon-row">
+            <div class="cell poke-name">Empoleon</div>
+            <div class="cell">
+                <table class="stats-table">
+                    <tr><th>STATS</th><th>IVs</th><th>EVs</th></tr>
+                    <tr><td>PS</td><td class="green-bg">31</td><td>6</td></tr>
+                    <tr><td>ATK</td><td>-</td><td>-</td></tr>
+                    <tr><td>DEF</td><td>-</td><td>-</td></tr>
+                    <tr><td>ATK ESP</td><td class="green-bg">31</td><td>252</td></tr>
+                    <tr><td>DEF ESP</td><td class="green-bg">31</td><td>252</td></tr>
+                    <tr><td>VEL</td><td>-</td><td>-</td></tr>
+                </table>
+            </div>
+            <div class="cell">
+                <div class="move-badge">Salmuera</div>
+                <div class="nature-box">
+                    <div class="nature-title">Modesta (+Atk Esp -Atk)</div>
+                    <div class="ability-box">Competitivo</div>
+                </div>
+            </div>
+            <div class="cell notes-cell">-</div>
+            <div class="cell item-box">
+                <span class="item-name">Gafas Elegidas</span>
+            </div>
+        </div>
     </div>
 
-    <div class="border-2 border-black overflow-hidden bg-white/95 backdrop-blur-sm shadow-md">
-      <div class="bg-[#8B5A2B] text-white text-center py-1 font-bold text-xs tracking-wider border-b-2 border-black uppercase">
-        HIPPOWDON
-      </div>
-      <div class="grid grid-cols-1 md:grid-cols-12 text-center text-xs">
-        <div class="md:col-span-3 border-r-2 border-black grid grid-cols-3 bg-[#3366FF] text-white font-semibold">
-          <div class="border-b border-r border-black p-1 bg-[#1e40af]">STATS</div>
-          <div class="border-b border-r border-black p-1 bg-[#1e40af]">IVs</div>
-          <div class="border-b border-black p-1 bg-[#1e40af]">EVs</div>
-          <div class="border-b border-r border-black p-1 flex items-center justify-center font-bold">PS</div>
-          <div class="border-b border-r border-black p-1 bg-[#00FF00] text-black font-bold flex items-center justify-center">31</div>
-          <div class="border-b border-black p-1 bg-[#7aa2f7] text-black font-bold flex items-center justify-center">-</div>
-          <div class="border-b border-r border-black p-1 flex items-center justify-center font-bold">ATK</div>
-          <div class="border-b border-r border-black p-1 bg-[#7aa2f7] text-black font-bold flex items-center justify-center">-</div>
-          <div class="border-b border-black p-1 bg-[#7aa2f7] text-black font-bold flex items-center justify-center">-</div>
-          <div class="border-b border-r border-black p-1 flex items-center justify-center font-bold">DEF</div>
-          <div class="border-b border-r border-black p-1 bg-[#7aa2f7] text-black font-bold flex items-center justify-center">-</div>
-          <div class="border-b border-black p-1 bg-[#00FF00] text-black font-bold flex items-center justify-center">238</div>
-          <div class="border-b border-r border-black p-1 flex items-center justify-center font-bold">ATK ESP</div>
-          <div class="border-b border-r border-black p-1 bg-[#7aa2f7] text-black font-bold flex items-center justify-center">-</div>
-          <div class="border-b border-black p-1 bg-[#7aa2f7] text-black font-bold flex items-center justify-center">-</div>
-          <div class="border-b border-r border-black p-1 flex items-center justify-center font-bold">DEF ESP</div>
-          <div class="border-b border-r border-black p-1 bg-[#00FF00] text-black font-bold flex items-center justify-center">31</div>
-          <div class="border-b border-black p-1 bg-[#00FF00] text-black font-bold flex items-center justify-center">20</div>
-          <div class="border-r border-black p-1 flex items-center justify-center font-bold">VEL</div>
-          <div class="border-r border-black p-1 bg-[#00FF00] text-black font-bold flex items-center justify-center">31</div>
-          <div class="p-1 bg-[#00FF00] text-black font-bold flex items-center justify-center">252</div>
+    <div class="player-section">
+        <div class="player-title">Jugador 2</div>
+        
+        <div class="pokemon-row">
+            <div class="cell poke-name">Weavile</div>
+            <div class="cell">
+                <table class="stats-table">
+                    <tr><th>STATS</th><th>IVs</th><th>EVs</th></tr>
+                    <tr><td>PS</td><td>-</td><td>6</td></tr>
+                    <tr><td>ATK</td><td class="green-bg">31</td><td>252</td></tr>
+                    <tr><td>DEF</td><td>-</td><td>-</td></tr>
+                    <tr><td>ATK ESP</td><td>-</td><td>-</td></tr>
+                    <tr><td>DEF ESP</td><td>-</td><td>-</td></tr>
+                    <tr><td>VEL</td><td class="green-bg">31</td><td>252</td></tr>
+                </table>
+            </div>
+            <div class="cell">
+                <div class="move-badge">Lanzamiento</div>
+                <div class="nature-box">
+                    <div class="nature-title">Firme (+Atk -Atk Esp)</div>
+                    <div class="ability-box">-</div>
+                </div>
+            </div>
+            <div class="cell notes-cell">-</div>
+            <div class="cell item-box">
+                <span class="item-name">Flecha Veneno</span>
+            </div>
         </div>
-        <div class="md:col-span-3 border-r-2 border-black flex flex-col bg-white">
-          <div class="bg-[#3366FF] text-white font-semibold p-1 border-b-2 border-black">Movimientos</div>
-          <div class="flex-1 flex items-center justify-center p-2 font-bold border-b border-black bg-[#FFFFCC] text-black">SEDUCCIÓN</div>
-          <div class="flex-1 flex items-center justify-center p-2 font-bold border-b border-black text-gray-400">-</div>
-          <div class="flex-1 flex items-center justify-center p-2 font-bold border-b border-black text-gray-400">-</div>
-          <div class="flex-1 flex items-center justify-center p-2 font-bold text-gray-400">-</div>
+
+        <div class="pokemon-row">
+            <div class="cell poke-name">Bisharp</div>
+            <div class="cell">
+                <table class="stats-table">
+                    <tr><th>STATS</th><th>IVs</th><th>EVs</th></tr>
+                    <tr><td>PS</td><td class="green-bg">31</td><td>6</td></tr>
+                    <tr><td>ATK</td><td class="green-bg">31</td><td>252</td></tr>
+                    <tr><td>DEF</td><td>-</td><td>-</td></tr>
+                    <tr><td>ATK ESP</td><td>-</td><td>-</td></tr>
+                    <tr><td>DEF ESP</td><td class="green-bg">31</td><td>252</td></tr>
+                    <tr><td>VEL</td><td>-</td><td>-</td></tr>
+                </table>
+            </div>
+            <div class="cell">
+                <div class="move-badge">Golpe Bajo</div>
+                <div class="nature-box">
+                    <div class="nature-title">Firme (+Atk -Atk Esp)</div>
+                    <div class="ability-box">Competitivo</div>
+                </div>
+            </div>
+            <div class="cell notes-cell">-</div>
+            <div class="cell item-box">
+                <span class="item-name">Vidasfera</span>
+            </div>
         </div>
-        <div class="md:col-span-2 border-r-2 border-black flex flex-col justify-between bg-white text-black">
-          <div>
-            <div class="bg-[#3366FF] text-white font-semibold p-1 border-b-2 border-black text-center">Naturaleza</div>
-            <div class="p-3 font-bold border-b-2 border-black bg-[#7aa2f7]">CAUTA (+DEF ESP -ATK ESP)</div>
-          </div>
-          <div class="flex-1 flex flex-col justify-end">
-            <div class="bg-[#3366FF] text-white font-semibold p-1 border-b-2 border-black text-center">Habilidad</div>
-            <div class="p-3 font-bold uppercase tracking-wider bg-white">CHORRO ARENA</div>
-          </div>
+
+        <div class="pokemon-row">
+            <div class="cell poke-name">Sharpedo</div>
+            <div class="cell">
+                <table class="stats-table">
+                    <tr><th>STATS</th><th>IVs</th><th>EVs</th></tr>
+                    <tr><td>PS</td><td>-</td><td>6</td></tr>
+                    <tr><td>ATK</td><td class="green-bg">31</td><td>252</td></tr>
+                    <tr><td>DEF</td><td>-</td><td>-</td></tr>
+                    <tr><td>ATK ESP</td><td>-</td><td>-</td></tr>
+                    <tr><td>DEF ESP</td><td>-</td><td>-</td></tr>
+                    <tr><td>VEL</td><td class="green-bg">31</td><td>252</td></tr>
+                </table>
+            </div>
+            <div class="cell">
+                <div class="move-badge">Buena Baza</div>
+                <div class="nature-box">
+                    <div class="nature-title">Firme (+Atk -Atk Esp)</div>
+                    <div class="ability-box">Impulso (HO)</div>
+                </div>
+            </div>
+            <div class="cell notes-cell">-</div>
+            <div class="cell item-box">
+                <span class="item-name">Cinta Elegida</span>
+            </div>
         </div>
-        <div class="md:col-span-2 border-r-2 border-black flex flex-col bg-white text-left text-black">
-          <div class="bg-[#3366FF] text-white font-semibold p-1 border-b-2 border-black text-center">Notas</div>
-          <div class="p-2 text-[11px] leading-tight font-medium">Se pueden disminuir los EVs de DEF para emular los 31 IVs en PS y DEF.ESP si no se llega al requerimiento.</div>
+
+        <div class="pokemon-row">
+            <div class="cell poke-name">Braviary</div>
+            <div class="cell">
+                <table class="stats-table">
+                    <tr><th>STATS</th><th>IVs</th><th>EVs</th></tr>
+                    <tr><td>PS</td><td>-</td><td>6</td></tr>
+                    <tr><td>ATK</td><td class="green-bg">31</td><td>252</td></tr>
+                    <tr><td>DEF</td><td>-</td><td>-</td></tr>
+                    <tr><td>ATK ESP</td><td>-</td><td>-</td></tr>
+                    <tr><td>DEF ESP</td><td>-</td><td>252</td></tr>
+                    <tr><td>VEL</td><td class="green-bg">31</td><td>-</td></tr>
+                </table>
+            </div>
+            <div class="cell">
+                <div class="move-badge">Buena Baza</div>
+                <div class="nature-box">
+                    <div class="nature-title">Firme (+Atk -Atk Esp)</div>
+                    <div class="ability-box">Competitivo (HO)</div>
+                </div>
+            </div>
+            <div class="cell notes-cell">-</div>
+            <div class="cell item-box">
+                <span class="item-name">Equipo de Asalto</span>
+            </div>
         </div>
-        <div class="md:col-span-2 grid grid-cols-2 bg-white">
-          <div class="border-r border-black flex flex-col">
-            <div class="bg-[#3366FF] text-white font-semibold p-1 border-b-2 border-black text-[10px] truncate">Items</div>
-            <div class="bg-[#00FFFF] text-black text-[9px] font-bold p-0.5 border-b border-black truncate uppercase">AMULETO PURO</div>
-            <div class="flex-1 flex items-center justify-center p-1"><img src="https://www.serebii.net/itemdex/sprites/pgl/clearamulet.png" alt="Item" class="w-10 h-10 object-contain"></div>
-          </div>
-          <div class="flex items-center justify-center p-1"><img src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/450.png" alt="Pokemon" class="w-16 h-16 object-contain"></div>
+
+        <div class="pokemon-row">
+            <div class="cell poke-name">Milotic</div>
+            <div class="cell">
+                <table class="stats-table">
+                    <tr><th>STATS</th><th>IVs</th><th>EVs</th></tr>
+                    <tr><td>PS</td><td class="green-bg">31</td><td>6</td></tr>
+                    <tr><td>ATK</td><td>-</td><td>-</td></tr>
+                    <tr><td>DEF</td><td>-</td><td>-</td></tr>
+                    <tr><td>ATK ESP</td><td class="green-bg">31</td><td>252</td></tr>
+                    <tr><td>DEF ESP</td><td class="green-bg">31</td><td>252</td></tr>
+                    <tr><td>VEL</td><td class="green-bg">31</td><td>-</td></tr>
+                </table>
+            </div>
+            <div class="cell">
+                <div class="move-badge">Salmuera</div>
+                <div class="nature-box">
+                    <div class="nature-title">Modesta (+Atk Esp -Atk)</div>
+                    <div class="ability-box">Competitivo</div>
+                </div>
+            </div>
+            <div class="cell notes-cell">-</div>
+            <div class="cell item-box">
+                <span class="item-name">Manto Encubierto</span>
+            </div>
         </div>
-      </div>
+
+        <div class="pokemon-row">
+            <div class="cell poke-name">Empoleon</div>
+            <div class="cell">
+                <table class="stats-table">
+                    <tr><th>STATS</th><th>IVs</th><th>EVs</th></tr>
+                    <tr><td>PS</td><td class="green-bg">31</td><td>6</td></tr>
+                    <tr><td>ATK</td><td>-</td><td>-</td></tr>
+                    <tr><td>DEF</td><td>-</td><td>-</td></tr>
+                    <tr><td>ATK ESP</td><td class="green-bg">31</td><td>232</td></tr>
+                    <tr><td>DEF ESP</td><td class="green-bg">31</td><td>252</td></tr>
+                    <tr><td>VEL</td><td class="green-bg">31</td><td>20</td></tr>
+                </table>
+            </div>
+            <div class="cell">
+                <div class="move-badge">Salmuera</div>
+                <div class="nature-box">
+                    <div class="nature-title">Modesta (+Atk Esp -Atk)</div>
+                    <div class="ability-box">Competitivo</div>
+                </div>
+            </div>
+            <div class="cell notes-cell">-</div>
+            <div class="cell item-box">
+                <span class="item-name">Gafas Elegidas</span>
+            </div>
+        </div>
     </div>
 
-    <div class="border-2 border-black overflow-hidden bg-white/95 backdrop-blur-sm shadow-md">
-      <div class="bg-[#4CAF50] text-white text-center py-1 font-bold text-xs tracking-wider border-b-2 border-black uppercase">
-        WHIMSICOTT
-      </div>
-      <div class="grid grid-cols-1 md:grid-cols-12 text-center text-xs">
-        <div class="md:col-span-3 border-r-2 border-black grid grid-cols-3 bg-[#3366FF] text-white font-semibold">
-          <div class="border-b border-r border-black p-1 bg-[#1e40af]">STATS</div>
-          <div class="border-b border-r border-black p-1 bg-[#1e40af]">IVs</div>
-          <div class="border-b border-black p-1 bg-[#1e40af]">EVs</div>
-          <div class="border-b border-r border-black p-1 flex items-center justify-center font-bold">PS</div>
-          <div class="border-b border-r border-black p-1 bg-[#7aa2f7] text-black font-bold flex items-center justify-center">-</div>
-          <div class="border-b border-black p-1 bg-[#7aa2f7] text-black font-bold flex items-center justify-center">-</div>
-          <div class="border-b border-r border-black p-1 flex items-center justify-center font-bold">ATK</div>
-          <div class="border-b border-r border-black p-1 bg-[#7aa2f7] text-black font-bold flex items-center justify-center">-</div>
-          <div class="border-b border-black p-1 bg-[#7aa2f7] text-black font-bold flex items-center justify-center">-</div>
-          <div class="border-b border-r border-black p-1 flex items-center justify-center font-bold">DEF</div>
-          <div class="border-b border-r border-black p-1 bg-[#7aa2f7] text-black font-bold flex items-center justify-center">-</div>
-          <div class="border-b border-black p-1 bg-[#7aa2f7] text-black font-bold flex items-center justify-center">-</div>
-          <div class="border-b border-r border-black p-1 flex items-center justify-center font-bold">ATK ESP</div>
-          <div class="border-b border-r border-black p-1 bg-[#7aa2f7] text-black font-bold flex items-center justify-center">-</div>
-          <div class="border-b border-black p-1 bg-[#7aa2f7] text-black font-bold flex items-center justify-center">-</div>
-          <div class="border-b border-r border-black p-1 flex items-center justify-center font-bold">DEF ESP</div>
-          <div class="border-b border-r border-black p-1 bg-[#7aa2f7] text-black font-bold flex items-center justify-center">-</div>
-          <div class="border-b border-black p-1 bg-[#7aa2f7] text-black font-bold flex items-center justify-center">-</div>
-          <div class="border-r border-black p-1 flex items-center justify-center font-bold">VEL</div>
-          <div class="border-r border-black p-1 bg-[#7aa2f7] text-black font-bold flex items-center justify-center">-</div>
-          <div class="p-1 bg-[#7aa2f7] text-black font-bold flex items-center justify-center">-</div>
+    <div class="player-section">
+        <div class="player-title">Jugador 3</div>
+        
+        <div class="pokemon-row">
+            <div class="cell poke-name">Kadabra</div>
+            <div class="cell">
+                <table class="stats-table">
+                    <tr><th>STATS</th><th>IVs</th><th>EVs</th></tr>
+                    <tr><td>PS</td><td class="blue-bg">0-27</td><td>0</td></tr>
+                    <tr><td>ATK</td><td>-</td><td>-</td></tr>
+                    <tr><td>DEF</td><td>-</td><td>-</td></tr>
+                    <tr><td>ATK ESP</td><td>-</td><td>-</td></tr>
+                    <tr><td>DEF ESP</td><td class="blue-bg">0-27</td><td>0</td></tr>
+                    <tr><td>VEL</td><td>-</td><td>252</td></tr>
+                </table>
+            </div>
+            <div class="cell">
+                <div class="move-badge">Velo Sagrado</div>
+                <div class="nature-box">
+                    <div class="nature-title">-</div>
+                    <div class="ability-box">-</div>
+                </div>
+            </div>
+            <div class="cell notes-cell">La naturaleza puede ser cualquiera que NO aumente la DEF.P, NO disminuya la VEL.</div>
+            <div class="cell item-box"><span class="item-name">-</span></div>
         </div>
-        <div class="md:col-span-3 border-r-2 border-black flex flex-col bg-white">
-          <div class="bg-[#3366FF] text-white font-semibold p-1 border-b-2 border-black">Movimientos</div>
-          <div class="flex-1 flex items-center justify-center p-2 font-bold border-b border-black bg-[#FF00FF] text-black">PANTALLA LUZ</div>
-          <div class="flex-1 flex items-center justify-center p-2 font-bold border-b border-black text-gray-400">-</div>
-          <div class="flex-1 flex items-center justify-center p-2 font-bold border-b border-black text-gray-400">-</div>
-          <div class="flex-1 flex items-center justify-center p-2 font-bold text-gray-400">-</div>
+
+        <div class="pokemon-row">
+            <div class="cell poke-name">Bisharp</div>
+            <div class="cell">
+                <table class="stats-table">
+                    <tr><th>STATS</th><th>IVs</th><th>EVs</th></tr>
+                    <tr><td>PS</td><td>-</td><td>252</td></tr>
+                    <tr><td>ATK</td><td class="green-bg">31</td><td>168</td></tr>
+                    <tr><td>DEF</td><td>-</td><td>-</td></tr>
+                    <tr><td>ATK ESP</td><td>-</td><td>-</td></tr>
+                    <tr><td>DEF ESP</td><td class="green-bg">31</td><td>88</td></tr>
+                    <tr><td>VEL</td><td>-</td><td>-</td></tr>
+                </table>
+            </div>
+            <div class="cell">
+                <div class="move-badge">Golpe Bajo</div>
+                <div class="nature-box">
+                    <div class="nature-title">Firme (+Atk -Atk Esp)</div>
+                    <div class="ability-box">Competitivo</div>
+                </div>
+            </div>
+            <div class="cell notes-cell">-</div>
+            <div class="cell item-box">
+                <span class="item-name">Cinta Elegida</span>
+            </div>
         </div>
-        <div class="md:col-span-2 border-r-2 border-black flex flex-col justify-between bg-white text-black">
-          <div>
-            <div class="bg-[#3366FF] text-white font-semibold p-1 border-b-2 border-black text-center">Naturaleza</div>
-            <div class="p-3 font-bold border-b-2 border-black bg-[#7aa2f7]">-</div>
-          </div>
-          <div class="flex-1 flex flex-col justify-end">
-            <div class="bg-[#3366FF] text-white font-semibold p-1 border-b-2 border-black text-center">Habilidad</div>
-            <div class="p-3 font-bold uppercase tracking-wider bg-white">BROMISTA</div>
-          </div>
+
+        <div class="pokemon-row">
+            <div class="cell poke-name">Crobat</div>
+            <div class="cell">
+                <table class="stats-table">
+                    <tr><th>STATS</th><th>IVs</th><th>EVs</th></tr>
+                    <tr><td>PS</td><td>-</td><td>-</td></tr>
+                    <tr><td>ATK</td><td>-</td><td>-</td></tr>
+                    <tr><td>DEF</td><td>-</td><td>-</td></tr>
+                    <tr><td>ATK ESP</td><td class="green-bg">31</td><td>252</td></tr>
+                    <tr><td>DEF ESP</td><td>-</td><td>-</td></tr>
+                    <tr><td>VEL</td><td class="green-bg">31</td><td>252</td></tr>
+                </table>
+            </div>
+            <div class="cell">
+                <div class="move-badge">Bomba Ácida</div>
+                <div class="nature-box">
+                    <div class="nature-title">-</div>
+                    <div class="ability-box">-</div>
+                </div>
+            </div>
+            <div class="cell notes-cell">Puede ser cualquier pokémon rápido que aprenda Bomba Ácida y muera de un golpe de Cremella.</div>
+            <div class="cell item-box"><span class="item-name">-</span></div>
         </div>
-        <div class="md:col-span-2 border-r-2 border-black flex flex-col bg-white text-left text-black">
-          <div class="bg-[#3366FF] text-white font-semibold p-1 border-b-2 border-black text-center">Notes</div>
-          <div class="p-2 text-[11px] leading-tight font-medium">Evitar EVs en DEF ESP.</div>
+
+        <div class="pokemon-row">
+            <div class="cell poke-name">Gothitelle</div>
+            <div class="cell">
+                <table class="stats-table">
+                    <tr><th>STATS</th><th>IVs</th><th>EVs</th></tr>
+                    <tr><td>PS</td><td class="green-bg">31</td><td>6</td></tr>
+                    <tr><td>ATK</td><td>-</td><td>-</td></tr>
+                    <tr><td>DEF</td><td>-</td><td>-</td></tr>
+                    <tr><td>ATK ESP</td><td class="green-bg">31</td><td>252</td></tr>
+                    <tr><td>DEF ESP</td><td class="green-bg">31</td><td>252</td></tr>
+                    <tr><td>VEL</td><td>-</td><td>-</td></tr>
+                </table>
+            </div>
+            <div class="cell">
+                <div class="move-badge">Bola Sombra</div>
+                <div class="nature-box">
+                    <div class="nature-title">Modesta (+Atk Esp -Atk)</div>
+                    <div class="ability-box">Competitivo</div>
+                </div>
+            </div>
+            <div class="cell notes-cell">-</div>
+            <div class="cell item-box">
+                <span class="item-name">Gafas Elegidas</span>
+            </div>
         </div>
-        <div class="md:col-span-2 grid grid-cols-2 bg-white">
-          <div class="border-r border-black flex flex-col">
-            <div class="bg-[#3366FF] text-white font-semibold p-1 border-b-2 border-black text-[10px] truncate">Items</div>
-            <div class="bg-[#00FFFF] text-black text-[9px] font-bold p-0.5 border-b border-black truncate uppercase">REFLELUZ</div>
-            <div class="flex-1 flex items-center justify-center p-1"><img src="https://www.serebii.net/itemdex/sprites/pgl/lightclay.png" alt="Item" class="w-10 h-10 object-contain"></div>
-          </div>
-          <div class="flex items-center justify-center p-1"><img src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/547.png" alt="Pokemon" class="w-16 h-16 object-contain"></div>
+
+        <div class="pokemon-row">
+            <div class="cell poke-name">Crawdaunt</div>
+            <div class="cell">
+                <table class="stats-table">
+                    <tr><th>STATS</th><th>IVs</th><th>EVs</th></tr>
+                    <tr><td>PS</td><td class="green-bg">31</td><td>6</td></tr>
+                    <tr><td>ATK</td><td class="green-bg">31</td><td>252</td></tr>
+                    <tr><td>DEF</td><td>-</td><td>-</td></tr>
+                    <tr><td>ATK ESP</td><td>-</td><td>-</td></tr>
+                    <tr><td>DEF ESP</td><td class="green-bg">31</td><td>252</td></tr>
+                    <tr><td>VEL</td><td>-</td><td>-</td></tr>
+                </table>
+            </div>
+            <div class="cell">
+                <div class="move-badge">Lanzamiento</div>
+                <div class="nature-box">
+                    <div class="nature-title">Audaz (+Atk -Vel)</div>
+                    <div class="ability-box">Adaptable (HO)</div>
+                </div>
+            </div>
+            <div class="cell notes-cell">-</div>
+            <div class="cell item-box">
+                <span class="item-name">Flecha Veneno</span>
+            </div>
         </div>
-      </div>
+
+        <div class="pokemon-row">
+            <div class="cell poke-name">Tyranitar</div>
+            <div class="cell">
+                <table class="stats-table">
+                    <tr><th>STATS</th><th>IVs</th><th>EVs</th></tr>
+                    <tr><td>PS</td><td class="green-bg">31</td><td>6</td></tr>
+                    <tr><td>ATK</td><td class="green-bg">31</td><td>252</td></tr>
+                    <tr><td>DEF</td><td>-</td><td>-</td></tr>
+                    <tr><td>ATK ESP</td><td>-</td><td>-</td></tr>
+                    <tr><td>DEF ESP</td><td class="green-bg">31</td><td>252</td></tr>
+                    <tr><td>VEL</td><td class="green-bg">31</td><td>-</td></tr>
+                </table>
+            </div>
+            <div class="cell">
+                <div class="move-badge">Buena Baza</div>
+                <div class="move-badge">Seducción</div>
+                <div class="nature-box">
+                    <div class="nature-title">Firme (+Atk -Atk Esp)</div>
+                    <div class="ability-box">Chorro Arena</div>
+                </div>
+            </div>
+            <div class="cell notes-cell">-</div>
+            <div class="cell item-box">
+                <span class="item-name">Bola Férrea</span>
+            </div>
+        </div>
     </div>
 
-    <div class="border-2 border-black overflow-hidden bg-white/95 backdrop-blur-sm shadow-md">
-      <div class="bg-[#E53935] text-white text-center py-1 font-bold text-xs tracking-wider border-b-2 border-black uppercase">
-        DARMANITAN
-      </div>
-      <div class="grid grid-cols-1 md:grid-cols-12 text-center text-xs">
-        <div class="md:col-span-3 border-r-2 border-black grid grid-cols-3 bg-[#3366FF] text-white font-semibold">
-          <div class="border-b border-r border-black p-1 bg-[#1e40af]">STATS</div>
-          <div class="border-b border-r border-black p-1 bg-[#1e40af]">IVs</div>
-          <div class="border-b border-black p-1 bg-[#1e40af]">EVs</div>
-          <div class="border-b border-r border-black p-1 flex items-center justify-center font-bold">PS</div>
-          <div class="border-b border-r border-black p-1 bg-[#7aa2f7] text-black font-bold flex items-center justify-center">-</div>
-          <div class="border-b border-black p-1 bg-[#7aa2f7] text-black font-bold flex items-center justify-center">-</div>
-          <div class="border-b border-r border-black p-1 flex items-center justify-center font-bold">ATK</div>
-          <div class="border-b border-r border-black p-1 bg-[#00FF00] text-black font-bold flex items-center justify-center">31</div>
-          <div class="border-b border-black p-1 bg-[#00FF00] text-black font-bold flex items-center justify-center">252</div>
-          <div class="border-b border-r border-black p-1 flex items-center justify-center font-bold">DEF</div>
-          <div class="border-b border-r border-black p-1 bg-[#7aa2f7] text-black font-bold flex items-center justify-center">-</div>
-          <div class="border-b border-black p-1 bg-[#00FF00] text-black font-bold flex items-center justify-center">90</div>
-          <div class="border-b border-r border-black p-1 flex items-center justify-center font-bold">ATK ESP</div>
-          <div class="border-b border-r border-black p-1 bg-[#7aa2f7] text-black font-bold flex items-center justify-center">-</div>
-          <div class="border-b border-black p-1 bg-[#7aa2f7] text-black font-bold flex items-center justify-center">-</div>
-          <div class="border-b border-r border-black p-1 flex items-center justify-center font-bold">DEF ESP</div>
-          <div class="border-b border-r border-black p-1 bg-[#7aa2f7] text-black font-bold flex items-center justify-center">-</div>
-          <div class="border-b border-black p-1 bg-[#7aa2f7] text-black font-bold flex items-center justify-center">-</div>
-          <div class="border-r border-black p-1 flex items-center justify-center font-bold">VEL</div>
-          <div class="border-r border-black p-1 bg-[#00FF00] text-black font-bold flex items-center justify-center">31</div>
-          <div class="p-1 bg-[#00FF00] text-black font-bold flex items-center justify-center">168</div>
+    <div class="player-section">
+        <div class="player-title">Jugador 4</div>
+        
+        <div class="pokemon-row">
+            <div class="cell poke-name">Xatu</div>
+            <div class="cell">
+                <table class="stats-table">
+                    <tr><th>STATS</th><th>IVs</th><th>EVs</th></tr>
+                    <tr><td>PS</td><td>-</td><td>-</td></tr>
+                    <tr><td>ATK</td><td>-</td><td>-</td></tr>
+                    <tr><td>DEF</td><td>-</td><td>6</td></tr>
+                    <tr><td>ATK ESP</td><td>-</td><td>252</td></tr>
+                    <tr><td>DEF ESP</td><td>-</td><td>-</td></tr>
+                    <tr><td>VEL</td><td class="green-bg">31</td><td>252</td></tr>
+                </table>
+            </div>
+            <div class="cell">
+                <div class="move-badge">Conjuro</div>
+                <div class="nature-box">
+                    <div class="nature-title">-</div>
+                    <div class="ability-box">-</div>
+                </div>
+            </div>
+            <div class="cell notes-cell">-</div>
+            <div class="cell item-box">
+                <span class="item-name">Pañuelo Elegido</span>
+            </div>
         </div>
-        <div class="md:col-span-3 border-r-2 border-black flex flex-col bg-white">
-          <div class="bg-[#3366FF] text-white font-semibold p-1 border-b-2 border-black">Movimientos</div>
-          <div class="flex-1 flex items-center justify-center p-2 font-bold border-b border-black bg-[#FF0000] text-black">ENVITE IGNEO</div>
-          <div class="flex-1 flex items-center justify-center p-2 font-bold border-b border-black text-gray-400">-</div>
-          <div class="flex-1 flex items-center justify-center p-2 font-bold border-b border-black text-gray-400">-</div>
-          <div class="flex-1 flex items-center justify-center p-2 font-bold text-gray-400">-</div>
-        </div>
-        <div class="md:col-span-2 border-r-2 border-black flex flex-col justify-between bg-white text-black">
-          <div>
-            <div class="bg-[#3366FF] text-white font-semibold p-1 border-b-2 border-black text-center">Naturaleza</div>
-            <div class="p-3 font-bold border-b-2 border-black bg-[#FF0000]">FIRME (+ATK -ATK ESP)</div>
-          </div>
-          <div class="flex-1 flex flex-col justify-end">
-            <div class="bg-[#3366FF] text-white font-semibold p-1 border-b-2 border-black text-center">Habilidad</div>
-            <div class="p-3 font-bold uppercase tracking-wider bg-[#FFFFCC]">POTENCIA BRUTA</div>
-          </div>
-        </div>
-        <div class="md:col-span-2 border-r-2 border-black flex flex-col bg-white text-left text-black">
-          <div class="bg-[#3366FF] text-white font-semibold p-1 border-b-2 border-black text-center">Notas</div>
-          <div class="p-2 text-[11px] leading-tight font-medium">La Estadistica de Velocidad al nivel 100 debe ser menor de 265.</div>
-        </div>
-        <div class="md:col-span-2 grid grid-cols-2 bg-white">
-          <div class="border-r border-black flex flex-col">
-            <div class="bg-[#3366FF] text-white font-semibold p-1 border-b-2 border-black text-[10px] truncate">Items</div>
-            <div class="bg-[#00FFFF] text-black text-[9px] font-bold p-0.5 border-b border-black truncate uppercase">CINTA ELEGIDA</div>
-            <div class="flex-1 flex items-center justify-center p-1"><img src="https://www.serebii.net/itemdex/sprites/pgl/choiceband.png" alt="Item" class="w-10 h-10 object-contain"></div>
-          </div>
-          <div class="flex items-center justify-center p-1"><img src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/555.png" alt="Pokemon" class="w-16 h-16 object-contain"></div>
-        </div>
-      </div>
-    </div>
 
-    <div class="border-2 border-black overflow-hidden bg-white/95 backdrop-blur-sm shadow-md">
-      <div class="bg-[#1565C0] text-white text-center py-1 font-bold text-xs tracking-wider border-b-2 border-black uppercase">
-        BRAVIARY
-      </div>
-      <div class="grid grid-cols-1 md:grid-cols-12 text-center text-xs">
-        <div class="md:col-span-3 border-r-2 border-black grid grid-cols-3 bg-[#3366FF] text-white font-semibold">
-          <div class="border-b border-r border-black p-1 bg-[#1e40af]">STATS</div>
-          <div class="border-b border-r border-black p-1 bg-[#1e40af]">IVs</div>
-          <div class="border-b border-black p-1 bg-[#1e40af]">EVs</div>
-          <div class="border-b border-r border-black p-1 flex items-center justify-center font-bold">PS</div>
-          <div class="border-b border-r border-black p-1 bg-[#7aa2f7] text-black font-bold flex items-center justify-center">-</div>
-          <div class="border-b border-black p-1 bg-[#00FF00] text-black font-bold flex items-center justify-center">6</div>
-          <div class="border-b border-r border-black p-1 flex items-center justify-center font-bold">ATK</div>
-          <div class="border-b border-r border-black p-1 bg-[#00FF00] text-black font-bold flex items-center justify-center">31</div>
-          <div class="border-b border-black p-1 bg-[#00FF00] text-black font-bold flex items-center justify-center">252</div>
-          <div class="border-b border-r border-black p-1 flex items-center justify-center font-bold">DEF</div>
-          <div class="border-b border-r border-black p-1 bg-[#7aa2f7] text-black font-bold flex items-center justify-center">-</div>
-          <div class="border-b border-black p-1 bg-[#7aa2f7] text-black font-bold flex items-center justify-center">-</div>
-          <div class="border-b border-r border-black p-1 flex items-center justify-center font-bold">ATK ESP</div>
-          <div class="border-b border-r border-black p-1 bg-[#7aa2f7] text-black font-bold flex items-center justify-center">-</div>
-          <div class="border-b border-black p-1 bg-[#7aa2f7] text-black font-bold flex items-center justify-center">-</div>
-          <div class="border-b border-r border-black p-1 flex items-center justify-center font-bold">DEF ESP</div>
-          <div class="border-b border-r border-black p-1 bg-[#7aa2f7] text-black font-bold flex items-center justify-center">-</div>
-          <div class="border-b border-black p-1 bg-[#7aa2f7] text-black font-bold flex items-center justify-center">-</div>
-          <div class="border-r border-black p-1 flex items-center justify-center font-bold">VEL</div>
-          <div class="border-r border-black p-1 bg-[#00FF00] text-black font-bold flex items-center justify-center">31</div>
-          <div class="p-1 bg-[#00FF00] text-black font-bold flex items-center justify-center">252</div>
+        <div class="pokemon-row">
+            <div class="cell poke-name">Bisharp</div>
+            <div class="cell">
+                <table class="stats-table">
+                    <tr><th>STATS</th><th>IVs</th><th>EVs</th></tr>
+                    <tr><td>PS</td><td class="green-bg">31</td><td>6</td></tr>
+                    <tr><td>ATK</td><td class="green-bg">31</td><td>252</td></tr>
+                    <tr><td>DEF</td><td>-</td><td>-</td></tr>
+                    <tr><td>ATK ESP</td><td>-</td><td>-</td></tr>
+                    <tr><td>DEF ESP</td><td class="green-bg">31</td><td>252</td></tr>
+                    <tr><td>VEL</td><td>-</td><td>-</td></tr>
+                </table>
+            </div>
+            <div class="cell">
+                <div class="move-badge">Golpe Bajo</div>
+                <div class="nature-box">
+                    <div class="nature-title">Firme (+Atk -Atk Esp)</div>
+                    <div class="ability-box">Competitivo</div>
+                </div>
+            </div>
+            <div class="cell notes-cell">-</div>
+            <div class="cell item-box">
+                <span class="item-name">Vidasfera</span>
+            </div>
         </div>
-        <div class="md:col-span-3 border-r-2 border-black flex flex-col bg-white">
-          <div class="bg-[#3366FF] text-white font-semibold p-1 border-b-2 border-black">Movimientos</div>
-          <div class="flex-1 flex items-center justify-center p-2 font-bold border-b border-black bg-[#444444] text-white">BUENA BAZA</div>
-          <div class="flex-1 flex items-center justify-center p-2 font-bold border-b border-black text-gray-400">-</div>
-          <div class="flex-1 flex items-center justify-center p-2 font-bold border-b border-black text-gray-400">-</div>
-          <div class="flex-1 flex items-center justify-center p-2 font-bold text-gray-400">-</div>
-        </div>
-        <div class="md:col-span-2 border-r-2 border-black flex flex-col justify-between bg-white text-black">
-          <div>
-            <div class="bg-[#3366FF] text-white font-semibold p-1 border-b-2 border-black text-center">Naturaleza</div>
-            <div class="p-3 font-bold border-b-2 border-black bg-[#FF0000]">FIRME (+ATK -ATK ESP)</div>
-          </div>
-          <div class="flex-1 flex flex-col justify-end">
-            <div class="bg-[#3366FF] text-white font-semibold p-1 border-b-2 border-black text-center">Habilidad</div>
-            <div class="p-3 font-bold uppercase tracking-wider bg-[#FFFF00]">COMPETITIVO (HO)</div>
-          </div>
-        </div>
-        <div class="md:col-span-2 border-r-2 border-black flex flex-col bg-white text-left text-black">
-          <div class="bg-[#3366FF] text-white font-semibold p-1 border-b-2 border-black text-center">Notas</div>
-          <div class="p-2 text-[11px] leading-tight font-medium">-</div>
-        </div>
-        <div class="md:col-span-2 grid grid-cols-2 bg-white">
-          <div class="border-r border-black flex flex-col">
-            <div class="bg-[#3366FF] text-white font-semibold p-1 border-b-2 border-black text-[10px] truncate">Items</div>
-            <div class="bg-[#00FFFF] text-black text-[9px] font-bold p-0.5 border-b border-black truncate uppercase">BAYA MAGUA</div>
-            <div class="flex-1 flex items-center justify-center p-1"><img src="https://www.serebii.net/itemdex/sprites/pgl/magoberry.png" alt="Item" class="w-10 h-10 object-contain"></div>
-          </div>
-          <div class="flex items-center justify-center p-1"><img src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/628.png" alt="Pokemon" class="w-16 h-16 object-contain"></div>
-        </div>
-      </div>
-    </div>
 
-    <div class="border-2 border-black overflow-hidden bg-white/95 backdrop-blur-sm shadow-md">
-      <div class="bg-[#3F51B5] text-white text-center py-1 font-bold text-xs tracking-wider border-b-2 border-black uppercase">
-        MILOTIC
-      </div>
-      <div class="grid grid-cols-1 md:grid-cols-12 text-center text-xs">
-        <div class="md:col-span-3 border-r-2 border-black grid grid-cols-3 bg-[#3366FF] text-white font-semibold">
-          <div class="border-b border-r border-black p-1 bg-[#1e40af]">STATS</div>
-          <div class="border-b border-r border-black p-1 bg-[#1e40af]">IVs</div>
-          <div class="border-b border-black p-1 bg-[#1e40af]">EVs</div>
-          <div class="border-b border-r border-black p-1 flex items-center justify-center font-bold">PS</div>
-          <div class="border-b border-r border-black p-1 bg-[#00FF00] text-black font-bold flex items-center justify-center">31</div>
-          <div class="border-b border-black p-1 bg-[#00FF00] text-black font-bold flex items-center justify-center">6</div>
-          <div class="border-b border-r border-black p-1 flex items-center justify-center font-bold">ATK</div>
-          <div class="border-b border-r border-black p-1 bg-[#7aa2f7] text-black font-bold flex items-center justify-center">-</div>
-          <div class="border-b border-black p-1 bg-[#7aa2f7] text-black font-bold flex items-center justify-center">-</div>
-          <div class="border-b border-r border-black p-1 flex items-center justify-center font-bold">DEF</div>
-          <div class="border-b border-r border-black p-1 bg-[#7aa2f7] text-black font-bold flex items-center justify-center">-</div>
-          <div class="border-b border-black p-1 bg-[#7aa2f7] text-black font-bold flex items-center justify-center">-</div>
-          <div class="border-b border-r border-black p-1 flex items-center justify-center font-bold">ATK ESP</div>
-          <div class="border-b border-r border-black p-1 bg-[#00FF00] text-black font-bold flex items-center justify-center">31</div>
-          <div class="border-b border-black p-1 bg-[#00FF00] text-black font-bold flex items-center justify-center">252</div>
-          <div class="border-b border-r border-black p-1 flex items-center justify-center font-bold">DEF ESP</div>
-          <div class="border-b border-r border-black p-1 bg-[#00FF00] text-black font-bold flex items-center justify-center">31</div>
-          <div class="border-b border-black p-1 bg-[#00FF00] text-black font-bold flex items-center justify-center">252</div>
-          <div class="border-r border-black p-1 flex items-center justify-center font-bold">VEL</div>
-          <div class="border-r border-black p-1 bg-[#FF0000] text-white font-bold flex items-center justify-center">0</div>
-          <div class="p-1 bg-[#7aa2f7] text-black font-bold flex items-center justify-center">-</div>
+        <div class="pokemon-row">
+            <div class="cell poke-name">Gengar</div>
+            <div class="cell">
+                <table class="stats-table">
+                    <tr><th>STATS</th><th>IVs</th><th>EVs</th></tr>
+                    <tr><td>PS</td><td>-</td><td>-</td></tr>
+                    <tr><td>ATK</td><td>-</td><td>-</td></tr>
+                    <tr><td>DEF</td><td>-</td><td>-</td></tr>
+                    <tr><td>ATK ESP</td><td class="green-bg">31</td><td>252</td></tr>
+                    <tr><td>DEF ESP</td><td>-</td><td>-</td></tr>
+                    <tr><td>VEL</td><td class="green-bg">31</td><td>120</td></tr>
+                </table>
+            </div>
+            <div class="cell">
+                <div class="move-badge">Infortunio</div>
+                <div class="nature-box">
+                    <div class="nature-title">Modesta (+Atk Esp -Atk)</div>
+                    <div class="ability-box">Levitación</div>
+                </div>
+            </div>
+            <div class="cell notes-cell">-</div>
+            <div class="cell item-box">
+                <span class="item-name">Gema Fantasma</span>
+            </div>
         </div>
-        <div class="md:col-span-3 border-r-2 border-black flex flex-col bg-white">
-          <div class="bg-[#3366FF] text-white font-semibold p-1 border-b-2 border-black">Movimientos</div>
-          <div class="flex-1 flex items-center justify-center p-1.5 font-bold border-b border-black bg-[#3399FF] text-black">SALMUERA</div>
-          <div class="flex-1 flex items-center justify-center p-1.5 font-bold border-b border-black bg-[#FFFFCC] text-black">VELOSAGRADO</div>
-          <div class="flex-1 flex items-center justify-center p-1.5 font-bold border-b border-black bg-[#8B5A2B] text-white">CHAPOTEO LODO (HUEVO)</div>
-          <div class="flex-1 flex items-center justify-center p-1.5 font-bold text-gray-400">-</div>
-        </div>
-        <div class="md:col-span-2 border-r-2 border-black flex flex-col justify-between bg-white text-black">
-          <div>
-            <div class="bg-[#3366FF] text-white font-semibold p-1 border-b-2 border-black text-center">Naturaleza</div>
-            <div class="p-3 font-bold border-b-2 border-black bg-[#FF9900]">MANSA (+ATK ESP -VEL)</div>
-          </div>
-          <div class="flex-1 flex flex-col justify-end">
-            <div class="bg-[#3366FF] text-white font-semibold p-1 border-b-2 border-black text-center">Habilidad</div>
-            <div class="p-3 font-bold uppercase tracking-wider bg-white">COMPETITIVO</div>
-          </div>
-        </div>
-        <div class="md:col-span-2 border-r-2 border-black flex flex-col bg-white text-left text-black">
-          <div class="bg-[#3366FF] text-white font-semibold p-1 border-b-2 border-black text-center">Notas</div>
-          <div class="p-2 text-[11px] leading-tight font-medium">-</div>
-        </div>
-        <div class="md:col-span-2 grid grid-cols-2 bg-white">
-          <div class="border-r border-black flex flex-col">
-            <div class="bg-[#3366FF] text-white font-semibold p-1 border-b-2 border-black text-[10px] truncate">Items</div>
-            <div class="bg-[#00FFFF] text-black text-[9px] font-bold p-0.5 border-b border-black truncate uppercase">MANTO ENCUBIERTO</div>
-            <div class="flex-1 flex items-center justify-center p-1"><img src="https://www.serebii.net/itemdex/sprites/pgl/covertcloak.png" alt="Item" class="w-10 h-10 object-contain"></div>
-          </div>
-          <div class="flex items-center justify-center p-1"><img src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/350.png" alt="Pokemon" class="w-16 h-16 object-contain"></div>
-        </div>
-      </div>
-    </div>
 
-    <div class="border-2 border-black overflow-hidden bg-white/95 backdrop-blur-sm shadow-md">
-      <div class="bg-[#0D47A1] text-white text-center py-1 font-bold text-xs tracking-wider border-b-2 border-black uppercase">
-        EMPOLEON
-      </div>
-      <div class="grid grid-cols-1 md:grid-cols-12 text-center text-xs">
-        <div class="md:col-span-3 border-r-2 border-black grid grid-cols-3 bg-[#3366FF] text-white font-semibold">
-          <div class="border-b border-r border-black p-1 bg-[#1e40af]">STATS</div>
-          <div class="border-b border-r border-black p-1 bg-[#1e40af]">IVs</div>
-          <div class="border-b border-black p-1 bg-[#1e40af]">EVs</div>
-          <div class="border-b border-r border-black p-1 flex items-center justify-center font-bold">PS</div>
-          <div class="border-b border-r border-black p-1 bg-[#00FF00] text-black font-bold flex items-center justify-center">31</div>
-          <div class="border-b border-black p-1 bg-[#00FF00] text-black font-bold flex items-center justify-center">8</div>
-          <div class="border-b border-r border-black p-1 flex items-center justify-center font-bold">ATK</div>
-          <div class="border-b border-r border-black p-1 bg-[#7aa2f7] text-black font-bold flex items-center justify-center">-</div>
-          <div class="border-b border-black p-1 bg-[#7aa2f7] text-black font-bold flex items-center justify-center">-</div>
-          <div class="border-b border-r border-black p-1 flex items-center justify-center font-bold">DEF</div>
-          <div class="border-b border-r border-black p-1 bg-[#7aa2f7] text-black font-bold flex items-center justify-center">-</div>
-          <div class="border-b border-black p-1 bg-[#7aa2f7] text-black font-bold flex items-center justify-center">-</div>
-          <div class="border-b border-r border-black p-1 flex items-center justify-center font-bold">ATK ESP</div>
-          <div class="border-b border-r border-black p-1 bg-[#00FF00] text-black font-bold flex items-center justify-center">31</div>
-          <div class="border-b border-black p-1 bg-[#00FF00] text-black font-bold flex items-center justify-center">252</div>
-          <div class="border-b border-r border-black p-1 flex items-center justify-center font-bold">DEF ESP</div>
-          <div class="border-b border-r border-black p-1 bg-[#00FF00] text-black font-bold flex items-center justify-center">31</div>
-          <div class="border-b border-black p-1 bg-[#00FF00] text-black font-bold flex items-center justify-center">252</div>
-          <div class="border-r border-black p-1 flex items-center justify-center font-bold">VEL</div>
-          <div class="border-r border-black p-1 bg-[#7aa2f7] text-black font-bold flex items-center justify-center">-</div>
-          <div class="p-1 bg-[#7aa2f7] text-black font-bold flex items-center justify-center">-</div>
+        <div class="pokemon-row">
+            <div class="cell poke-name">Gothitelle</div>
+            <div class="cell">
+                <table class="stats-table">
+                    <tr><th>STATS</th><th>IVs</th><th>EVs</th></tr>
+                    <tr><td>PS</td><td>-</td><td>6</td></tr>
+                    <tr><td>ATK</td><td>-</td><td>-</td></tr>
+                    <tr><td>DEF</td><td>-</td><td>-</td></tr>
+                    <tr><td>ATK ESP</td><td class="green-bg">31</td><td>252</td></tr>
+                    <tr><td>DEF ESP</td><td>-</td><td>-</td></tr>
+                    <tr><td>VEL</td><td>-</td><td>252</td></tr>
+                </table>
+            </div>
+            <div class="cell">
+                <div class="move-badge">Bola Sombra</div>
+                <div class="nature-box">
+                    <div class="nature-title">Modesta (+Atk Esp -Atk)</div>
+                    <div class="ability-box">Competitivo</div>
+                </div>
+            </div>
+            <div class="cell notes-cell">-</div>
+            <div class="cell item-box">
+                <span class="item-name">Gafas Elegidas</span>
+            </div>
         </div>
-        <div class="md:col-span-3 border-r-2 border-black flex flex-col bg-white">
-          <div class="bg-[#3366FF] text-white font-semibold p-1 border-b-2 border-black">Movimientos</div>
-          <div class="flex-1 flex items-center justify-center p-2 font-bold border-b border-black bg-[#3399FF] text-black">SALMUERA</div>
-          <div class="flex-1 flex items-center justify-center p-2 font-bold border-b border-black text-gray-400">-</div>
-          <div class="flex-1 flex items-center justify-center p-2 font-bold border-b border-black text-gray-400">-</div>
-          <div class="flex-1 flex items-center justify-center p-2 font-bold text-gray-400">-</div>
-        </div>
-        <div class="md:col-span-2 border-r-2 border-black flex flex-col justify-between bg-white text-black">
-          <div>
-            <div class="bg-[#3366FF] text-white font-semibold p-1 border-b-2 border-black text-center">Naturaleza</div>
-            <div class="p-3 font-bold border-b-2 border-black bg-[#FFCCE6]">MODESTA (+ATK ESP -ATK)</div>
-          </div>
-          <div class="flex-1 flex flex-col justify-end">
-            <div class="bg-[#3366FF] text-white font-semibold p-1 border-b-2 border-black text-center">Habilidad</div>
-            <div class="p-3 font-bold uppercase tracking-wider bg-white">COMPETITIVO</div>
-          </div>
-        </div>
-        <div class="md:col-span-2 border-r-2 border-black flex flex-col bg-white text-left text-black">
-          <div class="bg-[#3366FF] text-white font-semibold p-1 border-b-2 border-black text-center">Notas</div>
-          <div class="p-2 text-[11px] leading-tight font-medium">-</div>
-        </div>
-        <div class="md:col-span-2 grid grid-cols-2 bg-white">
-          <div class="border-r border-black flex flex-col">
-            <div class="bg-[#3366FF] text-white font-semibold p-1 border-b-2 border-black text-[10px] truncate">Items</div>
-            <div class="bg-[#00FFFF] text-black text-[9px] font-bold p-0.5 border-b border-black truncate uppercase">GAFAS ELEGIDAS</div>
-            <div class="flex-1 flex items-center justify-center p-1"><img src="https://www.serebii.net/itemdex/sprites/pgl/choicespecs.png" alt="Item" class="w-10 h-10 object-contain"></div>
-          </div>
-          <div class="flex items-center justify-center p-1"><img src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/395.png" alt="Pokemon" class="w-16 h-16 object-contain"></div>
-        </div>
-      </div>
-    </div>
 
-  </div>
+        <div class="pokemon-row">
+            <div class="cell poke-name">Jynx</div>
+            <div class="cell">
+                <table class="stats-table">
+                    <tr><th>STATS</th><th>IVs</th><th>EVs</th></tr>
+                    <tr><td>PS</td><td>-</td><td>0</td></tr>
+                    <tr><td>ATK</td><td>-</td><td>-</td></tr>
+                    <tr><td>DEF</td><td>-</td><td>-</td></tr>
+                    <tr><td>ATK ESP</td><td>-</td><td>-</td></tr>
+                    <tr><td>DEF ESP</td><td>-</td><td>0</td></tr>
+                    <tr><td>VEL</td><td>-</td><td>0</td></tr>
+                </table>
+            </div>
+            <div class="cell">
+                <div class="move-badge">Conjuro</div>
+                <div class="nature-box">
+                    <div class="nature-title">-</div>
+                    <div class="ability-box">-</div>
+                </div>
+            </div>
+            <div class="cell notes-cell">La naturaleza puede ser cualquiera que NO disminuya la DEF ESP.</div>
+            <div class="cell item-box">
+                <span class="item-name">Baya Magua</span>
+            </div>
+        </div>
+
+        <div class="pokemon-row">
+            <div class="cell poke-name">Krookodile</div>
+            <div class="cell">
+                <table class="stats-table">
+                    <tr><th>STATS</th><th>IVs</th><th>EVs</th></tr>
+                    <tr><td>PS</td><td class="green-bg">31</td><td>6</td></tr>
+                    <tr><td>ATK</td><td class="green-bg">31</td><td>252</td></tr>
+                    <tr><td>DEF</td><td>-</td><td>-</td></tr>
+                    <tr><td>ATK ESP</td><td>-</td><td>-</td></tr>
+                    <tr><td>DEF ESP</td><td class="green-bg">31</td><td>252</td></tr>
+                    <tr><td>VEL</td><td>-</td><td>-</td></tr>
+                </table>
+            </div>
+            <div class="cell">
+                <div class="move-badge">Buena Baza</div>
+                <div class="nature-box">
+                    <div class="nature-title">Firme (+Atk -Atk Esp)</div>
+                    <div class="ability-box">Irascible (HO)</div>
+                </div>
+            </div>
+            <div class="cell notes-cell">-</div>
+            <div class="cell item-box">
+                <span class="item-name">Cinta Elegida</span>
+            </div>
+        </div>
+    </div>
+</div>
 
 </body>
 </html>
