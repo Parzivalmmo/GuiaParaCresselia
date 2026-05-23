@@ -3,35 +3,25 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Guía de Incursión - Cresselia</title>
+    <title>Guía de Raid de Cresselia </title>
     <style>
         :root {
-            /* Colores de la Galaxia y Neón */
-            --bg-galaxy: radial-gradient(circle at 50% 10%, #1e1135 0%, #0b061a 45%, #030107 100%);
-            --panel-glass: rgba(18, 11, 32, 0.45);       
-            --border-neon-blue: rgba(56, 189, 248, 0.25);   
-            --border-neon-purple: rgba(168, 85, 247, 0.3);
-            --text-main: #f8fafc;        
-            --text-muted: #a78bfa; /* Tono morado claro para textos secundarios */     
-            --accent-cyan: #22d3ee; /* Cian brillante futurista */    
-            --hp-color: #f43f5e;         
+            --bg-color: #0f172a;       
+            --panel-bg: #1e293b;       
+            --border-color: #334155;   
+            --text-main: #f8fafc;      
+            --text-muted: #94a3b8;     
+            --accent-blue: #38bdf8;    
+            --hp-color: #f43f5e;       
         }
 
         body {
             font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            background: var(--bg-galaxy);
-            background-attachment: fixed; /* Mantiene la galaxia fija al hacer scroll */
+            background-color: var(--bg-color);
             color: var(--text-main);
             margin: 0;
             padding: 20px;
             line-height: 1.4;
-            /* Estrellas sutiles generadas por CSS de fondo */
-            background-image: 
-                radial-gradient(white, rgba(255,255,255,.2) 2px, transparent 40px),
-                radial-gradient(white, rgba(255,255,255,.15) 1px, transparent 30px),
-                var(--bg-galaxy);
-            background-size: 550px 550px, 350px 350px, 100% 100%;
-            background-position: 0 0, 40px 60px, 0 0;
         }
 
         .container {
@@ -39,24 +29,18 @@
             margin: 0 auto;
         }
 
-        /* Títulos con brillo Holográfico */
         h1, h2 {
             text-align: center;
-            color: #ffffff;
+            color: #f1f5f9;
             margin-bottom: 5px;
-            text-transform: uppercase;
-            letter-spacing: 3px;
-            text-shadow: 0 0 12px rgba(34, 211, 238, 0.6), 0 0 30px rgba(168, 85, 247, 0.4);
         }
 
         .subtitle {
             text-align: center;
-            color: var(--accent-cyan);
+            color: var(--accent-blue);
             margin-top: 0;
-            margin-bottom: 40px;
+            margin-bottom: 30px;
             font-size: 1.2em;
-            letter-spacing: 1px;
-            text-shadow: 0 0 8px rgba(34, 211, 238, 0.4);
         }
 
         .grid-jugadores {
@@ -66,36 +50,28 @@
             margin-bottom: 40px;
         }
 
-        /* Paneles de Jugadores estilo interfaz de nave */
         .card-jugador {
-            background: var(--panel-glass);
-            border-radius: 14px;
+            background-color: var(--panel-bg);
+            border-radius: 10px;
             padding: 20px;
-            border: 1px solid var(--border-neon-purple);
+            border: 1px solid var(--border-color);
             display: flex;
             flex-direction: column;
-            backdrop-filter: blur(10px);
-            -webkit-backdrop-filter: blur(10px);
-            box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.5), 
-                        inset 0 0 15px rgba(168, 85, 247, 0.05);
         }
 
         .card-jugador h3 {
             margin-top: 0;
             margin-bottom: 15px;
             padding-bottom: 8px;
-            border-bottom: 2px solid var(--border-neon-purple);
-            color: #ffffff;
+            border-bottom: 2px solid var(--border-color);
+            color: var(--accent-blue);
             font-size: 1.3em;
             text-align: center;
-            letter-spacing: 2px;
-            text-shadow: 0 0 8px var(--border-neon-purple);
         }
 
-        /* Bloques de Pokémon individuales */
         .pokemon-block {
-            background: rgba(8, 4, 18, 0.6);
-            border: 1px solid var(--border-neon-blue);
+            background-color: #111827;
+            border: 1px solid var(--border-color);
             border-radius: 8px;
             padding: 14px;
             margin-bottom: 14px;
@@ -103,15 +79,6 @@
             flex-direction: column;
             justify-content: space-between;
             min-height: 210px; 
-            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.4);
-            transition: transform 0.2s ease, border-color 0.2s ease;
-        }
-
-        /* Efecto al pasar el mouse por encima del bloque Pokémon */
-        .pokemon-block:hover {
-            transform: scale(1.01);
-            border-color: var(--accent-cyan);
-            box-shadow: 0 0 15px rgba(34, 211, 238, 0.25);
         }
 
         .pokemon-header {
@@ -119,7 +86,7 @@
             justify-content: space-between;
             align-items: center;
             margin-bottom: 8px;
-            border-bottom: 1px dashed var(--border-neon-blue);
+            border-bottom: 1px dashed var(--border-color);
             padding-bottom: 6px;
         }
 
@@ -127,7 +94,6 @@
             font-weight: bold;
             font-size: 1.2em;
             color: #ffffff;
-            text-shadow: 0 0 5px rgba(255, 255, 255, 0.5);
         }
 
         .pokemon-images {
@@ -140,31 +106,28 @@
             width: 55px;
             height: 55px;
             object-fit: contain;
-            filter: drop-shadow(0 0 5px rgba(168, 85, 247, 0.3));
         }
 
         .item-img {
             width: 34px;
             height: 34px;
             object-fit: contain;
-            border: 1px solid var(--border-neon-blue);
-            background-color: rgba(15, 23, 42, 0.8);
+            border: 1px solid var(--border-color);
+            background-color: var(--panel-bg);
             border-radius: 6px;
             padding: 2px;
-            box-shadow: 0 0 8px rgba(34, 211, 238, 0.2);
         }
 
         .item-placeholder {
             width: 34px;
             height: 34px;
-            border: 1px dashed rgba(167, 139, 250, 0.4);
+            border: 1px dashed #475569;
             border-radius: 6px;
             display: flex;
             align-items: center;
             justify-content: center;
             font-size: 0.65em;
             color: var(--text-muted);
-            background-color: rgba(0, 0, 0, 0.2);
         }
 
         .pokemon-details {
@@ -172,7 +135,7 @@
             display: grid;
             grid-template-columns: 1fr;
             gap: 3px;
-            color: #e2e8f0;
+            color: #cbd5e1;
         }
 
         .detail-item span {
@@ -182,23 +145,19 @@
 
         .pokemon-notes {
             font-style: italic;
-            color: #fcd34d; /* Amarillo estrella brillante para destacar notas */
+            color: #fb923c;
             margin-top: 5px;
             font-size: 0.82em;
-            border-top: 1px solid rgba(255,255,255,0.05);
+            border-top: 1px solid #1e293b;
             padding-top: 4px;
         }
 
-        /* Tabla de turnos estilo Centro de Control */
         .table-responsive {
             overflow-x: auto;
-            background: var(--panel-glass);
-            border-radius: 12px;
+            background-color: var(--panel-bg);
+            border-radius: 10px;
             padding: 20px;
-            border: 1px solid var(--border-neon-purple);
-            backdrop-filter: blur(10px);
-            -webkit-backdrop-filter: blur(10px);
-            box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.5);
+            border: 1px solid var(--border-color);
         }
 
         table {
@@ -210,32 +169,29 @@
 
         th, td {
             padding: 12px 10px;
-            border: 1px solid rgba(168, 85, 247, 0.15);
+            border: 1px solid var(--border-color);
             font-size: 0.9em;
             vertical-align: middle;
         }
 
         th {
-            background-color: rgba(10, 5, 20, 0.8);
+            background-color: #0f172a;
             font-weight: bold;
-            color: var(--accent-cyan);
-            letter-spacing: 1px;
-            border-bottom: 2px solid var(--border-neon-blue);
+            color: var(--accent-blue);
         }
 
         tr:nth-child(even) td {
-            background-color: rgba(20, 10, 35, 0.4);
+            background-color: #1e293b;
         }
 
         tr:nth-child(odd) td {
-            background-color: rgba(10, 5, 20, 0.4);
+            background-color: #141e30;
         }
 
         .turno-col {
             font-weight: bold;
-            background-color: rgba(10, 5, 20, 0.9) !important;
-            color: var(--accent-cyan);
-            border-right: 2px solid var(--border-neon-blue) !important;
+            background-color: #0f172a !important;
+            color: #ffffff;
             width: 70px;
         }
 
@@ -244,7 +200,6 @@
             color: var(--hp-color);
             width: 90px;
             font-size: 1em;
-            text-shadow: 0 0 6px rgba(244, 63, 94, 0.4);
         }
 
         .table-cell-content {
@@ -272,415 +227,733 @@
 <body>
 
 <div class="container">
-    <h1>Guía de Incursión Especial</h1>
-    <div class="subtitle">Objetivo Cósmico: Cresselia</div>
+    <h1>Guía de Raid de Cresselia</h1>
+    <p class="subtitle">Equipo Para Cresseila y Secuencia por Turnos</p>
 
     <div class="grid-jugadores">
-        <!-- JUGADOR 1 -->
+        
         <div class="card-jugador">
-            <h3>JUGADOR 1 (DPS/SUPPORT)</h3>
+            <h3>JUGADOR 1</h3>
             
             <div class="pokemon-block">
-                <div>
-                    <div class="pokemon-header">
-                        <div class="pokemon-title">1. Hydreigon (Miedoso)</div>
-                        <div class="pokemon-images">
-                            <img class="pokemon-img" src="https://img.pokemondb.net/sprites/black-white/anim/normal/hydreigon.gif" alt="Hydreigon">
-                            <img class="item-img" src="https://img.pokemondb.net/sprites/items/choice-specs.png" alt="Gafas Elección">
-                        </div>
-                    </div>
-                    <div class="pokemon-details">
-                        <div class="detail-item"><span>Movimientos:</span> Pulso Umbrío, Maquinación, Mofa, Reflejo</div>
-                        <div class="detail-item"><span>EVs:</span> 252 SpA / 252 Vel / 4 HP</div>
+                <div class="pokemon-header">
+                    <span class="pokemon-title">Hippowdon</span>
+                    <div class="pokemon-images">
+                        <img class="item-img" src="amuletopuro.png" alt="Amuleto Puro" title="Amuleto Puro">
+                        <img class="pokemon-img" src="https://play.pokemonshowdown.com/sprites/ani/hippowdon.gif" alt="Hippowdon">
                     </div>
                 </div>
-                <div class="pokemon-notes">Nota: DPS principal de daño especial siniestro. Mantener Mofa si es necesario.</div>
+                <div class="pokemon-details">
+                    <div class="detail-item"><span>IVs:</span> PS:31 | DefSp:31 | Vel:31</div>
+                    <div class="detail-item"><span>EVs:</span> Def:238 | DefSp:20 | Vel:252</div>
+                    <div class="detail-item"><span>Movimiento:</span> Seducción</div>
+                    <div class="detail-item"><span>Habilidad:</span> Chorro Arena</div>
+                    <div class="detail-item"><span>Naturaleza:</span> Cauta (+Def Esp, -Atk Esp)</div>
+                    <div class="pokemon-notes">* Se pueden disminuir los EVs de DEF para simular los 31 IVs en PS y DEF.ESP si no se llega al requerimiento.</div>
+                </div>
             </div>
 
             <div class="pokemon-block">
-                <div>
-                    <div class="pokemon-header">
-                        <div class="pokemon-title">2. Umbreon (Osado)</div>
-                        <div class="pokemon-images">
-                            <img class="pokemon-img" src="https://img.pokemondb.net/sprites/black-white/anim/normal/umbreon.gif" alt="Umbreon">
-                            <img class="item-img" src="https://img.pokemondb.net/sprites/items/leftovers.png" alt="Restos">
-                        </div>
-                    </div>
-                    <div class="pokemon-details">
-                        <div class="detail-item"><span>Movimientos:</span> Alarido, Refuerzo, Luz Lunar, Deseo</div>
-                        <div class="detail-item"><span>EVs:</span> 252 HP / 252 DefSp / 4 Def</div>
+                <div class="pokemon-header">
+                    <span class="pokemon-title">Whimsicott</span>
+                    <div class="pokemon-images">
+                        <img class="item-img" src="Refleluz.png" alt="Refleluz" title="Refleluz">
+                        <img class="pokemon-img" src="https://play.pokemonshowdown.com/sprites/ani/whimsicott.gif" alt="Whimsicott">
                     </div>
                 </div>
-                <div class="pokemon-notes">Nota: Tanque de soporte. Mitiga el daño especial de Cresselia con Alarido.</div>
+                <div class="pokemon-details">
+                    <div class="detail-item"><span>IVs:</span> -</div>
+                    <div class="detail-item"><span>EVs:</span> -</div>
+                    <div class="detail-item"><span>Movimiento:</span> Pantalla Luz</div>
+                    <div class="detail-item"><span>Habilidad:</span> Bromista</div>
+                    <div class="detail-item"><span>Naturaleza:</span> -</div>
+                    <div class="pokemon-notes">* Evitar EVs en DEF.ESP.</div>
+                </div>
             </div>
 
             <div class="pokemon-block">
-                <div>
-                    <div class="pokemon-header">
-                        <div class="pokemon-title">3. Tyranitar (Firme)</div>
-                        <div class="pokemon-images">
-                            <img class="pokemon-img" src="https://img.pokemondb.net/sprites/black-white/anim/normal/tyranitar.gif" alt="Tyranitar">
-                            <img class="item-img" src="https://img.pokemondb.net/sprites/items/choice-band.png" alt="Cinta Elección">
-                        </div>
-                    </div>
-                    <div class="pokemon-details">
-                        <div class="detail-item"><span>Movimientos:</span> Triturar, Persecución, Roca Afilada, Danza Dragón</div>
-                        <div class="detail-item"><span>EVs:</span> 252 Atk / 252 HP / 4 Vel</div>
+                <div class="pokemon-header">
+                    <span class="pokemon-title">Darmanitan</span>
+                    <div class="pokemon-images">
+                        <img class="item-img" src="cintaelegida.png" alt="Cinta Elegida" title="Cinta Elegida">
+                        <img class="pokemon-img" src="https://play.pokemonshowdown.com/sprites/ani/darmanitan.gif" alt="Darmanitan">
                     </div>
                 </div>
-                <div class="pokemon-notes">Nota: DPS Físico. Invoca Tormenta de Arena automáticamente aumentando su Def.Especial.</div>
+                <div class="pokemon-details">
+                    <div class="detail-item"><span>IVs:</span> Atk:31 | Vel:31</div>
+                    <div class="detail-item"><span>EVs:</span> Atk:252 | Def:90 | Vel:168</div>
+                    <div class="detail-item"><span>Movimiento:</span> Envite Ígneo</div>
+                    <div class="detail-item"><span>Habilidad:</span> Potencia Bruta</div>
+                    <div class="detail-item"><span>Naturaleza:</span> Firme (+Atk, -Atk Esp)</div>
+                    <div class="pokemon-notes">* La estadística de Velocidad al nivel 100 debe ser menor de 269.</div>
+                </div>
+            </div>
+
+            <div class="pokemon-block">
+                <div class="pokemon-header">
+                    <span class="pokemon-title">Braviary</span>
+                    <div class="pokemon-images">
+                        <img class="item-img" src="bayamagua.png" alt="Baya Magua" title="Baya Magua">
+                        <img class="pokemon-img" src="https://play.pokemonshowdown.com/sprites/ani/braviary.gif" alt="Braviary">
+                    </div>
+                </div>
+                <div class="pokemon-details">
+                    <div class="detail-item"><span>IVs:</span> Atk:31 | Vel:31</div>
+                    <div class="detail-item"><span>EVs:</span> PS:6 | Atk:252 | Vel:252</div>
+                    <div class="detail-item"><span>Movimiento:</span> Buena Baza</div>
+                    <div class="detail-item"><span>Habilidad:</span> Competitivo (HO)</div>
+                    <div class="detail-item"><span>Naturaleza:</span> Firme (+Atk, -Atk Esp)</div>
+                </div>
+            </div>
+
+            <div class="pokemon-block">
+                <div class="pokemon-header">
+                    <span class="pokemon-title">Milotic</span>
+                    <div class="pokemon-images">
+                        <img class="item-img" src="mantoencubierto.png" alt="Manto Encubierto" title="Manto Encubierto">
+                        <img class="pokemon-img" src="https://play.pokemonshowdown.com/sprites/ani/milotic.gif" alt="Milotic">
+                    </div>
+                </div>
+                <div class="pokemon-details">
+                    <div class="detail-item"><span>IVs:</span> PS:31 | AtkSp:31 | DefSp:31 | Vel:0</div>
+                    <div class="detail-item"><span>EVs:</span> PS:6 | AtkSp:252 | DefSp:252</div>
+                    <div class="detail-item"><span>Movimiento:</span> Salmuera, Velo Sagrado, Chapoteolodo</div>
+                    <div class="detail-item"><span>Habilidad:</span> Competitivo</div>
+                    <div class="detail-item"><span>Naturaleza:</span> Mansa (+Atk Esp, -Vel)</div>
+                </div>
+            </div>
+
+            <div class="pokemon-block">
+                <div class="pokemon-header">
+                    <span class="pokemon-title">Empoleon</span>
+                    <div class="pokemon-images">
+                        <img class="item-img" src="gafaselegidas.png" alt="Gafas Elegidas" title="Gafas Elegidas">
+                        <img class="pokemon-img" src="https://play.pokemonshowdown.com/sprites/ani/empoleon.gif" alt="Empoleon">
+                    </div>
+                </div>
+                <div class="pokemon-details">
+                    <div class="detail-item"><span>IVs:</span> PS:31 | AtkSp:31 | DefSp:31</div>
+                    <div class="detail-item"><span>EVs:</span> PS:6 | AtkSp:252 | DefSp:252</div>
+                    <div class="detail-item"><span>Movimiento:</span> Salmuera</div>
+                    <div class="detail-item"><span>Habilidad:</span> Competitivo</div>
+                    <div class="detail-item"><span>Naturaleza:</span> Modesta (+Atk Esp, -Atk)</div>
+                </div>
             </div>
         </div>
 
-        <!-- JUGADOR 2 -->
         <div class="card-jugador">
-            <h3>JUGADOR 2 (SUPPORT/DPS)</h3>
+            <h3>JUGADOR 2</h3>
             
             <div class="pokemon-block">
-                <div>
-                    <div class="pokemon-header">
-                        <div class="pokemon-title">1. Grimmsnarl (Agitado)</div>
-                        <div class="pokemon-images">
-                            <img class="pokemon-img" src="https://img.pokemondb.net/sprites/sword-shield/icon/grimmsnarl.png" alt="Grimmsnarl">
-                            <img class="item-img" src="https://img.pokemondb.net/sprites/items/light-clay.png" alt="Refleluz">
-                        </div>
-                    </div>
-                    <div class="pokemon-details">
-                        <div class="detail-item"><span>Movimientos:</span> Pantalla Luz, Reflejo, Choque Anímico, Onda Trueno</div>
-                        <div class="detail-item"><span>EVs:</span> 252 HP / 128 Def / 128 DefSp</div>
+                <div class="pokemon-header">
+                    <span class="pokemon-title">Weavile</span>
+                    <div class="pokemon-images">
+                        <img class="item-img" src="flechaveneno.png" alt="Flecha Veneno" title="Flecha Veneno">
+                        <img class="pokemon-img" src="https://play.pokemonshowdown.com/sprites/ani/weavile.gif" alt="Weavile">
                     </div>
                 </div>
-                <div class="pokemon-notes">Nota: Habilidad Bromista garantiza pantallas prioritarias para proteger al equipo.</div>
+                <div class="pokemon-details">
+                    <div class="detail-item"><span>IVs:</span> Atk:31 | Vel:31</div>
+                    <div class="detail-item"><span>EVs:</span> PS:6 | Atk:252 | Vel:252</div>
+                    <div class="detail-item"><span>Movimiento:</span> Lanzamiento</div>
+                    <div class="detail-item"><span>Habilidad:</span> -</div>
+                    <div class="detail-item"><span>Naturaleza:</span> Firme (+Atk, -Atk Esp)</div>
+                </div>
             </div>
 
             <div class="pokemon-block">
-                <div>
-                    <div class="pokemon-header">
-                        <div class="pokemon-title">2. Gengar (Miedoso)</div>
-                        <div class="pokemon-images">
-                            <img class="pokemon-img" src="https://img.pokemondb.net/sprites/black-white/anim/normal/gengar.gif" alt="Gengar">
-                            <img class="item-img" src="https://img.pokemondb.net/sprites/items/life-orb.png" alt="Vidasfera">
-                        </div>
-                    </div>
-                    <div class="pokemon-details">
-                        <div class="detail-item"><span>Movimientos:</span> Bola Sombra, Bomba Lodo, Maquinación, Truco</div>
-                        <div class="detail-item"><span>EVs:</span> 252 SpA / 252 Vel / 4 HP</div>
+                <div class="pokemon-header">
+                    <span class="pokemon-title">Bisharp</span>
+                    <div class="pokemon-images">
+                        <img class="item-img" src="vidasfera.png" alt="Vidasfera" title="Vidasfera">
+                        <img class="pokemon-img" src="https://play.pokemonshowdown.com/sprites/ani/bisharp.gif" alt="Bisharp">
                     </div>
                 </div>
-                <div class="pokemon-notes">Nota: DPS de tipo Fantasma rápido. Cuidado con los ataques de tipo Psíquico del boss.</div>
+                <div class="pokemon-details">
+                    <div class="detail-item"><span>IVs:</span> PS:31 | Atk:31 | DefSp:31</div>
+                    <div class="detail-item"><span>EVs:</span> PS:6 | Atk:252 | DefSp:252</div>
+                    <div class="detail-item"><span>Movimiento:</span> Golpe Bajo</div>
+                    <div class="detail-item"><span>Habilidad:</span> Competitivo</div>
+                    <div class="detail-item"><span>Naturaleza:</span> Firme (+Atk, -Atk Esp)</div>
+                </div>
             </div>
 
             <div class="pokemon-block">
-                <div>
-                    <div class="pokemon-header">
-                        <div class="pokemon-title">3. Blissey (Serena)</div>
-                        <div class="pokemon-images">
-                            <img class="pokemon-img" src="https://img.pokemondb.net/sprites/black-white/anim/normal/blissey.gif" alt="Blissey">
-                            <div class="item-placeholder">No Item</div>
-                        </div>
-                    </div>
-                    <div class="pokemon-details">
-                        <div class="detail-item"><span>Movimientos:</span> Amortiguador, Campana Cura, Bomba Germen, Tóxico</div>
-                        <div class="detail-item"><span>EVs:</span> 252 HP / 252 Def / 4 DefSp</div>
+                <div class="pokemon-header">
+                    <span class="pokemon-title">Sharpedo</span>
+                    <div class="pokemon-images">
+                        <img class="item-img" src="cintaelegida.png" alt="Cinta Elegida" title="Cinta Elegida">
+                        <img class="pokemon-img" src="https://play.pokemonshowdown.com/sprites/ani/sharpedo.gif" alt="Sharpedo">
                     </div>
                 </div>
-                <div class="pokemon-notes">Nota: Curandera pura del grupo. Limpia estados alterados globalmente.</div>
+                <div class="pokemon-details">
+                    <div class="detail-item"><span>IVs:</span> Atk:31 | Vel:31</div>
+                    <div class="detail-item"><span>EVs:</span> PS:6 | Atk:252 | Vel:252</div>
+                    <div class="detail-item"><span>Movimiento:</span> Buena Baza</div>
+                    <div class="detail-item"><span>Habilidad:</span> Impulso (HO)</div>
+                    <div class="detail-item"><span>Naturaleza:</span> Firme (+Atk, -Atk Esp)</div>
+                </div>
+            </div>
+
+            <div class="pokemon-block">
+                <div class="pokemon-header">
+                    <span class="pokemon-title">Braviary</span>
+                    <div class="pokemon-images">
+                        <img class="item-img" src="equipodeasalto.png" alt="Equipo de Asalto" title="Equipo de Asalto">
+                        <img class="pokemon-img" src="https://play.pokemonshowdown.com/sprites/ani/braviary.gif" alt="Braviary">
+                    </div>
+                </div>
+                <div class="pokemon-details">
+                    <div class="detail-item"><span>IVs:</span> Atk:31 | Vel:31</div>
+                    <div class="detail-item"><span>EVs:</span> PS:6 | Atk:252 | DefSp:252</div>
+                    <div class="detail-item"><span>Movimiento:</span> Buena Baza</div>
+                    <div class="detail-item"><span>Habilidad:</span> Competitivo (HO)</div>
+                    <div class="detail-item"><span>Naturaleza:</span> Firme (+Atk, -Atk Esp)</div>
+                </div>
+            </div>
+
+            <div class="pokemon-block">
+                <div class="pokemon-header">
+                    <span class="pokemon-title">Milotic</span>
+                    <div class="pokemon-images">
+                        <img class="item-img" src="mantoencubierto.png" alt="Manto Encubierto" title="Manto Encubierto">
+                        <img class="pokemon-img" src="https://play.pokemonshowdown.com/sprites/ani/milotic.gif" alt="Milotic">
+                    </div>
+                </div>
+                <div class="pokemon-details">
+                    <div class="detail-item"><span>IVs:</span> PS:31 | AtkSp:31 | DefSp:31</div>
+                    <div class="detail-item"><span>EVs:</span> PS:6 | AtkSp:252 | DefSp:252</div>
+                    <div class="detail-item"><span>Movimiento:</span> Salmuera</div>
+                    <div class="detail-item"><span>Habilidad:</span> Competitivo</div>
+                    <div class="detail-item"><span>Naturaleza:</span> Modesta (+Atk Esp, -Atk)</div>
+                </div>
+            </div>
+
+            <div class="pokemon-block">
+                <div class="pokemon-header">
+                    <span class="pokemon-title">Empoleon</span>
+                    <div class="pokemon-images">
+                        <img class="item-img" src="gafaselegidas.png" alt="Gafas Elegidas" title="Gafas Elegidas">
+                        <img class="pokemon-img" src="https://play.pokemonshowdown.com/sprites/ani/empoleon.gif" alt="Empoleon">
+                    </div>
+                </div>
+                <div class="pokemon-details">
+                    <div class="detail-item"><span>IVs:</span> PS:31 | AtkSp:31 | DefSp:31 | Vel:31</div>
+                    <div class="detail-item"><span>EVs:</span> PS:6 | AtkSp:232 | DefSp:252 | Vel:20</div>
+                    <div class="detail-item"><span>Movimiento:</span> Salmuera</div>
+                    <div class="detail-item"><span>Habilidad:</span> Competitivo</div>
+                    <div class="detail-item"><span>Naturaleza:</span> Modesta (+Atk Esp, -Atk)</div>
+                </div>
             </div>
         </div>
 
-        <!-- JUGADOR 3 -->
         <div class="card-jugador">
-            <h3>JUGADOR 3 (TANK/DPS)</h3>
+            <h3>JUGADOR 3</h3>
             
             <div class="pokemon-block">
-                <div>
-                    <div class="pokemon-header">
-                        <div class="pokemon-title">1. Scizor (Firme)</div>
-                        <div class="pokemon-images">
-                            <img class="pokemon-img" src="https://img.pokemondb.net/sprites/black-white/anim/normal/scizor.gif" alt="Scizor">
-                            <img class="item-img" src="https://img.pokemondb.net/sprites/items/life-orb.png" alt="Vidasfera">
-                        </div>
-                    </div>
-                    <div class="pokemon-details">
-                        <div class="detail-item"><span>Movimientos:</span> Tijera X, Puño Bala, Danza Espada, Respiro</div>
-                        <div class="detail-item"><span>EVs:</span> 252 Atk / 252 HP / 4 Def</div>
+                <div class="pokemon-header">
+                    <span class="pokemon-title">Kadabra</span>
+                    <div class="pokemon-images">
+                        <div class="item-placeholder">Ninguno</div>
+                        <img class="pokemon-img" src="https://play.pokemonshowdown.com/sprites/ani/kadabra.gif" alt="Kadabra">
                     </div>
                 </div>
-                <div class="pokemon-notes">Nota: DPS Físico Bicho. Excelente combinación de tipos defensivos ante Psíquico.</div>
+                <div class="pokemon-details">
+                    <div class="detail-item"><span>IVs:</span> PS:0-27 | DefSp:0-27</div>
+                    <div class="detail-item"><span>EVs:</span> PS:0 | DefSp:0 | Vel:252</div>
+                    <div class="detail-item"><span>Movimiento:</span> Velo Sagrado</div>
+                    <div class="detail-item"><span>Habilidad:</span> -</div>
+                    <div class="detail-item"><span>Naturaleza:</span> Que NO suba DefSp ni baje Vel</div>
+                </div>
             </div>
 
             <div class="pokemon-block">
-                <div>
-                    <div class="pokemon-header">
-                        <div class="pokemon-title">2. Volcarona (Modesta)</div>
-                        <div class="pokemon-images">
-                            <img class="pokemon-img" src="https://img.pokemondb.net/sprites/black-white/anim/normal/volcarona.gif" alt="Volcarona">
-                            <img class="item-img" src="https://img.pokemondb.net/sprites/items/heavy-duty-boots.png" alt="Botas Gruesas">
-                        </div>
-                    </div>
-                    <div class="pokemon-details">
-                        <div class="detail-item"><span>Movimientos:</span> Zumbido, Danza Aleteo, Lanzallamas, Gigadrenado</div>
-                        <div class="detail-item"><span>EVs:</span> 252 SpA / 252 Vel / 4 Def</div>
+                <div class="pokemon-header">
+                    <span class="pokemon-title">Bisharp</span>
+                    <div class="pokemon-images">
+                        <img class="item-img" src="cintaelegida.png" alt="Cinta Elegida" title="Cinta Elegida">
+                        <img class="pokemon-img" src="https://play.pokemonshowdown.com/sprites/ani/bisharp.gif" alt="Bisharp">
                     </div>
                 </div>
-                <div class="pokemon-notes">Nota: Setup Sweeper. Tras dos Danza Aleteo su Zumbido destrozará escudos.</div>
+                <div class="pokemon-details">
+                    <div class="detail-item"><span>IVs:</span> Atk:31 | DefSp:31</div>
+                    <div class="detail-item"><span>EVs:</span> PS:252 | Atk:168 | DefSp:88</div>
+                    <div class="detail-item"><span>Movimiento:</span> Golpe Bajo</div>
+                    <div class="detail-item"><span>Habilidad:</span> Competitivo</div>
+                    <div class="detail-item"><span>Naturaleza:</span> Firme (+Atk, -Atk Esp)</div>
+                </div>
             </div>
 
             <div class="pokemon-block">
-                <div>
-                    <div class="pokemon-header">
-                        <div class="pokemon-title">3. Aegislash (Grosero)</div>
-                        <div class="pokemon-images">
-                            <img class="pokemon-img" src="https://img.pokemondb.net/sprites/home/normal/aegislash-shield.png" alt="Aegislash">
-                            <img class="item-img" src="https://img.pokemondb.net/sprites/items/weakness-policy.png" alt="Seguro Debilidad">
-                        </div>
-                    </div>
-                    <div class="pokemon-details">
-                        <div class="detail-item"><span>Movimientos:</span> Bola Sombra, Sombra Vil, Escudo Real, Espada Santa</div>
-                        <div class="detail-item"><span>EVs:</span> 252 HP / 252 SpA / 4 Atk</div>
+                <div class="pokemon-header">
+                    <span class="pokemon-title">Crobat</span>
+                    <div class="pokemon-images">
+                        <div class="item-placeholder">Ninguno</div>
+                        <img class="pokemon-img" src="https://play.pokemonshowdown.com/sprites/ani/crobat.gif" alt="Crobat">
                     </div>
                 </div>
-                <div class="pokemon-notes">Nota: Pivote tanque/ofensivo. Saber alternar con Escudo Real es clave.</div>
+                <div class="pokemon-details">
+                    <div class="detail-item"><span>IVs:</span> AtkSp:31 | Vel:31</div>
+                    <div class="detail-item"><span>EVs:</span> AtkSp:252 | Vel:252</div>
+                    <div class="detail-item"><span>Movimiento:</span> Bomba Ácida</div>
+                    <div class="detail-item"><span>Habilidad:</span> -</div>
+                    <div class="detail-item"><span>Naturaleza:</span> -</div>
+                    <div class="pokemon-notes">* Cualquier poke rápido con Bomba Ácida que caiga de un golpe contra el Boss.</div>
+                </div>
+            </div>
+
+            <div class="pokemon-block">
+                <div class="pokemon-header">
+                    <span class="pokemon-title">Gothitelle</span>
+                    <div class="pokemon-images">
+                        <img class="item-img" src="gafaselegidas.png" alt="Gafas Elegidas" title="Gafas Elegidas">
+                        <img class="pokemon-img" src="https://play.pokemonshowdown.com/sprites/ani/gothitelle.gif" alt="Gothitelle">
+                    </div>
+                </div>
+                <div class="pokemon-details">
+                    <div class="detail-item"><span>IVs:</span> PS:31 | AtkSp:31 | DefSp:31</div>
+                    <div class="detail-item"><span>EVs:</span> PS:6 | AtkSp:252 | DefSp:252</div>
+                    <div class="detail-item"><span>Movimiento:</span> Bola Sombra</div>
+                    <div class="detail-item"><span>Habilidad:</span> Competitivo</div>
+                    <div class="detail-item"><span>Naturaleza:</span> Modesta (+Atk Esp, -Atk)</div>
+                </div>
+            </div>
+
+            <div class="pokemon-block">
+                <div class="pokemon-header">
+                    <span class="pokemon-title">Crawdaunt</span>
+                    <div class="pokemon-images">
+                        <img class="item-img" src="flechaveneno.png" alt="Flecha Veneno" title="Flecha Veneno">
+                        <img class="pokemon-img" src="https://play.pokemonshowdown.com/sprites/ani/crawdaunt.gif" alt="Crawdaunt">
+                    </div>
+                </div>
+                <div class="pokemon-details">
+                    <div class="detail-item"><span>IVs:</span> PS:31 | Atk:31 | DefSp:31</div>
+                    <div class="detail-item"><span>EVs:</span> PS:6 | Atk:252 | DefSp:252</div>
+                    <div class="detail-item"><span>Movimiento:</span> Lanzamiento</div>
+                    <div class="detail-item"><span>Habilidad:</span> Adaptable (HO)</div>
+                    <div class="detail-item"><span>Naturaleza:</span> Audaz (+Atk, -Vel)</div>
+                </div>
+            </div>
+
+            <div class="pokemon-block">
+                <div class="pokemon-header">
+                    <span class="pokemon-title">Tyranitar</span>
+                    <div class="pokemon-images">
+                        <img class="item-img" src="bolaferrea.png" alt="Bola Férrea" title="Bola Férrea">
+                        <img class="pokemon-img" src="https://play.pokemonshowdown.com/sprites/ani/tyranitar.gif" alt="Tyranitar">
+                    </div>
+                </div>
+                <div class="pokemon-details">
+                    <div class="detail-item"><span>IVs:</span> PS:31 | Atk:31 | DefSp:31 | Vel:31</div>
+                    <div class="detail-item"><span>EVs:</span> PS:6 | Atk:252 | DefSp:252</div>
+                    <div class="detail-item"><span>Movimiento:</span> Buena Baza, Seducción</div>
+                    <div class="detail-item"><span>Habilidad:</span> Chorro Arena</div>
+                    <div class="detail-item"><span>Naturaleza:</span> Firme (+Atk, -Atk Esp)</div>
+                </div>
             </div>
         </div>
 
-        <!-- JUGADOR 4 -->
         <div class="card-jugador">
-            <h3>JUGADOR 4 (TACTICAL SUPPORT)</h3>
+            <h3>JUGADOR 4</h3>
             
             <div class="pokemon-block">
-                <div>
-                    <div class="pokemon-header">
-                        <div class="pokemon-title">1. Sableye (Serena)</div>
-                        <div class="pokemon-images">
-                            <img class="pokemon-img" src="https://img.pokemondb.net/sprites/black-white/anim/normal/sableye.gif" alt="Sableye">
-                            <img class="item-img" src="https://img.pokemondb.net/sprites/items/sablenite.png" alt="Sableyita">
-                        </div>
-                    </div>
-                    <div class="pokemon-details">
-                        <div class="detail-item"><span>Movimientos:</span> Alarido, Fuego Fatuo, Recuperación, Camelo</div>
-                        <div class="detail-item"><span>EVs:</span> 252 HP / 128 Def / 128 DefSp</div>
+                <div class="pokemon-header">
+                    <span class="pokemon-title">Xatu</span>
+                    <div class="pokemon-images">
+                        <img class="item-img" src="pañueloelegido.png" alt="Pañuelo Elegido" title="Pañuelo Elegido">
+                        <img class="pokemon-img" src="https://play.pokemonshowdown.com/sprites/ani/xatu.gif" alt="Xatu">
                     </div>
                 </div>
-                <div class="pokemon-notes">Nota: Inmune a Psíquico. Espejo Mágico (Mega) devuelve cualquier estado que tire el jefe.</div>
+                <div class="pokemon-details">
+                    <div class="detail-item"><span>IVs:</span> Vel:31</div>
+                    <div class="detail-item"><span>EVs:</span> Def:6 | AtkSp:252 | Vel:252</div>
+                    <div class="detail-item"><span>Movimiento:</span> Conjuro</div>
+                    <div class="detail-item"><span>Habilidad:</span> -</div>
+                    <div class="detail-item"><span>Naturaleza:</span> -</div>
+                </div>
             </div>
 
             <div class="pokemon-block">
-                <div>
-                    <div class="pokemon-header">
-                        <div class="pokemon-title">2. Chandelure (Modesta)</div>
-                        <div class="pokemon-images">
-                            <img class="pokemon-img" src="https://img.pokemondb.net/sprites/black-white/anim/normal/chandelure.gif" alt="Chandelure">
-                            <img class="item-img" src="https://img.pokemondb.net/sprites/items/choice-specs.png" alt="Gafas Elección">
-                        </div>
-                    </div>
-                    <div class="pokemon-details">
-                        <div class="detail-item"><span>Movimientos:</span> Bola Sombra, Sofoco, Energibola, Truco</div>
-                        <div class="detail-item"><span>EVs:</span> 252 SpA / 252 Vel / 4 Def</div>
+                <div class="pokemon-header">
+                    <span class="pokemon-title">Bisharp</span>
+                    <div class="pokemon-images">
+                        <img class="item-img" src="vidasfera.png" alt="Vidasfera" title="Vidasfera">
+                        <img class="pokemon-img" src="https://play.pokemonshowdown.com/sprites/ani/bisharp.gif" alt="Bisharp">
                     </div>
                 </div>
-                <div class="pokemon-notes">Nota: Daño explosivo puro de tipo Fantasma para fases críticas de escudo bajo.</div>
+                <div class="pokemon-details">
+                    <div class="detail-item"><span>IVs:</span> PS:31 | Atk:31 | DefSp:31</div>
+                    <div class="detail-item"><span>EVs:</span> PS:6 | Atk:252 | DefSp:252</div>
+                    <div class="detail-item"><span>Movimiento:</span> Golpe Bajo</div>
+                    <div class="detail-item"><span>Habilidad:</span> Competitivo</div>
+                    <div class="detail-item"><span>Naturaleza:</span> Firme (+Atk, -Atk Esp)</div>
+                </div>
             </div>
 
             <div class="pokemon-block">
-                <div>
-                    <div class="pokemon-header">
-                        <div class="pokemon-title">3. Togekiss (Osada)</div>
-                        <div class="pokemon-images">
-                            <img class="pokemon-img" src="https://img.pokemondb.net/sprites/black-white/anim/normal/togekiss.gif" alt="Togekiss">
-                            <img class="item-img" src="https://img.pokemondb.net/sprites/items/babiri-berry.png" alt="Baya Babiri">
-                        </div>
-                    </div>
-                    <div class="pokemon-details">
-                        <div class="detail-item"><span>Movimientos:</span> Señuelo, Respiro, Brillo Mágico, Onda Tajo</div>
-                        <div class="detail-item"><span>EVs:</span> 252 HP / 196 Def / 60 DefSp</div>
+                <div class="pokemon-header">
+                    <span class="pokemon-title">Gengar</span>
+                    <div class="pokemon-images">
+                        <img class="item-img" src="gema fantasma.png" alt="Gema Fantasma" title="Gema Fantasma">
+                        <img class="pokemon-img" src="https://play.pokemonshowdown.com/sprites/ani/gengar.gif" alt="Gengar">
                     </div>
                 </div>
-                <div class="pokemon-notes">Nota: Redirige ataques directos usando Señuelo para salvar a los DPS vulnerables.</div>
+                <div class="pokemon-details">
+                    <div class="detail-item"><span>IVs:</span> AtkSp:31 | Vel:31</div>
+                    <div class="detail-item"><span>EVs:</span> AtkSp:252 | Vel:120</div>
+                    <div class="detail-item"><span>Movimiento:</span> Infortunio</div>
+                    <div class="detail-item"><span>Habilidad:</span> Levitación</div>
+                    <div class="detail-item"><span>Naturaleza:</span> Modesta (+Atk Esp, -Atk)</div>
+                </div>
+            </div>
+
+            <div class="pokemon-block">
+                <div class="pokemon-header">
+                    <span class="pokemon-title">Gothitelle</span>
+                    <div class="pokemon-images">
+                        <img class="item-img" src="gafaselegidas.png" alt="Gafas Elegidas" title="Gafas Elegidas">
+                        <img class="pokemon-img" src="https://play.pokemonshowdown.com/sprites/ani/gothitelle.gif" alt="Gothitelle">
+                    </div>
+                </div>
+                <div class="pokemon-details">
+                    <div class="detail-item"><span>IVs:</span> AtkSp:31</div>
+                    <div class="detail-item"><span>EVs:</span> PS:6 | AtkSp:252 | Vel:252</div>
+                    <div class="detail-item"><span>Movimiento:</span> Bola Sombra</div>
+                    <div class="detail-item"><span>Habilidad:</span> Competitivo</div>
+                    <div class="detail-item"><span>Naturaleza:</span> Modesta (+Atk Esp, -Atk)</div>
+                </div>
+            </div>
+
+            <div class="pokemon-block">
+                <div class="pokemon-header">
+                    <span class="pokemon-title">Jynx</span>
+                    <div class="pokemon-images">
+                        <img class="item-img" src="bayamagua.png" alt="Baya Magua" title="Baya Magua">
+                        <img class="pokemon-img" src="https://play.pokemonshowdown.com/sprites/ani/jynx.gif" alt="Jynx">
+                    </div>
+                </div>
+                <div class="pokemon-details">
+                    <div class="detail-item"><span>IVs:</span> -</div>
+                    <div class="detail-item"><span>EVs:</span> PS:0 | DefSp:0 | Vel:0</div>
+                    <div class="detail-item"><span>Movimiento:</span> Conjuro</div>
+                    <div class="detail-item"><span>Habilidad:</span> -</div>
+                    <div class="detail-item"><span>Naturaleza:</span> Que NO altere la DEF.ESP</div>
+                </div>
+            </div>
+
+            <div class="pokemon-block">
+                <div class="pokemon-header">
+                    <span class="pokemon-title">Krookodile</span>
+                    <div class="pokemon-images">
+                        <img class="item-img" src="cintaelegida.png" alt="Cinta Elegida" title="Cinta Elegida">
+                        <img class="pokemon-img" src="https://play.pokemonshowdown.com/sprites/ani/krookodile.gif" alt="Krookodile">
+                    </div>
+                </div>
+                <div class="pokemon-details">
+                    <div class="detail-item"><span>IVs:</span> PS:31 | Atk:31 | DefSp:31</div>
+                    <div class="detail-item"><span>EVs:</span> PS:6 | Atk:252 | DefSp:252</div>
+                    <div class="detail-item"><span>Movimiento:</span> Buena Baza</div>
+                    <div class="detail-item"><span>Habilidad:</span> Irascible (HO)</div>
+                    <div class="detail-item"><span>Naturaleza:</span> Firme (+Atk, -Atk Esp)</div>
+                </div>
             </div>
         </div>
     </div>
 
-    <h2>Cronología de Combate por Turnos</h2>
-    <div class="subtitle">Estrategia Óptima de Ejecución Sincronizada</div>
-
+    <h2>Secuencia de Turnos</h2>
     <div class="table-responsive">
         <table>
             <thead>
                 <tr>
-                    <th class="turno-col">Turno</th>
-                    <th>Acciones Jugador 1</th>
-                    <th>Acciones Jugador 2</th>
-                    <th>Acciones Jugador 3</th>
-                    <th>Acciones Jugador 4</th>
-                    <th class="hp-col">HP Estimado</th>
+                    <th>TURNO</th>
+                    <th>J1</th>
+                    <th>J2</th>
+                    <th>J3</th>
+                    <th>J4</th>
+                    <th>BOSS HP</th>
                 </tr>
             </thead>
             <tbody>
-                <!-- TURNO 1 -->
                 <tr>
                     <td class="turno-col">T1</td>
                     <td>
                         <div class="table-cell-content">
-                            <img class="table-sprite" src="https://img.pokemondb.net/sprites/pixelart/hydreigon.png" alt="Hydreigon">
-                            <span class="table-move-name">Mofa</span>
-                            <small>Bloquea estados de Cresselia</small>
+                            <img class="table-sprite" src="https://play.pokemonshowdown.com/sprites/ani/hippowdon.gif" alt="Hippowdon">
+                            <span class="table-move-name">SEDUCCIÓN</span>
                         </div>
                     </td>
                     <td>
                         <div class="table-cell-content">
-                            <img class="table-sprite" src="https://img.pokemondb.net/sprites/pixelart/grimmsnarl.png" alt="Grimmsnarl">
-                            <span class="table-move-name">Pantalla de Luz</span>
-                            <small>Mitigación de Daño Esp.</small>
+                            <img class="table-sprite" src="https://play.pokemonshowdown.com/sprites/ani/weavile.gif" alt="Weavile">
+                            <span class="table-move-name">LANZAMIENTO</span>
                         </div>
                     </td>
                     <td>
                         <div class="table-cell-content">
-                            <img class="table-sprite" src="https://img.pokemondb.net/sprites/pixelart/scizor.png" alt="Scizor">
-                            <span class="table-move-name">Danza Espada</span>
-                            <small>Boost de Ataque Físico (+2)</small>
+                            <img class="table-sprite" src="https://play.pokemonshowdown.com/sprites/ani/kadabra.gif" alt="Kadabra">
+                            <span class="table-move-name">VELOSAGRADO</span>
                         </div>
                     </td>
                     <td>
                         <div class="table-cell-content">
-                            <img class="table-sprite" src="https://img.pokemondb.net/sprites/pixelart/sableye.png" alt="Sableye">
-                            <span class="table-move-name">Megaevolución + Alarido</span>
-                            <small>Baja Atk. Especial al Boss</small>
+                            <img class="table-sprite" src="https://play.pokemonshowdown.com/sprites/ani/xatu.gif" alt="Xatu">
+                            <span class="table-move-name">CONJURO</span>
                         </div>
                     </td>
-                    <td class="hp-col">100%</td>
+                    <td class="hp-col">98%</td>
                 </tr>
-                <!-- TURNO 2 -->
                 <tr>
                     <td class="turno-col">T2</td>
                     <td>
                         <div class="table-cell-content">
-                            <img class="table-sprite" src="https://img.pokemondb.net/sprites/pixelart/hydreigon.png" alt="Hydreigon">
-                            <span class="table-move-name">Maquinación</span>
-                            <small>Boost de Atk. Especial (+2)</small>
+                            <img class="table-sprite" src="https://play.pokemonshowdown.com/sprites/ani/hippowdon.gif" alt="Hippowdon">
+                            <span class="table-move-name" style="font-style: italic;">Dead Ay Ay*</span>
                         </div>
                     </td>
                     <td>
                         <div class="table-cell-content">
-                            <img class="table-sprite" src="https://img.pokemondb.net/sprites/pixelart/grimmsnarl.png" alt="Grimmsnarl">
-                            <span class="table-move-name">Reflejo</span>
-                            <small>Mitigación de Daño Físico</small>
+                            <img class="table-sprite" src="https://play.pokemonshowdown.com/sprites/ani/bisharp.gif" alt="Bisharp">
+                            <span class="table-move-name">GOLPE BAJO</span>
                         </div>
                     </td>
                     <td>
                         <div class="table-cell-content">
-                            <img class="table-sprite" src="https://img.pokemondb.net/sprites/pixelart/scizor.png" alt="Scizor">
-                            <span class="table-move-name">Tijera X</span>
-                            <small>Primer impacto contundente</small>
+                            <img class="table-sprite" src="https://play.pokemonshowdown.com/sprites/ani/bisharp.gif" alt="Bisharp">
+                            <span class="table-move-name">GOLPE BAJO</span>
                         </div>
                     </td>
                     <td>
                         <div class="table-cell-content">
-                            <img class="table-sprite" src="https://img.pokemondb.net/sprites/pixelart/sableye.png" alt="Sableye">
-                            <span class="table-move-name">Alarido</span>
-                            <small>Segunda bajada de estadísticas</small>
+                            <img class="table-sprite" src="https://play.pokemonshowdown.com/sprites/ani/bisharp.gif" alt="Bisharp">
+                            <span class="table-move-name">GOLPE BAJO</span>
                         </div>
                     </td>
-                    <td class="hp-col">90%</td>
+                    <td class="hp-col">85%</td>
                 </tr>
-                <!-- TURNO 3 -->
                 <tr>
                     <td class="turno-col">T3</td>
                     <td>
                         <div class="table-cell-content">
-                            <img class="table-sprite" src="https://img.pokemondb.net/sprites/pixelart/hydreigon.png" alt="Hydreigon">
-                            <span class="table-move-name">Pulso Umbrío</span>
-                            <small>Daño masivo potenciado</small>
+                            <img class="table-sprite" src="https://play.pokemonshowdown.com/sprites/ani/whimsicott.gif" alt="Whimsicott">
+                            <span class="table-move-name">PANTALLA LUZ</span>
                         </div>
                     </td>
                     <td>
                         <div class="table-cell-content">
-                            <img class="table-sprite" src="https://img.pokemondb.net/sprites/pixelart/grimmsnarl.png" alt="Grimmsnarl">
-                            <span class="table-move-name">Refuerzo</span>
-                            <small>Potencia el ataque de Scizor</small>
+                            <img class="table-sprite" src="https://play.pokemonshowdown.com/sprites/ani/bisharp.gif" alt="Bisharp">
+                            <span class="table-move-name">GOLPE BAJO</span>
                         </div>
                     </td>
                     <td>
                         <div class="table-cell-content">
-                            <img class="table-sprite" src="https://img.pokemondb.net/sprites/pixelart/scizor.png" alt="Scizor">
-                            <span class="table-move-name">Tijera X (Reforzada)</span>
-                            <small>Ruptura probable de fase 1</small>
+                            <img class="table-sprite" src="https://play.pokemonshowdown.com/sprites/ani/bisharp.gif" alt="Bisharp">
+                            <span class="table-move-name">GOLPE BAJO</span>
                         </div>
                     </td>
                     <td>
                         <div class="table-cell-content">
-                            <img class="table-sprite" src="https://img.pokemondb.net/sprites/pixelart/sableye.png" alt="Sableye">
-                            <span class="table-move-name">Fuego Fatuo / Atacar</span>
-                            <small>Mantener control de campo</small>
+                            <img class="table-sprite" src="https://play.pokemonshowdown.com/sprites/ani/bisharp.gif" alt="Bisharp">
+                            <span class="table-move-name">GOLPE BAJO</span>
                         </div>
                     </td>
-                    <td class="hp-col">65% <br><small>(Fase Escudo)</small></td>
+                    <td class="hp-col">72%</td>
                 </tr>
-                <!-- TURNO 4 -->
                 <tr>
                     <td class="turno-col">T4</td>
                     <td>
                         <div class="table-cell-content">
-                            <img class="table-sprite" src="https://img.pokemondb.net/sprites/pixelart/hydreigon.png" alt="Hydreigon">
-                            <span class="table-move-name">Pulso Umbrío</span>
-                            <small>Destrucción sistemática de escudo</small>
+                            <img class="table-sprite" src="https://play.pokemonshowdown.com/sprites/ani/darmanitan.gif" alt="Darmanitan">
+                            <span class="table-move-name">ENVITE IGNEO</span>
                         </div>
                     </td>
                     <td>
                         <div class="table-cell-content">
-                            <img class="table-sprite" src="https://img.pokemondb.net/sprites/pixelart/grimmsnarl.png" alt="Grimmsnarl">
-                            <span class="table-move-name">Choque Anímico</span>
-                            <small>Aporta daño e invalida bufos</small>
+                            <img class="table-sprite" src="https://play.pokemonshowdown.com/sprites/ani/sharpedo.gif" alt="Sharpedo">
+                            <span class="table-move-name">BUENA BAZA</span>
                         </div>
                     </td>
                     <td>
                         <div class="table-cell-content">
-                            <img class="table-sprite" src="https://img.pokemondb.net/sprites/pixelart/scizor.png" alt="Scizor">
-                            <span class="table-move-name">Puño Bala</span>
-                            <small>Prioridad para limpiar cargas</small>
+                            <img class="table-sprite" src="https://play.pokemonshowdown.com/sprites/ani/crobat.gif" alt="Crobat">
+                            <span class="table-move-name">BOMBA ÁCIDA</span>
                         </div>
                     </td>
                     <td>
                         <div class="table-cell-content">
-                            <img class="table-sprite" src="https://img.pokemondb.net/sprites/pixelart/chandelure.png" alt="Cambio / Chandelure">
-                            <span class="table-move-name">Entrada limpia</span>
-                            <small>Sableye se retira por DPS fuego/fantasma</small>
+                            <img class="table-sprite" src="https://play.pokemonshowdown.com/sprites/ani/gengar.gif" alt="Gengar">
+                            <span class="table-move-name">INFORTUNIO</span>
                         </div>
                     </td>
-                    <td class="hp-col">35%</td>
+                    <td class="hp-col">63%</td>
                 </tr>
-                <!-- TURNO 5 -->
                 <tr>
                     <td class="turno-col">T5</td>
                     <td>
                         <div class="table-cell-content">
-                            <img class="table-sprite" src="https://img.pokemondb.net/sprites/pixelart/hydreigon.png" alt="Hydreigon">
-                            <span class="table-move-name">Pulso Umbrío</span>
-                            <small>Remate final de área</small>
+                            <img class="table-sprite" src="https://play.pokemonshowdown.com/sprites/ani/braviary.gif" alt="Braviary">
+                            <span class="table-move-name">BUENA BAZA</span>
                         </div>
                     </td>
                     <td>
                         <div class="table-cell-content">
-                            <img class="table-sprite" src="https://img.pokemondb.net/sprites/pixelart/gengar.png" alt="Cambio / Gengar">
-                            <span class="table-move-name">Bola Sombra</span>
-                            <small>Grimmsnarl asegura nuke final</small>
+                            <img class="table-sprite" src="https://play.pokemonshowdown.com/sprites/ani/braviary.gif" alt="Braviary">
+                            <span class="table-move-name">BUENA BAZA</span>
                         </div>
                     </td>
                     <td>
                         <div class="table-cell-content">
-                            <img class="table-sprite" src="https://img.pokemondb.net/sprites/pixelart/scizor.png" alt="Scizor">
-                            <span class="table-move-name">Tijera X</span>
-                            <small>Golpe definitivo físico</small>
+                            <img class="table-sprite" src="https://play.pokemonshowdown.com/sprites/ani/gothitelle.gif" alt="Gothitelle">
+                            <span class="table-move-name">BOLA SOMBRA</span>
                         </div>
                     </td>
                     <td>
                         <div class="table-cell-content">
-                            <img class="table-sprite" src="https://img.pokemondb.net/sprites/pixelart/chandelure.png" alt="Chandelure">
-                            <span class="table-move-name">Bola Sombra</span>
-                            <small>Burst de daño crítico final</small>
+                            <img class="table-sprite" src="https://play.pokemonshowdown.com/sprites/ani/gothitelle.gif" alt="Gothitelle">
+                            <span class="table-move-name">BOLA SOMBRA</span>
                         </div>
                     </td>
-                    <td class="hp-col" style="color: #10b981; text-shadow: 0 0 6px rgba(16,185,129,0.4);">0% <br><small>(¡Victoria!)</small></td>
+                    <td class="hp-col">45%</td>
+                </tr>
+                <tr>
+                    <td class="turno-col">T6</td>
+                    <td>
+                        <div class="table-cell-content">
+                            <img class="table-sprite" src="https://play.pokemonshowdown.com/sprites/ani/milotic.gif" alt="Milotic">
+                            <span class="table-move-name">VELOSAGRADO</span>
+                        </div>
+                    </td>
+                    <td>
+                        <div class="table-cell-content">
+                            <img class="table-sprite" src="https://play.pokemonshowdown.com/sprites/ani/milotic.gif" alt="Milotic">
+                            <span class="table-move-name">SALMUERA</span>
+                        </div>
+                    </td>
+                    <td>
+                        <div class="table-cell-content">
+                            <img class="table-sprite" src="https://play.pokemonshowdown.com/sprites/ani/crawdaunt.gif" alt="Crawdaunt">
+                            <span class="table-move-name">LANZAMIENTO</span>
+                        </div>
+                    </td>
+                    <td>
+                        <div class="table-cell-content">
+                            <img class="table-sprite" src="https://play.pokemonshowdown.com/sprites/ani/jynx.gif" alt="Jynx">
+                            <span class="table-move-name">CONJURO</span>
+                        </div>
+                    </td>
+                    <td class="hp-col">39%</td>
+                </tr>
+                <tr>
+                    <td class="turno-col">T7</td>
+                    <td>
+                        <div class="table-cell-content">
+                            <img class="table-sprite" src="https://play.pokemonshowdown.com/sprites/ani/milotic.gif" alt="Milotic">
+                            <span class="table-move-name">CHAPOTEOLODO</span>
+                        </div>
+                    </td>
+                    <td>
+                        <div class="table-cell-content">
+                            <img class="table-sprite" src="https://play.pokemonshowdown.com/sprites/ani/milotic.gif" alt="Milotic">
+                            <span class="table-move-name">SALMUERA</span>
+                        </div>
+                    </td>
+                    <td>
+                        <div class="table-cell-content">
+                            <img class="table-sprite" src="https://play.pokemonshowdown.com/sprites/ani/tyranitar.gif" alt="Tyranitar">
+                            <span class="table-move-name">SEDUCCIÓN</span>
+                        </div>
+                    </td>
+                    <td>
+                        <div class="table-cell-content">
+                            <img class="table-sprite" src="https://play.pokemonshowdown.com/sprites/ani/krookodile.gif" alt="Krookodile">
+                            <span class="table-move-name">BUENA BAZA</span>
+                        </div>
+                    </td>
+                    <td class="hp-col">33%</td>
+                </tr>
+                <tr>
+                    <td class="turno-col">T8</td>
+                    <td>
+                        <div class="table-cell-content">
+                            <img class="table-sprite" src="https://play.pokemonshowdown.com/sprites/ani/milotic.gif" alt="Milotic">
+                            <span class="table-move-name">SALMUERA</span>
+                        </div>
+                    </td>
+                    <td>
+                        <div class="table-cell-content">
+                            <img class="table-sprite" src="https://play.pokemonshowdown.com/sprites/ani/milotic.gif" alt="Milotic">
+                            <span class="table-move-name">SALMUERA</span>
+                        </div>
+                    </td>
+                    <td>
+                        <div class="table-cell-content">
+                            <img class="table-sprite" src="https://play.pokemonshowdown.com/sprites/ani/tyranitar.gif" alt="Tyranitar">
+                            <span class="table-move-name">BUENA BAZA</span>
+                        </div>
+                    </td>
+                    <td>
+                        <div class="table-cell-content">
+                            <img class="table-sprite" src="https://play.pokemonshowdown.com/sprites/ani/krookodile.gif" alt="Krookodile">
+                            <span class="table-move-name">BUENA BAZA</span>
+                        </div>
+                    </td>
+                    <td class="hp-col">22%</td>
+                </tr>
+                <tr>
+                    <td class="turno-col">T9</td>
+                    <td>
+                        <div class="table-cell-content">
+                            <img class="table-sprite" src="https://play.pokemonshowdown.com/sprites/ani/empoleon.gif" alt="Empoleon">
+                            <span class="table-move-name">SALMUERA</span>
+                        </div>
+                    </td>
+                    <td>
+                        <div class="table-cell-content">
+                            <img class="table-sprite" src="https://play.pokemonshowdown.com/sprites/ani/empoleon.gif" alt="Empoleon">
+                            <span class="table-move-name">SALMUERA</span>
+                        </div>
+                    </td>
+                    <td>
+                        <div class="table-cell-content">
+                            <img class="table-sprite" src="https://play.pokemonshowdown.com/sprites/ani/tyranitar.gif" alt="Tyranitar">
+                            <span class="table-move-name">BUENA BAZA</span>
+                        </div>
+                    </td>
+                    <td>
+                        <div class="table-cell-content">
+                            <img class="table-sprite" src="https://play.pokemonshowdown.com/sprites/ani/krookodile.gif" alt="Krookodile">
+                            <span class="table-move-name">BUENA BAZA</span>
+                        </div>
+                    </td>
+                    <td class="hp-col">11%</td>
+                </tr>
+                <tr>
+                    <td class="turno-col">T10</td>
+                    <td>
+                        <div class="table-cell-content">
+                            <img class="table-sprite" src="https://play.pokemonshowdown.com/sprites/ani/empoleon.gif" alt="Empoleon">
+                            <span class="table-move-name">SALMUERA</span>
+                        </div>
+                    </td>
+                    <td>
+                        <div class="table-cell-content">
+                            <img class="table-sprite" src="https://play.pokemonshowdown.com/sprites/ani/empoleon.gif" alt="Empoleon">
+                            <span class="table-move-name">SALMUERA</span>
+                        </div>
+                    </td>
+                    <td>
+                        <div class="table-cell-content">
+                            <img class="table-sprite" src="https://play.pokemonshowdown.com/sprites/ani/tyranitar.gif" alt="Tyranitar">
+                            <span class="table-move-name">BUENA BAZA</span>
+                        </div>
+                    </td>
+                    <td>
+                        <div class="table-cell-content">
+                            <img class="table-sprite" src="https://play.pokemonshowdown.com/sprites/ani/krookodile.gif" alt="Krookodile">
+                            <span class="table-move-name">BUENA BAZA</span>
+                        </div>
+                    </td>
+                    <td class="hp-col">-</td>
                 </tr>
             </tbody>
         </table>
