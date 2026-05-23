@@ -3,173 +3,47 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Guia Para Cresselia</title>
+    <title>Panel de Equipos Competitivos</title>
     <style>
-        * {
-            box-sizing: border-box;
-            margin: 0;
-            padding: 0;
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-        }
-
-        body {
-            background-color: #1e222b;
-            color: #ffffff;
-            padding: 20px;
-        }
-
-        .container {
-            max-width: 1000px;
-            margin: 0 auto;
-            background-color: #282c34;
-            border-radius: 12px;
-            box-shadow: 0 8px 24px rgba(0,0,0,0.3);
-            overflow: hidden;
-            border: 1px solid #3e4451;
-        }
-
-        .main-header {
-            background-color: #1a1d24;
-            text-align: center;
-            padding: 20px;
-            font-size: 24px;
-            font-weight: bold;
-            letter-spacing: 1px;
-            border-bottom: 2px solid #3e4451;
-            text-transform: uppercase;
-        }
-
-        .player-section {
-            border-bottom: 3px solid #1a1d24;
-        }
-
-        .player-section:last-child {
-            border-bottom: none;
-        }
-
-        .player-title {
-            background-color: #353b48;
-            padding: 12px 20px;
-            font-size: 18px;
-            font-weight: bold;
-            text-transform: uppercase;
-            letter-spacing: 0.5px;
-            border-bottom: 1px solid #485460;
-        }
-
-        .pokemon-row {
-            display: grid;
-            grid-template-columns: 140px 1fr 140px 140px 110px;
-            border-bottom: 1px solid #3e4451;
-            background-color: #2f3542;
-        }
-
-        .pokemon-row:last-child {
-            border-bottom: none;
-        }
-
-        .cell {
-            padding: 10px;
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            align-items: center;
-            text-align: center;
-            border-right: 1px solid #3e4451;
-            font-size: 13px;
-        }
-
-        .cell:last-child {
-            border-right: none;
-        }
-
-        .poke-name {
-            font-weight: bold;
-            background-color: #1e222b;
-            color: #74b9ff;
-            text-transform: uppercase;
-            font-size: 14px;
-        }
-
-        .stats-table {
-            width: 100%;
-            border-collapse: collapse;
-            font-size: 11px;
-        }
-
-        .stats-table th, .stats-table td {
-            border: 1px solid #485460;
-            padding: 3px 5px;
-            text-align: center;
-        }
-
-        .stats-table th {
-            background-color: #1e222b;
-            font-weight: 600;
-        }
-
+        * { box-sizing: border-box; margin: 0; padding: 0; font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; }
+        body { background-color: #1e222b; color: #ffffff; padding: 20px; }
+        .container { max-width: 1100px; margin: 0 auto; background-color: #282c34; border-radius: 12px; box-shadow: 0 8px 24px rgba(0,0,0,0.3); overflow: hidden; border: 1px solid #3e4451; }
+        .main-header { background-color: #1a1d24; text-align: center; padding: 20px; font-size: 24px; font-weight: bold; letter-spacing: 1px; border-bottom: 2px solid #3e4451; text-transform: uppercase; }
+        .player-section { border-bottom: 3px solid #1a1d24; }
+        .player-section:last-child { border-bottom: none; }
+        .player-title { background-color: #353b48; padding: 12px 20px; font-size: 18px; font-weight: bold; text-transform: uppercase; letter-spacing: 0.5px; border-bottom: 1px solid #485460; }
+        
+        /* Grid Principal Optimizado */
+        .pokemon-row { display: grid; grid-template-columns: 160px 140px 1fr 140px 180px 130px; border-bottom: 1px solid #3e4451; background-color: #2f3542; }
+        .pokemon-row:last-child { border-bottom: none; }
+        
+        .cell { padding: 10px; display: flex; flex-direction: column; justify-content: center; align-items: center; text-align: center; border-right: 1px solid #3e4451; font-size: 13px; }
+        .cell:last-child { border-right: none; }
+        
+        /* Ajustes de nombres e imágenes */
+        .poke-name { font-weight: bold; background-color: #1e222b; color: #74b9ff; text-transform: uppercase; font-size: 13px; gap: 6px; }
+        .poke-sprite { width: 65px; height: 65px; object-fit: contain; }
+        
+        /* Tablas de Stats compactas */
+        .stats-table { width: 100%; border-collapse: collapse; font-size: 11px; }
+        .stats-table th, .stats-table td { border: 1px solid #485460; padding: 2px 4px; text-align: center; }
+        .stats-table th { background-color: #1e222b; font-weight: 600; }
+        
+        /* Clases de utilidad de colores */
         .green-bg { background-color: #26de81; color: #000; font-weight: bold; }
         .red-bg { background-color: #ff5252; color: #fff; font-weight: bold; }
         .blue-bg { background-color: #4b7bec; color: #fff; }
-
-        .move-badge {
-            background-color: #485460;
-            padding: 5px 8px;
-            border-radius: 4px;
-            margin: 2px 0;
-            width: 100%;
-            font-size: 11px;
-            text-transform: uppercase;
-            font-weight: 500;
-        }
-
-        .nature-box {
-            width: 100%;
-        }
-
-        .nature-title {
-            font-weight: bold;
-            margin-bottom: 5px;
-            color: #ff9f43;
-            text-transform: uppercase;
-            font-size: 11px;
-        }
-
-        .ability-box {
-            background-color: #1e222b;
-            width: 100%;
-            padding: 4px;
-            margin-top: 5px;
-            border-radius: 4px;
-            font-size: 11px;
-            border: 1px solid #485460;
-        }
-
-        .notes-cell {
-            font-size: 11px;
-            color: #dcdde1;
-            align-items: flex-start;
-            text-align: left;
-            overflow-y: auto;
-        }
-
-        .item-box img, .poke-sprite img {
-            max-width: 55px;
-            max-height: 55px;
-            object-fit: contain;
-            margin-bottom: 5px;
-        }
-
-        .poke-sprite img {
-            max-width: 75px;
-            max-height: 75px;
-        }
-
-        .item-name {
-            font-size: 11px;
-            color: #a5b1c2;
-            font-weight: 500;
-        }
+        
+        /* Componentes internos */
+        .move-badge { background-color: #485460; padding: 4px 6px; border-radius: 4px; margin: 2px 0; width: 100%; font-size: 11px; text-transform: uppercase; font-weight: 500; }
+        .nature-box { width: 100%; margin-top: 4px; }
+        .nature-title { font-weight: bold; margin-bottom: 3px; color: #ff9f43; text-transform: uppercase; font-size: 10px; }
+        .ability-box { background-color: #1e222b; width: 100%; padding: 3px; border-radius: 4px; font-size: 11px; border: 1px solid #485460; }
+        .notes-cell { font-size: 11px; color: #dcdde1; align-items: flex-start; text-align: left; }
+        
+        /* Celdas de Items */
+        .item-box { font-size: 11px; color: #a5b1c2; font-weight: 500; gap: 4px; }
+        .item-sprite { width: 32px; height: 32px; object-fit: contain; }
     </style>
 </head>
 <body>
@@ -182,122 +56,137 @@
         
         <div class="pokemon-row">
             <div class="cell poke-name">
+                <img class="poke-sprite" src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/450.png" alt="Hippowdon">
                 <span>Hippowdon</span>
             </div>
             <div class="cell">
                 <table class="stats-table">
-                    <tr><th>STATS</th><th>IVs</th><th>EVs</th></tr>
+                    <tr><th>STAT</th><th>IV</th><th>EV</th></tr>
                     <tr><td>PS</td><td class="green-bg">31</td><td>-</td></tr>
                     <tr><td>ATK</td><td>-</td><td>-</td></tr>
                     <tr><td>DEF</td><td>-</td><td>238</td></tr>
-                    <tr><td>ATK ESP</td><td>-</td><td>-</td></tr>
-                    <tr><td>DEF ESP</td><td class="green-bg">31</td><td>20</td></tr>
+                    <tr><td>A.ESP</td><td>-</td><td>-</td></tr>
+                    <tr><td>D.ESP</td><td class="green-bg">31</td><td>20</td></tr>
                     <tr><td>VEL</td><td class="green-bg">31</td><td>252</td></tr>
                 </table>
             </div>
             <div class="cell">
                 <div class="move-badge">Seducción</div>
-                <div class="nature-box">
-                    <div class="nature-title">Cauta (+Def Esp -Atk Esp)</div>
-                    <div class="ability-box">Chorro Arena</div>
-                </div>
             </div>
-            <div class="cell notes-cell">
-                Se pueden disminuir los EVs de DEF para igualar los 31 IVs en PS y DEF.ESP si no se llega al requerimiento.
+            <div class="cell nature-box">
+                <div class="nature-title">Cauta<br>(+Def Esp -Atk Esp)</div>
+                <div class="ability-box">Chorro Arena</div>
             </div>
+            <div class="cell notes-cell">Se pueden disminuir los EVs de DEF para igualar los 31 IVs en PS y DEF.ESP si no se llega al requerimiento.</div>
             <div class="cell item-box">
-                <span class="item-name">Amuleto Puro</span>
+                <img class="item-sprite" src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/items/clear-amulet.png" alt="Amuleto Puro">
+                <span>Amuleto Puro</span>
             </div>
         </div>
 
         <div class="pokemon-row">
-            <div class="cell poke-name">Whimsicott</div>
+            <div class="cell poke-name">
+                <img class="poke-sprite" src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/547.png" alt="Whimsicott">
+                <span>Whimsicott</span>
+            </div>
             <div class="cell">
                 <table class="stats-table">
-                    <tr><th>STATS</th><th>IVs</th><th>EVs</th></tr>
+                    <tr><th>STAT</th><th>IV</th><th>EV</th></tr>
                     <tr><td>PS</td><td>-</td><td>-</td></tr>
                     <tr><td>ATK</td><td>-</td><td>-</td></tr>
                     <tr><td>DEF</td><td>-</td><td>-</td></tr>
-                    <tr><td>ATK ESP</td><td>-</td><td>-</td></tr>
-                    <tr><td>DEF ESP</td><td>-</td><td>-</td></tr>
+                    <tr><td>A.ESP</td><td>-</td><td>-</td></tr>
+                    <tr><td>D.ESP</td><td>-</td><td>-</td></tr>
                     <tr><td>VEL</td><td>-</td><td>-</td></tr>
                 </table>
             </div>
             <div class="cell">
                 <div class="move-badge">Pantalla Luz</div>
-                <div class="nature-box">
-                    <div class="nature-title">-</div>
-                    <div class="ability-box">Bromista</div>
-                </div>
+            </div>
+            <div class="cell nature-box">
+                <div class="nature-title">-</div>
+                <div class="ability-box">Bromista</div>
             </div>
             <div class="cell notes-cell">Evitar IVs en DEF ESP.</div>
             <div class="cell item-box">
-                <span class="item-name">Refleluz</span>
+                <img class="item-sprite" src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/items/light-clay.png" alt="Refleluz">
+                <span>Refleluz</span>
             </div>
         </div>
 
         <div class="pokemon-row">
-            <div class="cell poke-name">Darmanitan</div>
+            <div class="cell poke-name">
+                <img class="poke-sprite" src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/555.png" alt="Darmanitan">
+                <span>Darmanitan</span>
+            </div>
             <div class="cell">
                 <table class="stats-table">
-                    <tr><th>STATS</th><th>IVs</th><th>EVs</th></tr>
+                    <tr><th>STAT</th><th>IV</th><th>EV</th></tr>
                     <tr><td>PS</td><td>-</td><td>-</td></tr>
                     <tr><td>ATK</td><td class="green-bg">31</td><td>252</td></tr>
                     <tr><td>DEF</td><td>-</td><td>90</td></tr>
-                    <tr><td>ATK ESP</td><td>-</td><td>-</td></tr>
-                    <tr><td>DEF ESP</td><td>-</td><td>-</td></tr>
+                    <tr><td>A.ESP</td><td>-</td><td>-</td></tr>
+                    <tr><td>D.ESP</td><td>-</td><td>-</td></tr>
                     <tr><td>VEL</td><td class="green-bg">31</td><td>168</td></tr>
                 </table>
             </div>
             <div class="cell">
                 <div class="move-badge">Envite Ígneo</div>
-                <div class="nature-box">
-                    <div class="nature-title">Firme (+Atk -Atk Esp)</div>
-                    <div class="ability-box">Potencia Bruta</div>
-                </div>
+            </div>
+            <div class="cell nature-box">
+                <div class="nature-title">Firme<br>(+Atk -Atk Esp)</div>
+                <div class="ability-box">Potencia Bruta</div>
             </div>
             <div class="cell notes-cell">La estadística de velocidad al nivel 100 debe ser menor de 269.</div>
             <div class="cell item-box">
-                <span class="item-name">Cinta Elegida</span>
+                <img class="item-sprite" src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/items/choice-band.png" alt="Cinta Elegida">
+                <span>Cinta Elegida</span>
             </div>
         </div>
 
         <div class="pokemon-row">
-            <div class="cell poke-name">Braviary</div>
+            <div class="cell poke-name">
+                <img class="poke-sprite" src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/628.png" alt="Braviary">
+                <span>Braviary</span>
+            </div>
             <div class="cell">
                 <table class="stats-table">
-                    <tr><th>STATS</th><th>IVs</th><th>EVs</th></tr>
+                    <tr><th>STAT</th><th>IV</th><th>EV</th></tr>
                     <tr><td>PS</td><td>-</td><td>6</td></tr>
                     <tr><td>ATK</td><td class="green-bg">31</td><td>252</td></tr>
                     <tr><td>DEF</td><td>-</td><td>-</td></tr>
-                    <tr><td>ATK ESP</td><td>-</td><td>-</td></tr>
-                    <tr><td>DEF ESP</td><td>-</td><td>-</td></tr>
+                    <tr><td>A.ESP</td><td>-</td><td>-</td></tr>
+                    <tr><td>D.ESP</td><td>-</td><td>-</td></tr>
                     <tr><td>VEL</td><td class="green-bg">31</td><td>252</td></tr>
                 </table>
             </div>
             <div class="cell">
                 <div class="move-badge">Buena Baza</div>
-                <div class="nature-box">
-                    <div class="nature-title">Firme (+Atk -Atk Esp)</div>
-                    <div class="ability-box">Competitivo (HO)</div>
-                </div>
+            </div>
+            <div class="cell nature-box">
+                <div class="nature-title">Firme<br>(+Atk -Atk Esp)</div>
+                <div class="ability-box">Competitivo (HO)</div>
             </div>
             <div class="cell notes-cell">-</div>
             <div class="cell item-box">
-                <span class="item-name">Baya Magua</span>
+                <img class="item-sprite" src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/items/magost-berry.png" alt="Baya Magua">
+                <span>Baya Magua</span>
             </div>
         </div>
 
         <div class="pokemon-row">
-            <div class="cell poke-name">Milotic</div>
+            <div class="cell poke-name">
+                <img class="poke-sprite" src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/350.png" alt="Milotic">
+                <span>Milotic</span>
+            </div>
             <div class="cell">
                 <table class="stats-table">
-                    <tr><th>STATS</th><th>IVs</th><th>EVs</th></tr>
+                    <tr><th>STAT</th><th>IV</th><th>EV</th></tr>
                     <tr><td>PS</td><td class="green-bg">31</td><td>6</td></tr>
                     <tr><td>ATK</td><td>-</td><td>-</td></tr>
                     <tr><td>DEF</td><td>-</td><td>-</td></tr>
-                    <tr><td>ATK ESP</td><td class="green-bg">31</td><td>252</td></tr>
-                    <tr><td>DEF ESP</td><td class="green-bg">31</td><td>252</td></tr>
+                    <tr><td>A.ESP</td><td class="green-bg">31</td><td>252</td></tr>
+                    <tr><td>D.ESP</td><td class="green-bg">31</td><td>252</td></tr>
                     <tr><td>VEL</td><td class="red-bg">0</td><td>-</td></tr>
                 </table>
             </div>
@@ -305,40 +194,45 @@
                 <div class="move-badge">Salmuera</div>
                 <div class="move-badge">Velo Sagrado</div>
                 <div class="move-badge">Chapoteolodo</div>
-                <div class="nature-box">
-                    <div class="nature-title">Mansa (+Atk Esp -Vel)</div>
-                    <div class="ability-box">Competitivo</div>
-                </div>
+            </div>
+            <div class="cell nature-box">
+                <div class="nature-title">Mansa<br>(+Atk Esp -Vel)</div>
+                <div class="ability-box">Competitivo</div>
             </div>
             <div class="cell notes-cell">-</div>
             <div class="cell item-box">
-                <span class="item-name">Manto Encubierto</span>
+                <img class="item-sprite" src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/items/covert-cloak.png" alt="Manto Encubierto">
+                <span>Manto Encubierto</span>
             </div>
         </div>
 
         <div class="pokemon-row">
-            <div class="cell poke-name">Empoleon</div>
+            <div class="cell poke-name">
+                <img class="poke-sprite" src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/395.png" alt="Empoleon">
+                <span>Empoleon</span>
+            </div>
             <div class="cell">
                 <table class="stats-table">
-                    <tr><th>STATS</th><th>IVs</th><th>EVs</th></tr>
+                    <tr><th>STAT</th><th>IV</th><th>EV</th></tr>
                     <tr><td>PS</td><td class="green-bg">31</td><td>6</td></tr>
                     <tr><td>ATK</td><td>-</td><td>-</td></tr>
                     <tr><td>DEF</td><td>-</td><td>-</td></tr>
-                    <tr><td>ATK ESP</td><td class="green-bg">31</td><td>252</td></tr>
-                    <tr><td>DEF ESP</td><td class="green-bg">31</td><td>252</td></tr>
+                    <tr><td>A.ESP</td><td class="green-bg">31</td><td>252</td></tr>
+                    <tr><td>D.ESP</td><td class="green-bg">31</td><td>252</td></tr>
                     <tr><td>VEL</td><td>-</td><td>-</td></tr>
                 </table>
             </div>
             <div class="cell">
                 <div class="move-badge">Salmuera</div>
-                <div class="nature-box">
-                    <div class="nature-title">Modesta (+Atk Esp -Atk)</div>
-                    <div class="ability-box">Competitivo</div>
-                </div>
+            </div>
+            <div class="cell nature-box">
+                <div class="nature-title">Modesta<br>(+Atk Esp -Atk)</div>
+                <div class="ability-box">Competitivo</div>
             </div>
             <div class="cell notes-cell">-</div>
             <div class="cell item-box">
-                <span class="item-name">Gafas Elegidas</span>
+                <img class="item-sprite" src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/items/choice-specs.png" alt="Gafas Elegidas">
+                <span>Gafas Elegidas</span>
             </div>
         </div>
     </div>
@@ -347,158 +241,182 @@
         <div class="player-title">Jugador 2</div>
         
         <div class="pokemon-row">
-            <div class="cell poke-name">Weavile</div>
+            <div class="cell poke-name">
+                <img class="poke-sprite" src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/461.png" alt="Weavile">
+                <span>Weavile</span>
+            </div>
             <div class="cell">
                 <table class="stats-table">
-                    <tr><th>STATS</th><th>IVs</th><th>EVs</th></tr>
+                    <tr><th>STAT</th><th>IV</th><th>EV</th></tr>
                     <tr><td>PS</td><td>-</td><td>6</td></tr>
                     <tr><td>ATK</td><td class="green-bg">31</td><td>252</td></tr>
                     <tr><td>DEF</td><td>-</td><td>-</td></tr>
-                    <tr><td>ATK ESP</td><td>-</td><td>-</td></tr>
-                    <tr><td>DEF ESP</td><td>-</td><td>-</td></tr>
+                    <tr><td>A.ESP</td><td>-</td><td>-</td></tr>
+                    <tr><td>D.ESP</td><td>-</td><td>-</td></tr>
                     <tr><td>VEL</td><td class="green-bg">31</td><td>252</td></tr>
                 </table>
             </div>
             <div class="cell">
                 <div class="move-badge">Lanzamiento</div>
-                <div class="nature-box">
-                    <div class="nature-title">Firme (+Atk -Atk Esp)</div>
-                    <div class="ability-box">-</div>
-                </div>
+            </div>
+            <div class="cell nature-box">
+                <div class="nature-title">Firme<br>(+Atk -Atk Esp)</div>
+                <div class="ability-box">-</div>
             </div>
             <div class="cell notes-cell">-</div>
             <div class="cell item-box">
-                <span class="item-name">Flecha Veneno</span>
+                <img class="item-sprite" src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/items/poison-barb.png" alt="Flecha Veneno">
+                <span>Flecha Veneno</span>
             </div>
         </div>
 
         <div class="pokemon-row">
-            <div class="cell poke-name">Bisharp</div>
+            <div class="cell poke-name">
+                <img class="poke-sprite" src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/625.png" alt="Bisharp">
+                <span>Bisharp</span>
+            </div>
             <div class="cell">
                 <table class="stats-table">
-                    <tr><th>STATS</th><th>IVs</th><th>EVs</th></tr>
+                    <tr><th>STAT</th><th>IV</th><th>EV</th></tr>
                     <tr><td>PS</td><td class="green-bg">31</td><td>6</td></tr>
                     <tr><td>ATK</td><td class="green-bg">31</td><td>252</td></tr>
                     <tr><td>DEF</td><td>-</td><td>-</td></tr>
-                    <tr><td>ATK ESP</td><td>-</td><td>-</td></tr>
-                    <tr><td>DEF ESP</td><td class="green-bg">31</td><td>252</td></tr>
+                    <tr><td>A.ESP</td><td>-</td><td>-</td></tr>
+                    <tr><td>D.ESP</td><td class="green-bg">31</td><td>252</td></tr>
                     <tr><td>VEL</td><td>-</td><td>-</td></tr>
                 </table>
             </div>
             <div class="cell">
                 <div class="move-badge">Golpe Bajo</div>
-                <div class="nature-box">
-                    <div class="nature-title">Firme (+Atk -Atk Esp)</div>
-                    <div class="ability-box">Competitivo</div>
-                </div>
+            </div>
+            <div class="cell nature-box">
+                <div class="nature-title">Firme<br>(+Atk -Atk Esp)</div>
+                <div class="ability-box">Competitivo</div>
             </div>
             <div class="cell notes-cell">-</div>
             <div class="cell item-box">
-                <span class="item-name">Vidasfera</span>
+                <img class="item-sprite" src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/items/life-orb.png" alt="Vidasfera">
+                <span>Vidasfera</span>
             </div>
         </div>
 
         <div class="pokemon-row">
-            <div class="cell poke-name">Sharpedo</div>
+            <div class="cell poke-name">
+                <img class="poke-sprite" src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/319.png" alt="Sharpedo">
+                <span>Sharpedo</span>
+            </div>
             <div class="cell">
                 <table class="stats-table">
-                    <tr><th>STATS</th><th>IVs</th><th>EVs</th></tr>
+                    <tr><th>STAT</th><th>IV</th><th>EV</th></tr>
                     <tr><td>PS</td><td>-</td><td>6</td></tr>
                     <tr><td>ATK</td><td class="green-bg">31</td><td>252</td></tr>
                     <tr><td>DEF</td><td>-</td><td>-</td></tr>
-                    <tr><td>ATK ESP</td><td>-</td><td>-</td></tr>
-                    <tr><td>DEF ESP</td><td>-</td><td>-</td></tr>
+                    <tr><td>A.ESP</td><td>-</td><td>-</td></tr>
+                    <tr><td>D.ESP</td><td>-</td><td>-</td></tr>
                     <tr><td>VEL</td><td class="green-bg">31</td><td>252</td></tr>
                 </table>
             </div>
             <div class="cell">
                 <div class="move-badge">Buena Baza</div>
-                <div class="nature-box">
-                    <div class="nature-title">Firme (+Atk -Atk Esp)</div>
-                    <div class="ability-box">Impulso (HO)</div>
-                </div>
+            </div>
+            <div class="cell nature-box">
+                <div class="nature-title">Firme<br>(+Atk -Atk Esp)</div>
+                <div class="ability-box">Impulso (HO)</div>
             </div>
             <div class="cell notes-cell">-</div>
             <div class="cell item-box">
-                <span class="item-name">Cinta Elegida</span>
+                <img class="item-sprite" src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/items/choice-band.png" alt="Cinta Elegida">
+                <span>Cinta Elegida</span>
             </div>
         </div>
 
         <div class="pokemon-row">
-            <div class="cell poke-name">Braviary</div>
+            <div class="cell poke-name">
+                <img class="poke-sprite" src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/628.png" alt="Braviary">
+                <span>Braviary</span>
+            </div>
             <div class="cell">
                 <table class="stats-table">
-                    <tr><th>STATS</th><th>IVs</th><th>EVs</th></tr>
+                    <tr><th>STAT</th><th>IV</th><th>EV</th></tr>
                     <tr><td>PS</td><td>-</td><td>6</td></tr>
                     <tr><td>ATK</td><td class="green-bg">31</td><td>252</td></tr>
                     <tr><td>DEF</td><td>-</td><td>-</td></tr>
-                    <tr><td>ATK ESP</td><td>-</td><td>-</td></tr>
-                    <tr><td>DEF ESP</td><td>-</td><td>252</td></tr>
+                    <tr><td>A.ESP</td><td>-</td><td>-</td></tr>
+                    <tr><td>D.ESP</td><td>-</td><td>252</td></tr>
                     <tr><td>VEL</td><td class="green-bg">31</td><td>-</td></tr>
                 </table>
             </div>
             <div class="cell">
                 <div class="move-badge">Buena Baza</div>
-                <div class="nature-box">
-                    <div class="nature-title">Firme (+Atk -Atk Esp)</div>
-                    <div class="ability-box">Competitivo (HO)</div>
-                </div>
+            </div>
+            <div class="cell nature-box">
+                <div class="nature-title">Firme<br>(+Atk -Atk Esp)</div>
+                <div class="ability-box">Competitivo (HO)</div>
             </div>
             <div class="cell notes-cell">-</div>
             <div class="cell item-box">
-                <span class="item-name">Equipo de Asalto</span>
+                <img class="item-sprite" src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/items/assault-vest.png" alt="Equipo Asalto">
+                <span>Chaleco Asalto</span>
             </div>
         </div>
 
         <div class="pokemon-row">
-            <div class="cell poke-name">Milotic</div>
+            <div class="cell poke-name">
+                <img class="poke-sprite" src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/350.png" alt="Milotic">
+                <span>Milotic</span>
+            </div>
             <div class="cell">
                 <table class="stats-table">
-                    <tr><th>STATS</th><th>IVs</th><th>EVs</th></tr>
+                    <tr><th>STAT</th><th>IV</th><th>EV</th></tr>
                     <tr><td>PS</td><td class="green-bg">31</td><td>6</td></tr>
                     <tr><td>ATK</td><td>-</td><td>-</td></tr>
                     <tr><td>DEF</td><td>-</td><td>-</td></tr>
-                    <tr><td>ATK ESP</td><td class="green-bg">31</td><td>252</td></tr>
-                    <tr><td>DEF ESP</td><td class="green-bg">31</td><td>252</td></tr>
+                    <tr><td>A.ESP</td><td class="green-bg">31</td><td>252</td></tr>
+                    <tr><td>D.ESP</td><td class="green-bg">31</td><td>252</td></tr>
                     <tr><td>VEL</td><td class="green-bg">31</td><td>-</td></tr>
                 </table>
             </div>
             <div class="cell">
                 <div class="move-badge">Salmuera</div>
-                <div class="nature-box">
-                    <div class="nature-title">Modesta (+Atk Esp -Atk)</div>
-                    <div class="ability-box">Competitivo</div>
-                </div>
+            </div>
+            <div class="cell nature-box">
+                <div class="nature-title">Modesta<br>(+Atk Esp -Atk)</div>
+                <div class="ability-box">Competitivo</div>
             </div>
             <div class="cell notes-cell">-</div>
             <div class="cell item-box">
-                <span class="item-name">Manto Encubierto</span>
+                <img class="item-sprite" src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/items/covert-cloak.png" alt="Manto Encubierto">
+                <span>Manto Encubierto</span>
             </div>
         </div>
 
         <div class="pokemon-row">
-            <div class="cell poke-name">Empoleon</div>
+            <div class="cell poke-name">
+                <img class="poke-sprite" src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/395.png" alt="Empoleon">
+                <span>Empoleon</span>
+            </div>
             <div class="cell">
                 <table class="stats-table">
-                    <tr><th>STATS</th><th>IVs</th><th>EVs</th></tr>
+                    <tr><th>STAT</th><th>IV</th><th>EV</th></tr>
                     <tr><td>PS</td><td class="green-bg">31</td><td>6</td></tr>
                     <tr><td>ATK</td><td>-</td><td>-</td></tr>
                     <tr><td>DEF</td><td>-</td><td>-</td></tr>
-                    <tr><td>ATK ESP</td><td class="green-bg">31</td><td>232</td></tr>
-                    <tr><td>DEF ESP</td><td class="green-bg">31</td><td>252</td></tr>
+                    <tr><td>A.ESP</td><td class="green-bg">31</td><td>232</td></tr>
+                    <tr><td>D.ESP</td><td class="green-bg">31</td><td>252</td></tr>
                     <tr><td>VEL</td><td class="green-bg">31</td><td>20</td></tr>
                 </table>
             </div>
             <div class="cell">
                 <div class="move-badge">Salmuera</div>
-                <div class="nature-box">
-                    <div class="nature-title">Modesta (+Atk Esp -Atk)</div>
-                    <div class="ability-box">Competitivo</div>
-                </div>
+            </div>
+            <div class="cell nature-box">
+                <div class="nature-title">Modesta<br>(+Atk Esp -Atk)</div>
+                <div class="ability-box">Competitivo</div>
             </div>
             <div class="cell notes-cell">-</div>
             <div class="cell item-box">
-                <span class="item-name">Gafas Elegidas</span>
+                <img class="item-sprite" src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/items/choice-specs.png" alt="Gafas Elegidas">
+                <span>Gafas Elegidas</span>
             </div>
         </div>
     </div>
@@ -507,155 +425,181 @@
         <div class="player-title">Jugador 3</div>
         
         <div class="pokemon-row">
-            <div class="cell poke-name">Kadabra</div>
+            <div class="cell poke-name">
+                <img class="poke-sprite" src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/64.png" alt="Kadabra">
+                <span>Kadabra</span>
+            </div>
             <div class="cell">
                 <table class="stats-table">
-                    <tr><th>STATS</th><th>IVs</th><th>EVs</th></tr>
+                    <tr><th>STAT</th><th>IV</th><th>EV</th></tr>
                     <tr><td>PS</td><td class="blue-bg">0-27</td><td>0</td></tr>
                     <tr><td>ATK</td><td>-</td><td>-</td></tr>
                     <tr><td>DEF</td><td>-</td><td>-</td></tr>
-                    <tr><td>ATK ESP</td><td>-</td><td>-</td></tr>
-                    <tr><td>DEF ESP</td><td class="blue-bg">0-27</td><td>0</td></tr>
+                    <tr><td>A.ESP</td><td>-</td><td>-</td></tr>
+                    <tr><td>D.ESP</td><td class="blue-bg">0-27</td><td>0</td></tr>
                     <tr><td>VEL</td><td>-</td><td>252</td></tr>
                 </table>
             </div>
             <div class="cell">
                 <div class="move-badge">Velo Sagrado</div>
-                <div class="nature-box">
-                    <div class="nature-title">-</div>
-                    <div class="ability-box">-</div>
-                </div>
             </div>
-            <div class="cell notes-cell">La naturaleza puede ser cualquiera que NO aumente la DEF.P, NO disminuya la VEL.</div>
-            <div class="cell item-box"><span class="item-name">-</span></div>
+            <div class="cell nature-box">
+                <div class="nature-title">-</div>
+                <div class="ability-box">-</div>
+            </div>
+            <div class="cell notes-cell">Cualquier naturaleza que NO aumente DEF y NO baje VEL.</div>
+            <div class="cell item-box">
+                <span>-</span>
+            </div>
         </div>
 
         <div class="pokemon-row">
-            <div class="cell poke-name">Bisharp</div>
+            <div class="cell poke-name">
+                <img class="poke-sprite" src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/625.png" alt="Bisharp">
+                <span>Bisharp</span>
+            </div>
             <div class="cell">
                 <table class="stats-table">
-                    <tr><th>STATS</th><th>IVs</th><th>EVs</th></tr>
+                    <tr><th>STAT</th><th>IV</th><th>EV</th></tr>
                     <tr><td>PS</td><td>-</td><td>252</td></tr>
                     <tr><td>ATK</td><td class="green-bg">31</td><td>168</td></tr>
                     <tr><td>DEF</td><td>-</td><td>-</td></tr>
-                    <tr><td>ATK ESP</td><td>-</td><td>-</td></tr>
-                    <tr><td>DEF ESP</td><td class="green-bg">31</td><td>88</td></tr>
+                    <tr><td>A.ESP</td><td>-</td><td>-</td></tr>
+                    <tr><td>D.ESP</td><td class="green-bg">31</td><td>88</td></tr>
                     <tr><td>VEL</td><td>-</td><td>-</td></tr>
                 </table>
             </div>
             <div class="cell">
                 <div class="move-badge">Golpe Bajo</div>
-                <div class="nature-box">
-                    <div class="nature-title">Firme (+Atk -Atk Esp)</div>
-                    <div class="ability-box">Competitivo</div>
-                </div>
+            </div>
+            <div class="cell nature-box">
+                <div class="nature-title">Firme<br>(+Atk -Atk Esp)</div>
+                <div class="ability-box">Competitivo</div>
             </div>
             <div class="cell notes-cell">-</div>
             <div class="cell item-box">
-                <span class="item-name">Cinta Elegida</span>
+                <img class="item-sprite" src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/items/choice-band.png" alt="Cinta Elegida">
+                <span>Cinta Elegida</span>
             </div>
         </div>
 
         <div class="pokemon-row">
-            <div class="cell poke-name">Crobat</div>
+            <div class="cell poke-name">
+                <img class="poke-sprite" src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/169.png" alt="Crobat">
+                <span>Crobat</span>
+            </div>
             <div class="cell">
                 <table class="stats-table">
-                    <tr><th>STATS</th><th>IVs</th><th>EVs</th></tr>
+                    <tr><th>STAT</th><th>IV</th><th>EV</th></tr>
                     <tr><td>PS</td><td>-</td><td>-</td></tr>
                     <tr><td>ATK</td><td>-</td><td>-</td></tr>
                     <tr><td>DEF</td><td>-</td><td>-</td></tr>
-                    <tr><td>ATK ESP</td><td class="green-bg">31</td><td>252</td></tr>
-                    <tr><td>DEF ESP</td><td>-</td><td>-</td></tr>
+                    <tr><td>A.ESP</td><td class="green-bg">31</td><td>252</td></tr>
+                    <tr><td>D.ESP</td><td>-</td><td>-</td></tr>
                     <tr><td>VEL</td><td class="green-bg">31</td><td>252</td></tr>
                 </table>
             </div>
             <div class="cell">
                 <div class="move-badge">Bomba Ácida</div>
-                <div class="nature-box">
-                    <div class="nature-title">-</div>
-                    <div class="ability-box">-</div>
-                </div>
             </div>
-            <div class="cell notes-cell">Puede ser cualquier pokémon rápido que aprenda Bomba Ácida y muera de un golpe de Cremella.</div>
-            <div class="cell item-box"><span class="item-name">-</span></div>
+            <div class="cell nature-box">
+                <div class="nature-title">-</div>
+                <div class="ability-box">-</div>
+            </div>
+            <div class="cell notes-cell">Cualquier pokémon rápido con Bomba Ácida que caiga de un golpe de Cremella.</div>
+            <div class="cell item-box">
+                <span>-</span>
+            </div>
         </div>
 
         <div class="pokemon-row">
-            <div class="cell poke-name">Gothitelle</div>
+            <div class="cell poke-name">
+                <img class="poke-sprite" src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/576.png" alt="Gothitelle">
+                <span>Gothitelle</span>
+            </div>
             <div class="cell">
                 <table class="stats-table">
-                    <tr><th>STATS</th><th>IVs</th><th>EVs</th></tr>
+                    <tr><th>STAT</th><th>IV</th><th>EV</th></tr>
                     <tr><td>PS</td><td class="green-bg">31</td><td>6</td></tr>
                     <tr><td>ATK</td><td>-</td><td>-</td></tr>
                     <tr><td>DEF</td><td>-</td><td>-</td></tr>
-                    <tr><td>ATK ESP</td><td class="green-bg">31</td><td>252</td></tr>
-                    <tr><td>DEF ESP</td><td class="green-bg">31</td><td>252</td></tr>
+                    <tr><td>A.ESP</td><td class="green-bg">31</td><td>252</td></tr>
+                    <tr><td>D.ESP</td><td class="green-bg">31</td><td>252</td></tr>
                     <tr><td>VEL</td><td>-</td><td>-</td></tr>
                 </table>
             </div>
             <div class="cell">
                 <div class="move-badge">Bola Sombra</div>
-                <div class="nature-box">
-                    <div class="nature-title">Modesta (+Atk Esp -Atk)</div>
-                    <div class="ability-box">Competitivo</div>
-                </div>
+            </div>
+            <div class="cell nature-box">
+                <div class="nature-title">Modesta<br>(+Atk Esp -Atk)</div>
+                <div class="ability-box">Competitivo</div>
             </div>
             <div class="cell notes-cell">-</div>
             <div class="cell item-box">
-                <span class="item-name">Gafas Elegidas</span>
+                <img class="item-sprite" src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/items/choice-specs.png" alt="Gafas Elegidas">
+                <span>Gafas Elegidas</span>
             </div>
         </div>
 
         <div class="pokemon-row">
-            <div class="cell poke-name">Crawdaunt</div>
+            <div class="cell poke-name">
+                <img class="poke-sprite" src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/342.png" alt="Crawdaunt">
+                <span>Crawdaunt</span>
+            </div>
             <div class="cell">
                 <table class="stats-table">
-                    <tr><th>STATS</th><th>IVs</th><th>EVs</th></tr>
+                    <tr><th>STAT</th><th>IV</th><th>EV</th></tr>
                     <tr><td>PS</td><td class="green-bg">31</td><td>6</td></tr>
                     <tr><td>ATK</td><td class="green-bg">31</td><td>252</td></tr>
                     <tr><td>DEF</td><td>-</td><td>-</td></tr>
-                    <tr><td>ATK ESP</td><td>-</td><td>-</td></tr>
-                    <tr><td>DEF ESP</td><td class="green-bg">31</td><td>252</td></tr>
+                    <tr><td>A.ESP</td><td>-</td><td>-</td></tr>
+                    <tr><td>D.ESP</td><td class="green-bg">31</td><td>252</td></tr>
                     <tr><td>VEL</td><td>-</td><td>-</td></tr>
                 </table>
             </div>
             <div class="cell">
                 <div class="move-badge">Lanzamiento</div>
-                <div class="nature-box">
-                    <div class="nature-title">Audaz (+Atk -Vel)</div>
-                    <div class="ability-box">Adaptable (HO)</div>
-                </div>
+            </div>
+            <div class="cell nature-box">
+                <div class="nature-title">Audaz<br>(+Atk -Vel)</div>
+                <div class="ability-box">Adaptable (HO)</div>
             </div>
             <div class="cell notes-cell">-</div>
             <div class="cell item-box">
-                <span class="item-name">Flecha Veneno</span>
+                <img class="item-sprite" src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/items/poison-barb.png" alt="Flecha Veneno">
+                <span>Flecha Veneno</span>
             </div>
         </div>
 
         <div class="pokemon-row">
-            <div class="cell poke-name">Tyranitar</div>
+            <div class="cell poke-name">
+                <img class="poke-sprite" src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/248.png" alt="Tyranitar">
+                <span>Tyranitar</span>
+            </div>
             <div class="cell">
                 <table class="stats-table">
-                    <tr><th>STATS</th><th>IVs</th><th>EVs</th></tr>
+                    <tr><th>STAT</th><th>IV</th><th>EV</th></tr>
                     <tr><td>PS</td><td class="green-bg">31</td><td>6</td></tr>
                     <tr><td>ATK</td><td class="green-bg">31</td><td>252</td></tr>
                     <tr><td>DEF</td><td>-</td><td>-</td></tr>
-                    <tr><td>ATK ESP</td><td>-</td><td>-</td></tr>
-                    <tr><td>DEF ESP</td><td class="green-bg">31</td><td>252</td></tr>
+                    <tr><td>A.ESP</td><td>-</td><td>-</td></tr>
+                    <tr><td>D.ESP</td><td class="green-bg">31</td><td>252</td></tr>
                     <tr><td>VEL</td><td class="green-bg">31</td><td>-</td></tr>
                 </table>
             </div>
             <div class="cell">
                 <div class="move-badge">Buena Baza</div>
                 <div class="move-badge">Seducción</div>
-                <div class="nature-box">
-                    <div class="nature-title">Firme (+Atk -Atk Esp)</div>
-                    <div class="ability-box">Chorro Arena</div>
-                </div>
+            </div>
+            <div class="cell nature-box">
+                <div class="nature-title">Firme<br>(+Atk -Atk Esp)</div>
+                <div class="ability-box">Chorro Arena</div>
             </div>
             <div class="cell notes-cell">-</div>
             <div class="cell item-box">
-                <span class="item-name">Bola Férrea</span>
+                <img class="item-sprite" src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/items/iron-ball.png" alt="Bola Férrea">
+                <span>Bola Férrea</span>
             </div>
         </div>
     </div>
@@ -664,162 +608,185 @@
         <div class="player-title">Jugador 4</div>
         
         <div class="pokemon-row">
-            <div class="cell poke-name">Xatu</div>
+            <div class="cell poke-name">
+                <img class="poke-sprite" src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/178.png" alt="Xatu">
+                <span>Xatu</span>
+            </div>
             <div class="cell">
                 <table class="stats-table">
-                    <tr><th>STATS</th><th>IVs</th><th>EVs</th></tr>
+                    <tr><th>STAT</th><th>IV</th><th>EV</th></tr>
                     <tr><td>PS</td><td>-</td><td>-</td></tr>
                     <tr><td>ATK</td><td>-</td><td>-</td></tr>
                     <tr><td>DEF</td><td>-</td><td>6</td></tr>
-                    <tr><td>ATK ESP</td><td>-</td><td>252</td></tr>
-                    <tr><td>DEF ESP</td><td>-</td><td>-</td></tr>
+                    <tr><td>A.ESP</td><td>-</td><td>252</td></tr>
+                    <tr><td>D.ESP</td><td>-</td><td>-</td></tr>
                     <tr><td>VEL</td><td class="green-bg">31</td><td>252</td></tr>
                 </table>
             </div>
             <div class="cell">
                 <div class="move-badge">Conjuro</div>
-                <div class="nature-box">
-                    <div class="nature-title">-</div>
-                    <div class="ability-box">-</div>
-                </div>
+            </div>
+            <div class="cell nature-box">
+                <div class="nature-title">-</div>
+                <div class="ability-box">-</div>
             </div>
             <div class="cell notes-cell">-</div>
             <div class="cell item-box">
-                <span class="item-name">Pañuelo Elegido</span>
+                <img class="item-sprite" src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/items/choice-scarf.png" alt="Pañuelo Elegido">
+                <span>Pañuelo Elegido</span>
             </div>
         </div>
 
         <div class="pokemon-row">
-            <div class="cell poke-name">Bisharp</div>
+            <div class="cell poke-name">
+                <img class="poke-sprite" src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/625.png" alt="Bisharp">
+                <span>Bisharp</span>
+            </div>
             <div class="cell">
                 <table class="stats-table">
-                    <tr><th>STATS</th><th>IVs</th><th>EVs</th></tr>
+                    <tr><th>STAT</th><th>IV</th><th>EV</th></tr>
                     <tr><td>PS</td><td class="green-bg">31</td><td>6</td></tr>
                     <tr><td>ATK</td><td class="green-bg">31</td><td>252</td></tr>
                     <tr><td>DEF</td><td>-</td><td>-</td></tr>
-                    <tr><td>ATK ESP</td><td>-</td><td>-</td></tr>
-                    <tr><td>DEF ESP</td><td class="green-bg">31</td><td>252</td></tr>
+                    <tr><td>A.ESP</td><td>-</td><td>-</td></tr>
+                    <tr><td>D.ESP</td><td class="green-bg">31</td><td>252</td></tr>
                     <tr><td>VEL</td><td>-</td><td>-</td></tr>
                 </table>
             </div>
             <div class="cell">
                 <div class="move-badge">Golpe Bajo</div>
-                <div class="nature-box">
-                    <div class="nature-title">Firme (+Atk -Atk Esp)</div>
-                    <div class="ability-box">Competitivo</div>
-                </div>
+            </div>
+            <div class="cell nature-box">
+                <div class="nature-title">Firme<br>(+Atk -Atk Esp)</div>
+                <div class="ability-box">Competitivo</div>
             </div>
             <div class="cell notes-cell">-</div>
             <div class="cell item-box">
-                <span class="item-name">Vidasfera</span>
+                <img class="item-sprite" src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/items/life-orb.png" alt="Vidasfera">
+                <span>Vidasfera</span>
             </div>
         </div>
 
         <div class="pokemon-row">
-            <div class="cell poke-name">Gengar</div>
+            <div class="cell poke-name">
+                <img class="poke-sprite" src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/94.png" alt="Gengar">
+                <span>Gengar</span>
+            </div>
             <div class="cell">
                 <table class="stats-table">
-                    <tr><th>STATS</th><th>IVs</th><th>EVs</th></tr>
+                    <tr><th>STAT</th><th>IV</th><th>EV</th></tr>
                     <tr><td>PS</td><td>-</td><td>-</td></tr>
                     <tr><td>ATK</td><td>-</td><td>-</td></tr>
                     <tr><td>DEF</td><td>-</td><td>-</td></tr>
-                    <tr><td>ATK ESP</td><td class="green-bg">31</td><td>252</td></tr>
-                    <tr><td>DEF ESP</td><td>-</td><td>-</td></tr>
+                    <tr><td>A.ESP</td><td class="green-bg">31</td><td>252</td></tr>
+                    <tr><td>D.ESP</td><td>-</td><td>-</td></tr>
                     <tr><td>VEL</td><td class="green-bg">31</td><td>120</td></tr>
                 </table>
             </div>
             <div class="cell">
                 <div class="move-badge">Infortunio</div>
-                <div class="nature-box">
-                    <div class="nature-title">Modesta (+Atk Esp -Atk)</div>
-                    <div class="ability-box">Levitación</div>
-                </div>
+            </div>
+            <div class="cell nature-box">
+                <div class="nature-title">Modesta<br>(+Atk Esp -Atk)</div>
+                <div class="ability-box">Levitación</div>
             </div>
             <div class="cell notes-cell">-</div>
             <div class="cell item-box">
-                <span class="item-name">Gema Fantasma</span>
+                <img class="item-sprite" src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/items/spell-tag.png" alt="Gema Fantasma">
+                <span>Gema Fantasma</span>
             </div>
         </div>
 
         <div class="pokemon-row">
-            <div class="cell poke-name">Gothitelle</div>
+            <div class="cell poke-name">
+                <img class="poke-sprite" src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/576.png" alt="Gothitelle">
+                <span>Gothitelle</span>
+            </div>
             <div class="cell">
                 <table class="stats-table">
-                    <tr><th>STATS</th><th>IVs</th><th>EVs</th></tr>
+                    <tr><th>STAT</th><th>IV</th><th>EV</th></tr>
                     <tr><td>PS</td><td>-</td><td>6</td></tr>
                     <tr><td>ATK</td><td>-</td><td>-</td></tr>
                     <tr><td>DEF</td><td>-</td><td>-</td></tr>
-                    <tr><td>ATK ESP</td><td class="green-bg">31</td><td>252</td></tr>
-                    <tr><td>DEF ESP</td><td>-</td><td>-</td></tr>
+                    <tr><td>A.ESP</td><td class="green-bg">31</td><td>252</td></tr>
+                    <tr><td>D.ESP</td><td>-</td><td>-</td></tr>
                     <tr><td>VEL</td><td>-</td><td>252</td></tr>
                 </table>
             </div>
             <div class="cell">
                 <div class="move-badge">Bola Sombra</div>
-                <div class="nature-box">
-                    <div class="nature-title">Modesta (+Atk Esp -Atk)</div>
-                    <div class="ability-box">Competitivo</div>
-                </div>
+            </div>
+            <div class="cell nature-box">
+                <div class="nature-title">Modesta<br>(+Atk Esp -Atk)</div>
+                <div class="ability-box">Competitivo</div>
             </div>
             <div class="cell notes-cell">-</div>
             <div class="cell item-box">
-                <span class="item-name">Gafas Elegidas</span>
+                <img class="item-sprite" src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/items/choice-specs.png" alt="Gafas Elegidas">
+                <span>Gafas Elegidas</span>
             </div>
         </div>
 
         <div class="pokemon-row">
-            <div class="cell poke-name">Jynx</div>
+            <div class="cell poke-name">
+                <img class="poke-sprite" src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/124.png" alt="Jynx">
+                <span>Jynx</span>
+            </div>
             <div class="cell">
                 <table class="stats-table">
-                    <tr><th>STATS</th><th>IVs</th><th>EVs</th></tr>
-                    <tr><td>PS</td><td>-</td><td>0</td></tr>
+                    <tr><th>STAT</th><th>IV</th><th>EV</th></tr>
+                    <tr><td>PS</td><td class="blue-bg">0-24</td><td>0</td></tr>
                     <tr><td>ATK</td><td>-</td><td>-</td></tr>
                     <tr><td>DEF</td><td>-</td><td>-</td></tr>
-                    <tr><td>ATK ESP</td><td>-</td><td>-</td></tr>
-                    <tr><td>DEF ESP</td><td>-</td><td>0</td></tr>
-                    <tr><td>VEL</td><td>-</td><td>0</td></tr>
+                    <tr><td>A.ESP</td><td>-</td><td>-</td></tr>
+                    <tr><td>D.ESP</td><td class="blue-bg">0-24</td><td>0</td></tr>
+                    <tr><td>VEL</td><td>-</td><td>252</td></tr>
                 </table>
             </div>
             <div class="cell">
-                <div class="move-badge">Conjuro</div>
-                <div class="nature-box">
-                    <div class="nature-title">-</div>
-                    <div class="ability-box">-</div>
-                </div>
+                <div class="move-badge">Velo Sagrado</div>
             </div>
-            <div class="cell notes-cell">La naturaleza puede ser cualquiera que NO disminuya la DEF ESP.</div>
+            <div class="cell nature-box">
+                <div class="nature-title">-</div>
+                <div class="ability-box">-</div>
+            </div>
+            <div class="cell notes-cell">Cualquier naturaleza que NO aumente DEF y NO baje VEL.</div>
             <div class="cell item-box">
-                <span class="item-name">Baya Magua</span>
+                <span>-</span>
             </div>
         </div>
 
         <div class="pokemon-row">
-            <div class="cell poke-name">Krookodile</div>
+            <div class="cell poke-name">
+                <img class="poke-sprite" src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/553.png" alt="Krookodile">
+                <span>Krookodile</span>
+            </div>
             <div class="cell">
                 <table class="stats-table">
-                    <tr><th>STATS</th><th>IVs</th><th>EVs</th></tr>
-                    <tr><td>PS</td><td class="green-bg">31</td><td>6</td></tr>
+                    <tr><th>STAT</th><th>IV</th><th>EV</th></tr>
+                    <tr><td>PS</td><td>-</td><td>-</td></tr>
                     <tr><td>ATK</td><td class="green-bg">31</td><td>252</td></tr>
                     <tr><td>DEF</td><td>-</td><td>-</td></tr>
-                    <tr><td>ATK ESP</td><td>-</td><td>-</td></tr>
-                    <tr><td>DEF ESP</td><td class="green-bg">31</td><td>252</td></tr>
-                    <tr><td>VEL</td><td>-</td><td>-</td></tr>
+                    <tr><td>A.ESP</td><td>-</td><td>-</td></tr>
+                    <tr><td>D.ESP</td><td>-</td><td>-</td></tr>
+                    <tr><td>VEL</td><td class="green-bg">31</td><td>252</td></tr>
                 </table>
             </div>
             <div class="cell">
                 <div class="move-badge">Buena Baza</div>
-                <div class="nature-box">
-                    <div class="nature-title">Firme (+Atk -Atk Esp)</div>
-                    <div class="ability-box">Irascible (HO)</div>
-                </div>
+            </div>
+            <div class="cell nature-box">
+                <div class="nature-title">Firme<br>(+Atk -Atk Esp)</div>
+                <div class="ability-box">Autoatms. (HO)</div>
             </div>
             <div class="cell notes-cell">-</div>
             <div class="cell item-box">
-                <span class="item-name">Cinta Elegida</span>
+                <img class="item-sprite" src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/items/choice-band.png" alt="Cinta Elegida">
+                <span>Cinta Elegida</span>
             </div>
         </div>
     </div>
 </div>
 
 </body>
-</html>
+</html>        
