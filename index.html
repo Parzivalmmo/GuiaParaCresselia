@@ -5,16 +5,29 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Guía de Raid de Cresselia</title>
   <script src="https://cdn.tailwindcss.com"></script>
+  <style>
+    /* Efecto de fondo de galaxia con CSS puro para evitar errores de carga en GitHub */
+    .bg-galaxy {
+      background-color: #0b0b1e;
+      background-image: 
+        radial-gradient(white, rgba(255,255,255,.2) 2px, transparent 40px),
+        radial-gradient(white, rgba(255,255,255,.15) 1px, transparent 30px),
+        radial-gradient(white, rgba(255,255,255,.1) 2px, transparent 40px),
+        radial-gradient(rgba(138,43,226,.2), transparent 400px);
+      background-size: 550px 550px, 350px 350px, 250px 250px, 100% 100%;
+      background-position: 0 0, 40px 60px, 130px 270px, center;
+    }
+  </style>
 </head>
-<body class="bg-gray-100 p-4 font-sans select-none">
+<body class="bg-galaxy min-h-screen p-4 font-sans select-none">
 
   <div class="w-full max-w-6xl mx-auto space-y-6">
     
-    <div class="bg-[#3366FF] text-white text-center py-1 font-bold text-sm tracking-widest border-2 border-black uppercase">
-      JUGADOR 1
+    <div class="bg-[#3366FF] text-white text-center py-1 font-bold text-sm tracking-widest border-2 border-black uppercase shadow-lg">
+      Guia de Raid de Cresselia - JUGADOR 1
     </div>
 
-    <div class="border-2 border-black overflow-hidden bg-white shadow-md">
+    <div class="border-2 border-black overflow-hidden bg-white/95 backdrop-blur-sm shadow-md">
       <div class="bg-[#8B5A2B] text-white text-center py-1 font-bold text-xs tracking-wider border-b-2 border-black uppercase">
         HIPPOWDON
       </div>
@@ -46,4 +59,32 @@
           <div class="bg-[#3366FF] text-white font-semibold p-1 border-b-2 border-black">Movimientos</div>
           <div class="flex-1 flex items-center justify-center p-2 font-bold border-b border-black bg-[#FFFFCC] text-black">SEDUCCIÓN</div>
           <div class="flex-1 flex items-center justify-center p-2 font-bold border-b border-black text-gray-400">-</div>
-          <div class="flex
+          <div class="flex-1 flex items-center justify-center p-2 font-bold border-b border-black text-gray-400">-</div>
+          <div class="flex-1 flex items-center justify-center p-2 font-bold text-gray-400">-</div>
+        </div>
+        <div class="md:col-span-2 border-r-2 border-black flex flex-col justify-between bg-white text-black">
+          <div>
+            <div class="bg-[#3366FF] text-white font-semibold p-1 border-b-2 border-black text-center">Naturaleza</div>
+            <div class="p-3 font-bold border-b-2 border-black bg-[#7aa2f7]">CAUTA (+DEF ESP -ATK ESP)</div>
+          </div>
+          <div class="flex-1 flex flex-col justify-end">
+            <div class="bg-[#3366FF] text-white font-semibold p-1 border-b-2 border-black text-center">Habilidad</div>
+            <div class="p-3 font-bold uppercase tracking-wider bg-white">CHORRO ARENA</div>
+          </div>
+        </div>
+        <div class="md:col-span-2 border-r-2 border-black flex flex-col bg-white text-left text-black">
+          <div class="bg-[#3366FF] text-white font-semibold p-1 border-b-2 border-black text-center">Notas</div>
+          <div class="p-2 text-[11px] leading-tight font-medium">Se pueden disminuir los EVs de DEF para emular los 31 IVs en PS y DEF.ESP si no se llega al requerimiento.</div>
+        </div>
+        <div class="md:col-span-2 grid grid-cols-2 bg-white">
+          <div class="border-r border-black flex flex-col">
+            <div class="bg-[#3366FF] text-white font-semibold p-1 border-b-2 border-black text-[10px] truncate">Items</div>
+            <div class="bg-[#00FFFF] text-black text-[9px] font-bold p-0.5 border-b border-black truncate uppercase">AMULETO PURO</div>
+            <div class="flex-1 flex items-center justify-center p-1"><img src="https://www.serebii.net/itemdex/sprites/pgl/clearamulet.png" alt="Item" class="w-10 h-10 object-contain"></div>
+          </div>
+          <div class="flex items-center justify-center p-1"><img src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/450.png" alt="Pokemon" class="w-16 h-16 object-contain"></div>
+        </div>
+      </div>
+    </div>
+
+    <div class="border-2 border-black overflow-hidden bg-white/95 backdrop-blur-sm shadow
