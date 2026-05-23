@@ -1,387 +1,130 @@
-<!DOCTYPE html>
-<html lang="es">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Guía de Raid de Cresselia - AngryPlayer321</title>
-    <style>
-        :root {
-            --bg-color: #121824;
-            --card-bg: #1e293b;
-            --text-color: #f8fafc;
-            --accent-blue: #2563eb;
-            --accent-hover: #1d4ed8;
-            --border-color: #334155;
+import React from 'react';
+import pokemonList from './pokemonData.json';
+
+export default function PokemonTeam() {
+  return (
+    <div className="w-full max-w-6xl mx-auto p-4 space-y-6 bg-gray-100 font-sans select-none">
+      {/* Cabecera Principal del Jugador */}
+      <div className="bg-[#3366FF] text-white text-center py-1 font-bold text-sm tracking-widest border-2 border-black uppercase">
+        JUGADOR 1
+      </div>
+
+      {pokemonList.map((pkmn, index) => (
+        <div key={index} className="border-2 border-black overflow-hidden bg-white shadow-md mb-6">
+          
+          {/* Nombre del Pokémon con su color de fondo dinámico */}
+          <div className={`${pkmn.headerColor} text-white text-center py-1 font-bold text-xs tracking-wider border-b-2 border-black uppercase`}>
+            {pkmn.name}
+          </div>
+
+          {/* Grid Principal */}
+          <div className="grid grid-cols-1 md:grid-cols-12 text-center text-xs">
             
-            /* Colores de movimientos basados en la guía */
-            --color-seduccion: #ffedd5;
-            --color-lanzamiento: #6b7280;
-            --color-velosagrado: #e879f9;
-            --color-conjuro: #fef08a;
-            --color-golpebajo: #4b5563;
-            --color-pantalla: #f43f5e;
-            --color-envite: #ef4444;
-            --color-buenabaza: #475569;
-            --color-bomba: #a855f7;
-            --color-infortunio: #6366f1;
-            --color-bola: #4338ca;
-            --color-salmuera: #3b82f6;
-            --color-chapo: #b45309;
-        }
+            {/* COLUMNA 1: Stats (IVs y EVs) */}
+            <div className="md:col-span-3 border-r-2 border-black grid grid-cols-3 bg-[#3366FF] text-white font-semibold">
+              <div className="border-b border-r border-black p-1 bg-[#1e40af]">STATS</div>
+              <div className="border-b border-r border-black p-1 bg-[#1e40af]">IVs</div>
+              <div className="border-b border-black p-1 bg-[#1e40af]">EVs</div>
 
-        body {
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            background-color: var(--bg-color);
-            color: var(--text-color);
-            margin: 0;
-            padding: 20px;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-        }
-
-        header {
-            text-align: center;
-            margin-bottom: 25px;
-        }
-
-        header h1 {
-            margin: 0 0 5px 0;
-            color: #38bdf8;
-            font-size: 2rem;
-        }
-
-        header p {
-            margin: 0;
-            color: #94a3b8;
-            font-size: 1rem;
-        }
-
-        /* Sistema de Pestañas con CSS */
-        .tabs-container {
-            width: 100%;
-            max-width: 1200px;
-            display: flex;
-            flex-direction: column;
-        }
-
-        .tab-radio {
-            display: none;
-        }
-
-        .tab-nav {
-            display: flex;
-            justify-content: center;
-            gap: 10px;
-            margin-bottom: 20px;
-        }
-
-        .tab-label {
-            padding: 12px 24px;
-            background-color: var(--card-bg);
-            border: 1px solid var(--border-color);
-            border-radius: 6px;
-            cursor: pointer;
-            font-weight: bold;
-            transition: all 0.2s ease;
-            color: #94a3b8;
-        }
-
-        .tab-label:hover {
-            background-color: #2d3748;
-            color: var(--text-color);
-        }
-
-        .tab-content {
-            display: none;
-            width: 100%;
-        }
-
-        /* Lógica de activación de pestañas */
-        #tab-turnos:checked ~ .tab-nav .label-turnos,
-        #tab-equipos:checked ~ .tab-nav .label-equipos {
-            background-color: var(--accent-blue);
-            color: #ffffff;
-            border-color: var(--accent-blue);
-        }
-
-        #tab-turnos:checked ~ #content-turnos,
-        #tab-equipos:checked ~ #content-equipos {
-            display: block;
-        }
-
-        /* Estilos de la Tabla (Turno por Turno) */
-        .table-container {
-            width: 100%;
-            overflow-x: auto;
-            box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.5);
-            border-radius: 8px;
-        }
-
-        table {
-            width: 100%;
-            border-collapse: collapse;
-            text-align: center;
-            background-color: var(--card-bg);
-            min-width: 800px;
-        }
-
-        th, td {
-            padding: 12px 10px;
-            border: 1px solid var(--border-color);
-            font-size: 0.9rem;
-            font-weight: bold;
-        }
-
-        th {
-            background-color: var(--accent-blue);
-            color: #ffffff;
-            text-transform: uppercase;
-            font-size: 0.95rem;
-            letter-spacing: 0.5px;
-        }
-
-        .turno-cell {
-            background-color: #1e3a8a;
-            color: #38bdf8;
-            width: 70px;
-        }
-
-        .hp-cell {
-            background-color: #1e3a8a;
-            color: #f43f5e;
-            width: 90px;
-        }
-
-        /* Clases de movimientos */
-        .seduccion { background-color: var(--color-seduccion); color: #1e293b; }
-        .lanzamiento { background-color: var(--color-lanzamiento); color: #fff; }
-        .velosagrado { background-color: var(--color-velosagrado); color: #fff; }
-        .conjuro { background-color: var(--color-conjuro); color: #1e293b; }
-        .golpebajo { background-color: var(--color-golpebajo); color: #e2e8f0; }
-        .pantallaluz { background-color: var(--color-pantalla); color: #fff; }
-        .envite { background-color: var(--color-envite); color: #fff; }
-        .buenabaza { background-color: var(--color-buenabaza); color: #fff; }
-        .bomba { background-color: var(--color-bomba); color: #fff; }
-        .infortunio { background-color: var(--color-infortunio); color: #fff; }
-        .bolasombra { background-color: var(--color-bola); color: #fff; }
-        .salmuera { background-color: var(--color-salmuera); color: #fff; }
-        .chapoteolodo { background-color: var(--color-chapo); color: #fff; }
-        .dead-ay { background-color: #fef08a; color: #1e293b; }
-
-        /* Estilos de la Sección de Equipos */
-        .team-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-            gap: 20px;
-            width: 100%;
-        }
-
-        .pokemon-card {
-            background-color: var(--card-bg);
-            border: 2px solid var(--border-color);
-            border-radius: 8px;
-            padding: 15px;
-            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.3);
-            transition: transform 0.2s ease;
-        }
-
-        .pokemon-card:hover {
-            transform: translateY(-2px);
-            border-color: #475569;
-        }
-
-        .pokemon-header {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            border-bottom: 1px solid var(--border-color);
-            padding-bottom: 8px;
-            margin-bottom: 10px;
-        }
-
-        .pokemon-name {
-            font-size: 1.2rem;
-            font-weight: bold;
-            color: #38bdf8;
-        }
-
-        .pokemon-role {
-            font-size: 0.8rem;
-            background-color: #334155;
-            padding: 3px 8px;
-            border-radius: 12px;
-            text-transform: uppercase;
-        }
-
-        .info-row {
-            margin: 6px 0;
-            font-size: 0.9rem;
-        }
-
-        .info-label {
-            color: #94a3b8;
-            font-weight: normal;
-        }
-
-        /* Adaptabilidad para móviles */
-        @media (max-width: 768px) {
-            body { padding: 10px; }
-            header h1 { font-size: 1.6rem; }
-            th, td { padding: 8px 5px; font-size: 0.8rem; }
-            .tab-label { padding: 10px 16px; font-size: 0.9rem; }
-        }
-    </style>
-</head>
-<body>
-
-    <header>
-        <h1>Guía para Raid de Cresselia</h1>
-        <p>Autor: AngryPlayer321</p>
-    </header>
-
-    <div class="tabs-container">
-        <input type="radio" id="tab-turnos" name="raid-tabs" class="tab-radio" checked>
-        <input type="radio" id="tab-equipos" name="raid-tabs" class="tab-radio">
-
-        <div class="tab-nav">
-            <label for="tab-turnos" class="tab-label label-turnos">Turno por Turno</label>
-            <label for="tab-equipos" class="tab-label label-equipos">Equipos de la Raid</label>
-        </div>
-
-        <div id="content-turnos" class="tab-content">
-            <div class="table-container">
-                <table>
-                    <thead>
-                        <tr>
-                            <th>Turno</th>
-                            <th>J1</th>
-                            <th>J2</th>
-                            <th>J3</th>
-                            <th>J4</th>
-                            <th>Boss HP</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <tr>
-                            <td class="turno-cell">T1</td>
-                            <td class="seduccion">SEDUCCIÓN</td>
-                            <td class="lanzamiento">LANZAMIENTO</td>
-                            <td class="velosagrado">VELOSAGRADO</td>
-                            <td class="conjuro">CONJURO</td>
-                            <td class="hp-cell">98%</td>
-                        </tr>
-                        <tr>
-                            <td class="turno-cell">T2</td>
-                            <td class="dead-ay">Dead Ay Ay</td>
-                            <td class="golpebajo">GOLPE BAJO</td>
-                            <td class="golpebajo">GOLPE BAJO</td>
-                            <td class="golpebajo">GOLPE BAJO</td>
-                            <td class="hp-cell">85%</td>
-                        </tr>
-                        <tr>
-                            <td class="turno-cell">T3</td>
-                            <td class="pantallaluz">PANTALLA LUZ</td>
-                            <td class="golpebajo">GOLPE BAJO</td>
-                            <td class="golpebajo">GOLPE BAJO</td>
-                            <td class="golpebajo">GOLPE BAJO</td>
-                            <td class="hp-cell">72%</td>
-                        </tr>
-                        <tr>
-                            <td class="turno-cell">T4</td>
-                            <td class="envite">ENVITE IGNEO</td>
-                            <td class="buenabaza">BUENA BAZA</td>
-                            <td class="bomba">BOMBA ÁCIDA</td>
-                            <td class="infortunio">INFORTUNIO</td>
-                            <td class="hp-cell">63%</td>
-                        </tr>
-                        <tr>
-                            <td class="turno-cell">T5</td>
-                            <td class="buenabaza">BUENA BAZA</td>
-                            <td class="buenabaza">BUENA BAZA</td>
-                            <td class="bolasombra">BOLA SOMBRA</td>
-                            <td class="bolasombra">BOLA SOMBRA</td>
-                            <td class="hp-cell">45%</td>
-                        </tr>
-                        <tr>
-                            <td class="turno-cell">T6</td>
-                            <td class="velosagrado">VELOSAGRADO</td>
-                            <td class="salmuera">SALMUERA</td>
-                            <td class="lanzamiento">LANZAMIENTO</td>
-                            <td class="conjuro">CONJURO</td>
-                            <td class="hp-cell">39%</td>
-                        </tr>
-                        <tr>
-                            <td class="turno-cell">T7</td>
-                            <td class="chapoteolodo">CHAPOTEOLODO</td>
-                            <td class="salmuera">SALMUERA</td>
-                            <td class="seduccion">SEDUCCIÓN</td>
-                            <td class="buenabaza">BUENA BAZA</td>
-                            <td class="hp-cell">33%</td>
-                        </tr>
-                        <tr>
-                            <td class="turno-cell">T8</td>
-                            <td class="salmuera">SALMUERA</td>
-                            <td class="salmuera">SALMUERA</td>
-                            <td class="buenabaza">BUENA BAZA</td>
-                            <td class="buenabaza">BUENA BAZA</td>
-                            <td class="hp-cell">22%</td>
-                        </tr>
-                        <tr>
-                            <td class="turno-cell">T9</td>
-                            <td class="salmuera">SALMUERA</td>
-                            <td class="salmuera">SALMUERA</td>
-                            <td class="buenabaza">BUENA BAZA</td>
-                            <td class="buenabaza">BUENA BAZA</td>
-                            <td class="hp-cell">11%</td>
-                        </tr>
-                        <tr>
-                            <td class="turno-cell">T10</td>
-                            <td class="salmuera">SALMUERA</td>
-                            <td class="salmuera">SALMUERA</td>
-                            <td class="buenabaza">BUENA BAZA</td>
-                            <td class="buenabaza">BUENA BAZA</td>
-                            <td class="hp-cell">-</td>
-                        </tr>
-                    </tbody>
-                </table>
+              {pkmn.stats.map((stat, sIdx) => {
+                const isIvMax = stat.iv === 31;
+                const isVelZero = stat.name === 'VEL' && stat.iv === 0;
+                
+                return (
+                  <React.Fragment key={sIdx}>
+                    <div className="border-b border-r border-black p-1 bg-[#3366FF] flex items-center justify-center font-bold">
+                      {stat.name}
+                    </div>
+                    <div className={`border-b border-r border-black p-1 flex items-center justify-center font-bold text-black
+                      ${isIvMax ? 'bg-[#00FF00]' : isVelZero ? 'bg-[#FF0000] text-white' : 'bg-[#7aa2f7]'}`}>
+                      {stat.iv > 0 || isVelZero ? stat.iv : '-'}
+                    </div>
+                    <div className={`border-b border-black p-1 flex items-center justify-center text-black font-bold
+                      ${stat.ev > 0 ? 'bg-[#00FF00]' : 'bg-[#7aa2f7]'}`}>
+                      {stat.ev > 0 ? stat.ev : '-'}
+                    </div>
+                  </React.Fragment>
+                );
+              })}
             </div>
-        </div>
 
-        <div id="content-equipos" class="tab-content">
-            <div class="team-grid">
-                <div class="pokemon-card">
-                    <div class="pokemon-header">
-                        <span class="pokemon-name">Hippowdon</span>
-                        <span class="pokemon-role">Jugador 1</span>
-                    </div>
-                    <div class="info-row"><span class="info-label">Objeto:</span> Restos</div>
-                    <div class="info-row"><span class="info-label">Habilidad:</span> Chorro Arena</div>
-                    <div class="info-row"><span class="info-label">Movimientos:</span> Seducción, Chapoteolodo</div>
+            {/* COLUMNA 2: Movimientos */}
+            <div className="md:col-span-3 border-r-2 border-black flex flex-col bg-white">
+              <div className="bg-[#3366FF] text-white font-semibold p-1 border-b-2 border-black">
+                Movimientos
+              </div>
+              {pkmn.moves.map((move, mIdx) => (
+                <div 
+                  key={mIdx} 
+                  className={`flex-1 flex items-center justify-center p-2 font-bold border-b border-black last:border-b-0
+                    ${move === 'SEDUCCIÓN' ? 'bg-[#FFFFCC] text-black' : ''}
+                    ${move === 'PANTALLA LUZ' ? 'bg-[#FF00FF] text-white' : ''}
+                    ${move === 'ENVITE IGNEO' ? 'bg-[#FF0000] text-white' : ''}
+                    ${move === 'BUENA BAZA' ? 'bg-[#444444] text-white' : ''}
+                    ${move.includes('SALMUERA') ? 'bg-[#3399FF] text-white' : ''}
+                    ${move === '-' ? 'text-gray-400 font-normal' : 'text-black'}`}
+                >
+                  {move}
                 </div>
-
-                <div class="pokemon-card">
-                    <div class="pokemon-header">
-                        <span class="pokemon-name">Weavile</span>
-                        <span class="pokemon-role">Jugador 2</span>
-                    </div>
-                    <div class="info-row"><span class="info-label">Objeto:</span> Vidasfera</div>
-                    <div class="info-row"><span class="info-label">Habilidad:</span> Presión</div>
-                    <div class="info-row"><span class="info-label">Movimientos:</span> Golpe Bajo, Lanzamiento, Buena Baza</div>
-                </div>
-
-                <div class="pokemon-card">
-                    <div class="pokemon-header">
-                        <span class="pokemon-name">Tyranitar</span>
-                        <span class="pokemon-role">Jugador 3</span>
-                    </div>
-                    <div class="info-row"><span class="info-label">Objeto:</span> Cinta Elegida</div>
-                    <div class="info-row"><span class="info-label">Habilidad:</span> Chorro Arena</div>
-                    <div class="info-row"><span class="info-label">Movimientos:</span> Golpe Bajo, Buena Baza, Seducción</div>
-                </div>
+              ))}
             </div>
+
+            {/* COLUMNA 3: Naturaleza y Habilidad */}
+            <div className="md:col-span-2 border-r-2 border-black flex flex-col justify-between bg-white">
+              <div>
+                <div className="bg-[#3366FF] text-white font-semibold p-1 border-b-2 border-black">
+                  Naturaleza
+                </div>
+                <div className={`p-3 font-bold border-b-2 border-black text-black
+                  ${pkmn.nature.includes('FIRME') ? 'bg-[#FF0000] text-white' : ''}
+                  ${pkmn.nature.includes('MANSA') ? 'bg-[#FF9900] text-white' : ''}
+                  ${pkmn.nature.includes('MODESTA') ? 'bg-[#FFCCE6] text-black' : 'bg-[#7aa2f7]'}`}>
+                  {pkmn.nature}
+                </div>
+              </div>
+              <div className="flex-1 flex flex-col justify-end">
+                <div className="bg-[#3366FF] text-white font-semibold p-1 border-t border-b-2 border-black">
+                  Habilidad
+                </div>
+                <div className={`p-3 font-bold text-black uppercase tracking-wider bg-white
+                  ${pkmn.ability === 'COMPETITIVO (HO)' ? 'bg-[#FFFF00]' : ''}`}>
+                  {pkmn.ability}
+                </div>
+              </div>
+            </div>
+
+            {/* COLUMNA 4: Notas */}
+            <div className="md:col-span-2 border-r-2 border-black flex flex-col bg-white text-left">
+              <div className="bg-[#3366FF] text-white font-semibold p-1 border-b-2 border-black text-center">
+                Notas
+              </div>
+              <div className="p-2 text-[11px] text-gray-700 leading-tight font-medium overflow-y-auto max-h-[160px]">
+                {pkmn.notes || ''}
+              </div>
+            </div>
+
+            {/* COLUMNA 5: Item e Imagen */}
+            <div className="md:col-span-2 grid grid-cols-2 bg-white">
+              <div className="border-r border-black flex flex-col">
+                <div className="bg-[#3366FF] text-white font-semibold p-1 border-b-2 border-black text-[10px] truncate">
+                  Items
+                </div>
+                <div className="bg-[#00FFFF] text-black text-[9px] font-bold p-0.5 border-b border-black truncate uppercase">
+                  {pkmn.item.name}
+                </div>
+                <div className="flex-1 flex items-center justify-center p-1">
+                  <img src={pkmn.item.image} alt={pkmn.item.name} className="w-10 h-10 object-contain" />
+                </div>
+              </div>
+
+              <div className="flex items-center justify-center p-1 bg-white">
+                <img src={pkmn.sprite} alt={pkmn.name} className="w-16 h-16 object-contain" />
+              </div>
+            </div>
+
+          </div>
         </div>
+      ))}
     </div>
-
-</body>
-</html>
+  );
+}
