@@ -8,10 +8,10 @@
         :root {
             --bg-color: #0f172a;       /* Fondo principal de la página */
             --panel-bg: #1e293b;       /* Fondo de las tarjetas y tablas */
-            --border-color: #334155;   /* Color único para todos los bordes */
+            --border-color: #334155;   /* Color único y simétrico para todos los bordes */
             --text-main: #f8fafc;      /* Texto principal */
             --text-muted: #94a3b8;     /* Texto secundario / notas */
-            --accent-blue: #38bdf8;    /* Color de énfasis para resaltar datos clave */
+            --accent-blue: #38bdf8;    /* Color de énfasis */
             --hp-color: #f43f5e;       /* Color para el porcentaje de vida del Boss */
         }
 
@@ -25,7 +25,7 @@
         }
 
         .container {
-            max-width: 1500px;
+            max-width: 1600px;
             margin: 0 auto;
         }
 
@@ -43,10 +43,10 @@
             font-size: 1.2em;
         }
 
-        /* Contenedor en cuadrícula para los 4 jugadores */
+        /* Cuadrícula perfectamente simétrica para los 4 jugadores */
         .grid-jugadores {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            grid-template-columns: repeat(auto-fit, minmax(360px, 1fr));
             gap: 25px;
             margin-bottom: 40px;
         }
@@ -56,6 +56,8 @@
             border-radius: 10px;
             padding: 20px;
             border: 1px solid var(--border-color);
+            display: flex;
+            flex-direction: column;
         }
 
         .card-jugador h3 {
@@ -65,15 +67,20 @@
             border-bottom: 2px solid var(--border-color);
             color: var(--accent-blue);
             font-size: 1.3em;
+            text-align: center;
         }
 
-        /* Estructura interna de cada Pokémon de la lista */
+        /* Caja de cada Pokémon simétrica con alturas alineadas */
         .pokemon-block {
             background-color: #111827;
             border: 1px solid var(--border-color);
             border-radius: 8px;
-            padding: 12px;
-            margin-bottom: 12px;
+            padding: 14px;
+            margin-bottom: 14px;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            min-height: 190px; /* Forzar simetría visual */
         }
 
         .pokemon-header {
@@ -81,58 +88,70 @@
             justify-content: space-between;
             align-items: center;
             margin-bottom: 8px;
+            border-bottom: 1px dashed var(--border-color);
+            padding-bottom: 6px;
         }
 
         .pokemon-title {
             font-weight: bold;
-            font-size: 1.15em;
+            font-size: 1.2em;
             color: #ffffff;
         }
 
         .pokemon-images {
             display: flex;
             align-items: center;
-            gap: 8px;
+            gap: 10px;
         }
 
         .pokemon-img {
-            width: 50px;
-            height: 50px;
+            width: 55px;
+            height: 55px;
             object-fit: contain;
         }
 
         .item-img {
-            width: 32px;
-            height: 32px;
+            width: 34px;
+            height: 34px;
             object-fit: contain;
             border: 1px solid var(--border-color);
             background-color: var(--panel-bg);
-            border-radius: 4px;
+            border-radius: 6px;
             padding: 2px;
         }
 
+        .item-placeholder {
+            width: 34px;
+            height: 34px;
+            border: 1px dashed #475569;
+            border-radius: 6px;
+            background-color: transparent;
+        }
+
+        /* Detalles en formato cuadrícula limpia y ordenada */
         .pokemon-details {
-            font-size: 0.85em;
+            font-size: 0.88em;
             display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 4px;
+            grid-template-columns: 1fr;
+            gap: 3px;
             color: #cbd5e1;
-            border-top: 1px solid #1f2937;
-            padding-top: 6px;
         }
 
         .detail-item span {
             color: var(--text-muted);
+            font-weight: 600;
         }
 
         .pokemon-notes {
-            grid-column: span 2;
             font-style: italic;
-            color: #ea580c; /* Color sutil para destacar notas importantes de velocidad o stats */
-            margin-top: 2px;
+            color: #fb923c;
+            margin-top: 5px;
+            font-size: 0.82em;
+            border-top: 1px solid #1e293b;
+            padding-top: 4px;
         }
 
-        /* Diseño de la tabla de turnos */
+        /* Estilos de la Tabla de Turnos */
         .table-responsive {
             overflow-x: auto;
             background-color: var(--panel-bg);
@@ -145,11 +164,11 @@
             width: 100%;
             border-collapse: collapse;
             text-align: center;
-            min-width: 900px;
+            min-width: 1000px;
         }
 
         th, td {
-            padding: 12px 8px;
+            padding: 12px 10px;
             border: 1px solid var(--border-color);
             font-size: 0.9em;
             vertical-align: middle;
@@ -166,41 +185,35 @@
         }
 
         tr:nth-child(odd) td {
-            background-color: #1a2333;
+            background-color: #141e30;
         }
 
         .turno-col {
             font-weight: bold;
             background-color: #0f172a !important;
             color: #ffffff;
-            width: 60px;
+            width: 70px;
         }
 
         .hp-col {
             font-weight: bold;
             color: var(--hp-color);
-            width: 80px;
+            width: 90px;
+            font-size: 1em;
         }
 
-        /* Contenedor compacto dentro de las celdas de la tabla */
+        /* Contenido de celda simétrico */
         .table-cell-content {
             display: flex;
             flex-direction: column;
-            align-items: center;
-            gap: 4px;
-            padding: 4px;
-        }
-
-        .table-pokemon-meta {
-            display: flex;
             align-items: center;
             justify-content: center;
             gap: 6px;
         }
 
         .table-sprite {
-            width: 32px;
-            height: 32px;
+            width: 40px;
+            height: 40px;
             object-fit: contain;
         }
 
@@ -208,7 +221,7 @@
             font-weight: bold;
             color: #ffffff;
             font-size: 0.95em;
-            letter-spacing: 0.5px;
+            letter-spacing: 0.3px;
         }
     </style>
 </head>
@@ -234,9 +247,9 @@
                 <div class="pokemon-details">
                     <div class="detail-item"><span>IVs:</span> PS:31 | DefSp:31 | Vel:31</div>
                     <div class="detail-item"><span>EVs:</span> Def:238 | DefSp:20 | Vel:252</div>
-                    <div class="detail-item"><span>Mov:</span> Seducción</div>
+                    <div class="detail-item"><span>Movimiento:</span> Seducción</div>
                     <div class="detail-item"><span>Habilidad:</span> Chorro Arena</div>
-                    <div class="detail-item" style="grid-column: span 2;"><span>Naturaleza:</span> Cauta (+Def Esp, -Atk Esp)</div>
+                    <div class="detail-item"><span>Naturaleza:</span> Cauta (+Def Esp, -Atk Esp)</div>
                     <div class="pokemon-notes">* Se pueden disminuir los EVs de DEF para simular los 31 IVs en PS y DEF.ESP si no se llega al requerimiento.</div>
                 </div>
             </div>
@@ -252,9 +265,9 @@
                 <div class="pokemon-details">
                     <div class="detail-item"><span>IVs:</span> -</div>
                     <div class="detail-item"><span>EVs:</span> -</div>
-                    <div class="detail-item"><span>Mov:</span> Pantalla Luz</div>
+                    <div class="detail-item"><span>Movimiento:</span> Pantalla Luz</div>
                     <div class="detail-item"><span>Habilidad:</span> Bromista</div>
-                    <div class="detail-item" style="grid-column: span 2;"><span>Naturaleza:</span> -</div>
+                    <div class="detail-item"><span>Naturaleza:</span> -</div>
                     <div class="pokemon-notes">* Evitar EVs en DEF.ESP.</div>
                 </div>
             </div>
@@ -270,9 +283,9 @@
                 <div class="pokemon-details">
                     <div class="detail-item"><span>IVs:</span> Atk:31 | Vel:31</div>
                     <div class="detail-item"><span>EVs:</span> Atk:252 | Def:90 | Vel:168</div>
-                    <div class="detail-item"><span>Mov:</span> Envite Ígneo</div>
+                    <div class="detail-item"><span>Movimiento:</span> Envite Ígneo</div>
                     <div class="detail-item"><span>Habilidad:</span> Potencia Bruta</div>
-                    <div class="detail-item" style="grid-column: span 2;"><span>Naturaleza:</span> Firme (+Atk, -Atk Esp)</div>
+                    <div class="detail-item"><span>Naturaleza:</span> Firme (+Atk, -Atk Esp)</div>
                     <div class="pokemon-notes">* La estadística de Velocidad al nivel 100 debe ser menor de 269.</div>
                 </div>
             </div>
@@ -288,9 +301,9 @@
                 <div class="pokemon-details">
                     <div class="detail-item"><span>IVs:</span> Atk:31 | Vel:31</div>
                     <div class="detail-item"><span>EVs:</span> PS:6 | Atk:252 | Vel:252</div>
-                    <div class="detail-item"><span>Mov:</span> Buena Baza</div>
+                    <div class="detail-item"><span>Movimiento:</span> Buena Baza</div>
                     <div class="detail-item"><span>Habilidad:</span> Competitivo (HO)</div>
-                    <div class="detail-item" style="grid-column: span 2;"><span>Naturaleza:</span> Firme (+Atk, -Atk Esp)</div>
+                    <div class="detail-item"><span>Naturaleza:</span> Firme (+Atk, -Atk Esp)</div>
                 </div>
             </div>
 
@@ -305,9 +318,9 @@
                 <div class="pokemon-details">
                     <div class="detail-item"><span>IVs:</span> PS:31 | AtkSp:31 | DefSp:31 | Vel:0</div>
                     <div class="detail-item"><span>EVs:</span> PS:6 | AtkSp:252 | DefSp:252</div>
-                    <div class="detail-item"><span>Mov:</span> Salmuera, Velo Sagrado, Chapoteolodo</div>
+                    <div class="detail-item"><span>Movimiento:</span> Salmuera, Velo Sagrado, Chapoteolodo</div>
                     <div class="detail-item"><span>Habilidad:</span> Competitivo</div>
-                    <div class="detail-item" style="grid-column: span 2;"><span>Naturaleza:</span> Mansa (+Atk Esp, -Vel)</div>
+                    <div class="detail-item"><span>Naturaleza:</span> Mansa (+Atk Esp, -Vel)</div>
                 </div>
             </div>
 
@@ -322,9 +335,9 @@
                 <div class="pokemon-details">
                     <div class="detail-item"><span>IVs:</span> PS:31 | AtkSp:31 | DefSp:31</div>
                     <div class="detail-item"><span>EVs:</span> PS:6 | AtkSp:252 | DefSp:252</div>
-                    <div class="detail-item"><span>Mov:</span> Salmuera</div>
+                    <div class="detail-item"><span>Movimiento:</span> Salmuera</div>
                     <div class="detail-item"><span>Habilidad:</span> Competitivo</div>
-                    <div class="detail-item" style="grid-column: span 2;"><span>Naturaleza:</span> Modesta (+Atk Esp, -Atk)</div>
+                    <div class="detail-item"><span>Naturaleza:</span> Modesta (+Atk Esp, -Atk)</div>
                 </div>
             </div>
         </div>
@@ -343,9 +356,9 @@
                 <div class="pokemon-details">
                     <div class="detail-item"><span>IVs:</span> Atk:31 | Vel:31</div>
                     <div class="detail-item"><span>EVs:</span> PS:6 | Atk:252 | Vel:252</div>
-                    <div class="detail-item"><span>Mov:</span> Lanzamiento</div>
+                    <div class="detail-item"><span>Movimiento:</span> Lanzamiento</div>
                     <div class="detail-item"><span>Habilidad:</span> -</div>
-                    <div class="detail-item" style="grid-column: span 2;"><span>Naturaleza:</span> Firme (+Atk, -Atk Esp)</div>
+                    <div class="detail-item"><span>Naturaleza:</span> Firme (+Atk, -Atk Esp)</div>
                 </div>
             </div>
 
@@ -360,9 +373,9 @@
                 <div class="pokemon-details">
                     <div class="detail-item"><span>IVs:</span> PS:31 | Atk:31 | DefSp:31</div>
                     <div class="detail-item"><span>EVs:</span> PS:6 | Atk:252 | DefSp:252</div>
-                    <div class="detail-item"><span>Mov:</span> Golpe Bajo</div>
+                    <div class="detail-item"><span>Movimiento:</span> Golpe Bajo</div>
                     <div class="detail-item"><span>Habilidad:</span> Competitivo</div>
-                    <div class="detail-item" style="grid-column: span 2;"><span>Naturaleza:</span> Firme (+Atk, -Atk Esp)</div>
+                    <div class="detail-item"><span>Naturaleza:</span> Firme (+Atk, -Atk Esp)</div>
                 </div>
             </div>
 
@@ -377,9 +390,9 @@
                 <div class="pokemon-details">
                     <div class="detail-item"><span>IVs:</span> Atk:31 | Vel:31</div>
                     <div class="detail-item"><span>EVs:</span> PS:6 | Atk:252 | Vel:252</div>
-                    <div class="detail-item"><span>Mov:</span> Buena Baza</div>
+                    <div class="detail-item"><span>Movimiento:</span> Buena Baza</div>
                     <div class="detail-item"><span>Habilidad:</span> Impulso (HO)</div>
-                    <div class="detail-item" style="grid-column: span 2;"><span>Naturaleza:</span> Firme (+Atk, -Atk Esp)</div>
+                    <div class="detail-item"><span>Naturaleza:</span> Firme (+Atk, -Atk Esp)</div>
                 </div>
             </div>
 
@@ -394,9 +407,9 @@
                 <div class="pokemon-details">
                     <div class="detail-item"><span>IVs:</span> Atk:31 | Vel:31</div>
                     <div class="detail-item"><span>EVs:</span> PS:6 | Atk:252 | DefSp:252</div>
-                    <div class="detail-item"><span>Mov:</span> Buena Baza</div>
+                    <div class="detail-item"><span>Movimiento:</span> Buena Baza</div>
                     <div class="detail-item"><span>Habilidad:</span> Competitivo (HO)</div>
-                    <div class="detail-item" style="grid-column: span 2;"><span>Naturaleza:</span> Firme (+Atk, -Atk Esp)</div>
+                    <div class="detail-item"><span>Naturaleza:</span> Firme (+Atk, -Atk Esp)</div>
                 </div>
             </div>
 
@@ -411,9 +424,9 @@
                 <div class="pokemon-details">
                     <div class="detail-item"><span>IVs:</span> PS:31 | AtkSp:31 | DefSp:31</div>
                     <div class="detail-item"><span>EVs:</span> PS:6 | AtkSp:252 | DefSp:252</div>
-                    <div class="detail-item"><span>Mov:</span> Salmuera</div>
+                    <div class="detail-item"><span>Movimiento:</span> Salmuera</div>
                     <div class="detail-item"><span>Habilidad:</span> Competitivo</div>
-                    <div class="detail-item" style="grid-column: span 2;"><span>Naturaleza:</span> Modesta (+Atk Esp, -Atk)</div>
+                    <div class="detail-item"><span>Naturaleza:</span> Modesta (+Atk Esp, -Atk)</div>
                 </div>
             </div>
 
@@ -428,9 +441,9 @@
                 <div class="pokemon-details">
                     <div class="detail-item"><span>IVs:</span> PS:31 | AtkSp:31 | DefSp:31 | Vel:31</div>
                     <div class="detail-item"><span>EVs:</span> PS:6 | AtkSp:232 | DefSp:252 | Vel:20</div>
-                    <div class="detail-item"><span>Mov:</span> Salmuera</div>
+                    <div class="detail-item"><span>Movimiento:</span> Salmuera</div>
                     <div class="detail-item"><span>Habilidad:</span> Competitivo</div>
-                    <div class="detail-item" style="grid-column: span 2;"><span>Naturaleza:</span> Modesta (+Atk Esp, -Atk)</div>
+                    <div class="detail-item"><span>Naturaleza:</span> Modesta (+Atk Esp, -Atk)</div>
                 </div>
             </div>
         </div>
@@ -442,15 +455,16 @@
                 <div class="pokemon-header">
                     <span class="pokemon-title">Kadabra</span>
                     <div class="pokemon-images">
+                        <div class="item-placeholder"></div>
                         <img class="pokemon-img" src="assets/sprites/kadabra.png" alt="Kadabra">
                     </div>
                 </div>
                 <div class="pokemon-details">
                     <div class="detail-item"><span>IVs:</span> PS:0-27 | DefSp:0-27</div>
                     <div class="detail-item"><span>EVs:</span> PS:0 | DefSp:0 | Vel:252</div>
-                    <div class="detail-item"><span>Mov:</span> Velo Sagrado</div>
+                    <div class="detail-item"><span>Movimiento:</span> Velo Sagrado</div>
                     <div class="detail-item"><span>Habilidad:</span> -</div>
-                    <div class="detail-item" style="grid-column: span 2;"><span>Naturaleza:</span> Que NO suba DefSp ni baje Vel</div>
+                    <div class="detail-item"><span>Naturaleza:</span> Que NO suba DefSp ni baje Vel</div>
                 </div>
             </div>
 
@@ -465,9 +479,9 @@
                 <div class="pokemon-details">
                     <div class="detail-item"><span>IVs:</span> Atk:31 | DefSp:31</div>
                     <div class="detail-item"><span>EVs:</span> PS:252 | Atk:168 | DefSp:88</div>
-                    <div class="detail-item"><span>Mov:</span> Golpe Bajo</div>
+                    <div class="detail-item"><span>Movimiento:</span> Golpe Bajo</div>
                     <div class="detail-item"><span>Habilidad:</span> Competitivo</div>
-                    <div class="detail-item" style="grid-column: span 2;"><span>Naturaleza:</span> Firme (+Atk, -Atk Esp)</div>
+                    <div class="detail-item"><span>Naturaleza:</span> Firme (+Atk, -Atk Esp)</div>
                 </div>
             </div>
 
@@ -475,15 +489,16 @@
                 <div class="pokemon-header">
                     <span class="pokemon-title">Crobat</span>
                     <div class="pokemon-images">
+                        <div class="item-placeholder"></div>
                         <img class="pokemon-img" src="assets/sprites/crobat.png" alt="Crobat">
                     </div>
                 </div>
                 <div class="pokemon-details">
                     <div class="detail-item"><span>IVs:</span> AtkSp:31 | Vel:31</div>
                     <div class="detail-item"><span>EVs:</span> AtkSp:252 | Vel:252</div>
-                    <div class="detail-item"><span>Mov:</span> Bomba Ácida</div>
+                    <div class="detail-item"><span>Movimiento:</span> Bomba Ácida</div>
                     <div class="detail-item"><span>Habilidad:</span> -</div>
-                    <div class="detail-item" style="grid-column: span 2;"><span>Naturaleza:</span> -</div>
+                    <div class="detail-item"><span>Naturaleza:</span> -</div>
                     <div class="pokemon-notes">* Cualquier poke rápido con Bomba Ácida que caiga de un golpe contra el Boss.</div>
                 </div>
             </div>
@@ -499,9 +514,9 @@
                 <div class="pokemon-details">
                     <div class="detail-item"><span>IVs:</span> PS:31 | AtkSp:31 | DefSp:31</div>
                     <div class="detail-item"><span>EVs:</span> PS:6 | AtkSp:252 | DefSp:252</div>
-                    <div class="detail-item"><span>Mov:</span> Bola Sombra</div>
+                    <div class="detail-item"><span>Movimiento:</span> Bola Sombra</div>
                     <div class="detail-item"><span>Habilidad:</span> Competitivo</div>
-                    <div class="detail-item" style="grid-column: span 2;"><span>Naturaleza:</span> Modesta (+Atk Esp, -Atk)</div>
+                    <div class="detail-item"><span>Naturaleza:</span> Modesta (+Atk Esp, -Atk)</div>
                 </div>
             </div>
 
@@ -516,9 +531,9 @@
                 <div class="pokemon-details">
                     <div class="detail-item"><span>IVs:</span> PS:31 | Atk:31 | DefSp:31</div>
                     <div class="detail-item"><span>EVs:</span> PS:6 | Atk:252 | DefSp:252</div>
-                    <div class="detail-item"><span>Mov:</span> Lanzamiento</div>
+                    <div class="detail-item"><span>Movimiento:</span> Lanzamiento</div>
                     <div class="detail-item"><span>Habilidad:</span> Adaptable (HO)</div>
-                    <div class="detail-item" style="grid-column: span 2;"><span>Naturaleza:</span> Audaz (+Atk, -Vel)</div>
+                    <div class="detail-item"><span>Naturaleza:</span> Audaz (+Atk, -Vel)</div>
                 </div>
             </div>
 
@@ -533,9 +548,9 @@
                 <div class="pokemon-details">
                     <div class="detail-item"><span>IVs:</span> PS:31 | Atk:31 | DefSp:31 | Vel:31</div>
                     <div class="detail-item"><span>EVs:</span> PS:6 | Atk:252 | DefSp:252</div>
-                    <div class="detail-item"><span>Mov:</span> Buena Baza, Seducción</div>
+                    <div class="detail-item"><span>Movimiento:</span> Buena Baza, Seducción</div>
                     <div class="detail-item"><span>Habilidad:</span> Chorro Arena</div>
-                    <div class="detail-item" style="grid-column: span 2;"><span>Naturaleza:</span> Firme (+Atk, -Atk Esp)</div>
+                    <div class="detail-item"><span>Naturaleza:</span> Firme (+Atk, -Atk Esp)</div>
                 </div>
             </div>
         </div>
@@ -554,9 +569,9 @@
                 <div class="pokemon-details">
                     <div class="detail-item"><span>IVs:</span> Vel:31</div>
                     <div class="detail-item"><span>EVs:</span> Def:6 | AtkSp:252 | Vel:252</div>
-                    <div class="detail-item"><span>Mov:</span> Conjuro</div>
+                    <div class="detail-item"><span>Movimiento:</span> Conjuro</div>
                     <div class="detail-item"><span>Habilidad:</span> -</div>
-                    <div class="detail-item" style="grid-column: span 2;"><span>Naturaleza:</span> -</div>
+                    <div class="detail-item"><span>Naturaleza:</span> -</div>
                 </div>
             </div>
 
@@ -571,9 +586,9 @@
                 <div class="pokemon-details">
                     <div class="detail-item"><span>IVs:</span> PS:31 | Atk:31 | DefSp:31</div>
                     <div class="detail-item"><span>EVs:</span> PS:6 | Atk:252 | DefSp:252</div>
-                    <div class="detail-item"><span>Mov:</span> Golpe Bajo</div>
+                    <div class="detail-item"><span>Movimiento:</span> Golpe Bajo</div>
                     <div class="detail-item"><span>Habilidad:</span> Competitivo</div>
-                    <div class="detail-item" style="grid-column: span 2;"><span>Naturaleza:</span> Firme (+Atk, -Atk Esp)</div>
+                    <div class="detail-item"><span>Naturaleza:</span> Firme (+Atk, -Atk Esp)</div>
                 </div>
             </div>
 
@@ -588,9 +603,9 @@
                 <div class="pokemon-details">
                     <div class="detail-item"><span>IVs:</span> AtkSp:31 | Vel:31</div>
                     <div class="detail-item"><span>EVs:</span> AtkSp:252 | Vel:120</div>
-                    <div class="detail-item"><span>Mov:</span> Infortunio</div>
+                    <div class="detail-item"><span>Movimiento:</span> Infortunio</div>
                     <div class="detail-item"><span>Habilidad:</span> Levitación</div>
-                    <div class="detail-item" style="grid-column: span 2;"><span>Naturaleza:</span> Modesta (+Atk Esp, -Atk)</div>
+                    <div class="detail-item"><span>Naturaleza:</span> Modesta (+Atk Esp, -Atk)</div>
                 </div>
             </div>
 
@@ -605,9 +620,9 @@
                 <div class="pokemon-details">
                     <div class="detail-item"><span>IVs:</span> AtkSp:31</div>
                     <div class="detail-item"><span>EVs:</span> PS:6 | AtkSp:252 | Vel:252</div>
-                    <div class="detail-item"><span>Mov:</span> Bola Sombra</div>
+                    <div class="detail-item"><span>Movimiento:</span> Bola Sombra</div>
                     <div class="detail-item"><span>Habilidad:</span> Competitivo</div>
-                    <div class="detail-item" style="grid-column: span 2;"><span>Naturaleza:</span> Modesta (+Atk Esp, -Atk)</div>
+                    <div class="detail-item"><span>Naturaleza:</span> Modesta (+Atk Esp, -Atk)</div>
                 </div>
             </div>
 
@@ -622,9 +637,9 @@
                 <div class="pokemon-details">
                     <div class="detail-item"><span>IVs:</span> -</div>
                     <div class="detail-item"><span>EVs:</span> PS:0 | DefSp:0 | Vel:0</div>
-                    <div class="detail-item"><span>Mov:</span> Conjuro</div>
+                    <div class="detail-item"><span>Movimiento:</span> Conjuro</div>
                     <div class="detail-item"><span>Habilidad:</span> -</div>
-                    <div class="detail-item" style="grid-column: span 2;"><span>Naturaleza:</span> Que NO altere la DEF.ESP</div>
+                    <div class="detail-item"><span>Naturaleza:</span> Que NO altere la DEF.ESP</div>
                 </div>
             </div>
 
@@ -639,9 +654,9 @@
                 <div class="pokemon-details">
                     <div class="detail-item"><span>IVs:</span> PS:31 | Atk:31 | DefSp:31</div>
                     <div class="detail-item"><span>EVs:</span> PS:6 | Atk:252 | DefSp:252</div>
-                    <div class="detail-item"><span>Mov:</span> Buena Baza</div>
+                    <div class="detail-item"><span>Movimiento:</span> Buena Baza</div>
                     <div class="detail-item"><span>Habilidad:</span> Irascible (HO)</div>
-                    <div class="detail-item" style="grid-column: span 2;"><span>Naturaleza:</span> Firme (+Atk, -Atk Esp)</div>
+                    <div class="detail-item"><span>Naturaleza:</span> Firme (+Atk, -Atk Esp)</div>
                 </div>
             </div>
         </div>
@@ -665,33 +680,25 @@
                     <td class="turno-col">T1</td>
                     <td>
                         <div class="table-cell-content">
-                            <div class="table-pokemon-meta">
-                                <img class="table-sprite" src="assets/sprites/hippowdon.png" alt="Hippowdon">
-                            </div>
+                            <img class="table-sprite" src="assets/sprites/hippowdon.png" alt="Hippowdon">
                             <span class="table-move-name">SEDUCCIÓN</span>
                         </div>
                     </td>
                     <td>
                         <div class="table-cell-content">
-                            <div class="table-pokemon-meta">
-                                <img class="table-sprite" src="assets/sprites/weavile.png" alt="Weavile">
-                            </div>
+                            <img class="table-sprite" src="assets/sprites/weavile.png" alt="Weavile">
                             <span class="table-move-name">LANZAMIENTO</span>
                         </div>
                     </td>
                     <td>
                         <div class="table-cell-content">
-                            <div class="table-pokemon-meta">
-                                <img class="table-sprite" src="assets/sprites/kadabra.png" alt="Kadabra">
-                            </div>
+                            <img class="table-sprite" src="assets/sprites/kadabra.png" alt="Kadabra">
                             <span class="table-move-name">VELOSAGRADO</span>
                         </div>
                     </td>
                     <td>
                         <div class="table-cell-content">
-                            <div class="table-pokemon-meta">
-                                <img class="table-sprite" src="assets/sprites/xatu.png" alt="Xatu">
-                            </div>
+                            <img class="table-sprite" src="assets/sprites/xatu.png" alt="Xatu">
                             <span class="table-move-name">CONJURO</span>
                         </div>
                     </td>
@@ -701,33 +708,25 @@
                     <td class="turno-col">T2</td>
                     <td>
                         <div class="table-cell-content">
-                            <div class="table-pokemon-meta">
-                                <img class="table-sprite" src="assets/sprites/hippowdon.png" alt="Hippowdon">
-                            </div>
+                            <img class="table-sprite" src="assets/sprites/hippowdon.png" alt="Hippowdon">
                             <span class="table-move-name" style="font-style: italic;">Dead Ay Ay*</span>
                         </div>
                     </td>
                     <td>
                         <div class="table-cell-content">
-                            <div class="table-pokemon-meta">
-                                <img class="table-sprite" src="assets/sprites/bisharp.png" alt="Bisharp">
-                            </div>
+                            <img class="table-sprite" src="assets/sprites/bisharp.png" alt="Bisharp">
                             <span class="table-move-name">GOLPE BAJO</span>
                         </div>
                     </td>
                     <td>
                         <div class="table-cell-content">
-                            <div class="table-pokemon-meta">
-                                <img class="table-sprite" src="assets/sprites/bisharp.png" alt="Bisharp">
-                            </div>
+                            <img class="table-sprite" src="assets/sprites/bisharp.png" alt="Bisharp">
                             <span class="table-move-name">GOLPE BAJO</span>
                         </div>
                     </td>
                     <td>
                         <div class="table-cell-content">
-                            <div class="table-pokemon-meta">
-                                <img class="table-sprite" src="assets/sprites/bisharp.png" alt="Bisharp">
-                            </div>
+                            <img class="table-sprite" src="assets/sprites/bisharp.png" alt="Bisharp">
                             <span class="table-move-name">GOLPE BAJO</span>
                         </div>
                     </td>
@@ -737,33 +736,25 @@
                     <td class="turno-col">T3</td>
                     <td>
                         <div class="table-cell-content">
-                            <div class="table-pokemon-meta">
-                                <img class="table-sprite" src="assets/sprites/whimsicott.png" alt="Whimsicott">
-                            </div>
+                            <img class="table-sprite" src="assets/sprites/whimsicott.png" alt="Whimsicott">
                             <span class="table-move-name">PANTALLA LUZ</span>
                         </div>
                     </td>
                     <td>
                         <div class="table-cell-content">
-                            <div class="table-pokemon-meta">
-                                <img class="table-sprite" src="assets/sprites/bisharp.png" alt="Bisharp">
-                            </div>
+                            <img class="table-sprite" src="assets/sprites/bisharp.png" alt="Bisharp">
                             <span class="table-move-name">GOLPE BAJO</span>
                         </div>
                     </td>
                     <td>
                         <div class="table-cell-content">
-                            <div class="table-pokemon-meta">
-                                <img class="table-sprite" src="assets/sprites/bisharp.png" alt="Bisharp">
-                            </div>
+                            <img class="table-sprite" src="assets/sprites/bisharp.png" alt="Bisharp">
                             <span class="table-move-name">GOLPE BAJO</span>
                         </div>
                     </td>
                     <td>
                         <div class="table-cell-content">
-                            <div class="table-pokemon-meta">
-                                <img class="table-sprite" src="assets/sprites/bisharp.png" alt="Bisharp">
-                            </div>
+                            <img class="table-sprite" src="assets/sprites/bisharp.png" alt="Bisharp">
                             <span class="table-move-name">GOLPE BAJO</span>
                         </div>
                     </td>
@@ -773,33 +764,25 @@
                     <td class="turno-col">T4</td>
                     <td>
                         <div class="table-cell-content">
-                            <div class="table-pokemon-meta">
-                                <img class="table-sprite" src="assets/sprites/darmanitan.png" alt="Darmanitan">
-                            </div>
+                            <img class="table-sprite" src="assets/sprites/darmanitan.png" alt="Darmanitan">
                             <span class="table-move-name">ENVITE IGNEO</span>
                         </div>
                     </td>
                     <td>
                         <div class="table-cell-content">
-                            <div class="table-pokemon-meta">
-                                <img class="table-sprite" src="assets/sprites/sharpedo.png" alt="Sharpedo">
-                            </div>
+                            <img class="table-sprite" src="assets/sprites/sharpedo.png" alt="Sharpedo">
                             <span class="table-move-name">BUENA BAZA</span>
                         </div>
                     </td>
                     <td>
                         <div class="table-cell-content">
-                            <div class="table-pokemon-meta">
-                                <img class="table-sprite" src="assets/sprites/crobat.png" alt="Crobat">
-                            </div>
+                            <img class="table-sprite" src="assets/sprites/crobat.png" alt="Crobat">
                             <span class="table-move-name">BOMBA ÁCIDA</span>
                         </div>
                     </td>
                     <td>
                         <div class="table-cell-content">
-                            <div class="table-pokemon-meta">
-                                <img class="table-sprite" src="assets/sprites/gengar.png" alt="Gengar">
-                            </div>
+                            <img class="table-sprite" src="assets/sprites/gengar.png" alt="Gengar">
                             <span class="table-move-name">INFORTUNIO</span>
                         </div>
                     </td>
@@ -809,33 +792,25 @@
                     <td class="turno-col">T5</td>
                     <td>
                         <div class="table-cell-content">
-                            <div class="table-pokemon-meta">
-                                <img class="table-sprite" src="assets/sprites/braviary.png" alt="Braviary">
-                            </div>
+                            <img class="table-sprite" src="assets/sprites/braviary.png" alt="Braviary">
                             <span class="table-move-name">BUENA BAZA</span>
                         </div>
                     </td>
                     <td>
                         <div class="table-cell-content">
-                            <div class="table-pokemon-meta">
-                                <img class="table-sprite" src="assets/sprites/braviary.png" alt="Braviary">
-                            </div>
+                            <img class="table-sprite" src="assets/sprites/braviary.png" alt="Braviary">
                             <span class="table-move-name">BUENA BAZA</span>
                         </div>
                     </td>
                     <td>
                         <div class="table-cell-content">
-                            <div class="table-pokemon-meta">
-                                <img class="table-sprite" src="assets/sprites/gothitelle.png" alt="Gothitelle">
-                            </div>
+                            <img class="table-sprite" src="assets/sprites/gothitelle.png" alt="Gothitelle">
                             <span class="table-move-name">BOLA SOMBRA</span>
                         </div>
                     </td>
                     <td>
                         <div class="table-cell-content">
-                            <div class="table-pokemon-meta">
-                                <img class="table-sprite" src="assets/sprites/gothitelle.png" alt="Gothitelle">
-                            </div>
+                            <img class="table-sprite" src="assets/sprites/gothitelle.png" alt="Gothitelle">
                             <span class="table-move-name">BOLA SOMBRA</span>
                         </div>
                     </td>
@@ -845,33 +820,25 @@
                     <td class="turno-col">T6</td>
                     <td>
                         <div class="table-cell-content">
-                            <div class="table-pokemon-meta">
-                                <img class="table-sprite" src="assets/sprites/milotic.png" alt="Milotic">
-                            </div>
+                            <img class="table-sprite" src="assets/sprites/milotic.png" alt="Milotic">
                             <span class="table-move-name">VELOSAGRADO</span>
                         </div>
                     </td>
                     <td>
                         <div class="table-cell-content">
-                            <div class="table-pokemon-meta">
-                                <img class="table-sprite" src="assets/sprites/milotic.png" alt="Milotic">
-                            </div>
+                            <img class="table-sprite" src="assets/sprites/milotic.png" alt="Milotic">
                             <span class="table-move-name">SALMUERA</span>
                         </div>
                     </td>
                     <td>
                         <div class="table-cell-content">
-                            <div class="table-pokemon-meta">
-                                <img class="table-sprite" src="assets/sprites/crawdaunt.png" alt="Crawdaunt">
-                            </div>
+                            <img class="table-sprite" src="assets/sprites/crawdaunt.png" alt="Crawdaunt">
                             <span class="table-move-name">LANZAMIENTO</span>
                         </div>
                     </td>
                     <td>
                         <div class="table-cell-content">
-                            <div class="table-pokemon-meta">
-                                <img class="table-sprite" src="assets/sprites/jynx.png" alt="Jynx">
-                            </div>
+                            <img class="table-sprite" src="assets/sprites/jynx.png" alt="Jynx">
                             <span class="table-move-name">CONJURO</span>
                         </div>
                     </td>
@@ -881,33 +848,25 @@
                     <td class="turno-col">T7</td>
                     <td>
                         <div class="table-cell-content">
-                            <div class="table-pokemon-meta">
-                                <img class="table-sprite" src="assets/sprites/milotic.png" alt="Milotic">
-                            </div>
+                            <img class="table-sprite" src="assets/sprites/milotic.png" alt="Milotic">
                             <span class="table-move-name">CHAPOTEOLODO</span>
                         </div>
                     </td>
                     <td>
                         <div class="table-cell-content">
-                            <div class="table-pokemon-meta">
-                                <img class="table-sprite" src="assets/sprites/milotic.png" alt="Milotic">
-                            </div>
+                            <img class="table-sprite" src="assets/sprites/milotic.png" alt="Milotic">
                             <span class="table-move-name">SALMUERA</span>
                         </div>
                     </td>
                     <td>
                         <div class="table-cell-content">
-                            <div class="table-pokemon-meta">
-                                <img class="table-sprite" src="assets/sprites/tyranitar.png" alt="Tyranitar">
-                            </div>
+                            <img class="table-sprite" src="assets/sprites/tyranitar.png" alt="Tyranitar">
                             <span class="table-move-name">SEDUCCIÓN</span>
                         </div>
                     </td>
                     <td>
                         <div class="table-cell-content">
-                            <div class="table-pokemon-meta">
-                                <img class="table-sprite" src="assets/sprites/krookodile.png" alt="Krookodile">
-                            </div>
+                            <img class="table-sprite" src="assets/sprites/krookodile.png" alt="Krookodile">
                             <span class="table-move-name">BUENA BAZA</span>
                         </div>
                     </td>
@@ -917,33 +876,25 @@
                     <td class="turno-col">T8</td>
                     <td>
                         <div class="table-cell-content">
-                            <div class="table-pokemon-meta">
-                                <img class="table-sprite" src="assets/sprites/milotic.png" alt="Milotic">
-                            </div>
+                            <img class="table-sprite" src="assets/sprites/milotic.png" alt="Milotic">
                             <span class="table-move-name">SALMUERA</span>
                         </div>
                     </td>
                     <td>
                         <div class="table-cell-content">
-                            <div class="table-pokemon-meta">
-                                <img class="table-sprite" src="assets/sprites/milotic.png" alt="Milotic">
-                            </div>
+                            <img class="table-sprite" src="assets/sprites/milotic.png" alt="Milotic">
                             <span class="table-move-name">SALMUERA</span>
                         </div>
                     </td>
                     <td>
                         <div class="table-cell-content">
-                            <div class="table-pokemon-meta">
-                                <img class="table-sprite" src="assets/sprites/tyranitar.png" alt="Tyranitar">
-                            </div>
+                            <img class="table-sprite" src="assets/sprites/tyranitar.png" alt="Tyranitar">
                             <span class="table-move-name">BUENA BAZA</span>
                         </div>
                     </td>
                     <td>
                         <div class="table-cell-content">
-                            <div class="table-pokemon-meta">
-                                <img class="table-sprite" src="assets/sprites/krookodile.png" alt="Krookodile">
-                            </div>
+                            <img class="table-sprite" src="assets/sprites/krookodile.png" alt="Krookodile">
                             <span class="table-move-name">BUENA BAZA</span>
                         </div>
                     </td>
@@ -953,33 +904,25 @@
                     <td class="turno-col">T9</td>
                     <td>
                         <div class="table-cell-content">
-                            <div class="table-pokemon-meta">
-                                <img class="table-sprite" src="assets/sprites/empoleon.png" alt="Empoleon">
-                            </div>
+                            <img class="table-sprite" src="assets/sprites/empoleon.png" alt="Empoleon">
                             <span class="table-move-name">SALMUERA</span>
                         </div>
                     </td>
                     <td>
                         <div class="table-cell-content">
-                            <div class="table-pokemon-meta">
-                                <img class="table-sprite" src="assets/sprites/empoleon.png" alt="Empoleon">
-                            </div>
+                            <img class="table-sprite" src="assets/sprites/empoleon.png" alt="Empoleon">
                             <span class="table-move-name">SALMUERA</span>
                         </div>
                     </td>
                     <td>
                         <div class="table-cell-content">
-                            <div class="table-pokemon-meta">
-                                <img class="table-sprite" src="assets/sprites/tyranitar.png" alt="Tyranitar">
-                            </div>
+                            <img class="table-sprite" src="assets/sprites/tyranitar.png" alt="Tyranitar">
                             <span class="table-move-name">BUENA BAZA</span>
                         </div>
                     </td>
                     <td>
                         <div class="table-cell-content">
-                            <div class="table-pokemon-meta">
-                                <img class="table-sprite" src="assets/sprites/krookodile.png" alt="Krookodile">
-                            </div>
+                            <img class="table-sprite" src="assets/sprites/krookodile.png" alt="Krookodile">
                             <span class="table-move-name">BUENA BAZA</span>
                         </div>
                     </td>
@@ -989,33 +932,25 @@
                     <td class="turno-col">T10</td>
                     <td>
                         <div class="table-cell-content">
-                            <div class="table-pokemon-meta">
-                                <img class="table-sprite" src="assets/sprites/empoleon.png" alt="Empoleon">
-                            </div>
+                            <img class="table-sprite" src="assets/sprites/empoleon.png" alt="Empoleon">
                             <span class="table-move-name">SALMUERA</span>
                         </div>
                     </td>
                     <td>
                         <div class="table-cell-content">
-                            <div class="table-pokemon-meta">
-                                <img class="table-sprite" src="assets/sprites/empoleon.png" alt="Empoleon">
-                            </div>
+                            <img class="table-sprite" src="assets/sprites/empoleon.png" alt="Empoleon">
                             <span class="table-move-name">SALMUERA</span>
                         </div>
                     </td>
                     <td>
                         <div class="table-cell-content">
-                            <div class="table-pokemon-meta">
-                                <img class="table-sprite" src="assets/sprites/tyranitar.png" alt="Tyranitar">
-                            </div>
+                            <img class="table-sprite" src="assets/sprites/tyranitar.png" alt="Tyranitar">
                             <span class="table-move-name">BUENA BAZA</span>
                         </div>
                     </td>
                     <td>
                         <div class="table-cell-content">
-                            <div class="table-pokemon-meta">
-                                <img class="table-sprite" src="assets/sprites/krookodile.png" alt="Krookodile">
-                            </div>
+                            <img class="table-sprite" src="assets/sprites/krookodile.png" alt="Krookodile">
                             <span class="table-move-name">BUENA BAZA</span>
                         </div>
                     </td>
@@ -1027,4 +962,4 @@
 </div>
 
 </body>
-</html>
+</html>            
