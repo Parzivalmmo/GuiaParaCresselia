@@ -6,13 +6,13 @@
     <title>Guía de Raid de Cresselia - Panel de Equipos</title>
     <style>
         :root {
-            --bg-color: #0f172a;       /* Fondo principal de la página */
-            --panel-bg: #1e293b;       /* Fondo de las tarjetas y tablas */
-            --border-color: #334155;   /* Color único y simétrico para todos los bordes */
-            --text-main: #f8fafc;      /* Texto principal */
-            --text-muted: #94a3b8;     /* Texto secundario / notas */
-            --accent-blue: #38bdf8;    /* Color de énfasis */
-            --hp-color: #f43f5e;       /* Color para el porcentaje de vida del Boss */
+            --bg-color: #0f172a;       
+            --panel-bg: #1e293b;       
+            --border-color: #334155;   
+            --text-main: #f8fafc;      
+            --text-muted: #94a3b8;     
+            --accent-blue: #38bdf8;    
+            --hp-color: #f43f5e;       
         }
 
         body {
@@ -43,7 +43,6 @@
             font-size: 1.2em;
         }
 
-        /* Cuadrícula perfectamente simétrica para los 4 jugadores */
         .grid-jugadores {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(360px, 1fr));
@@ -70,7 +69,6 @@
             text-align: center;
         }
 
-        /* Caja de cada Pokémon simétrica con alturas alineadas */
         .pokemon-block {
             background-color: #111827;
             border: 1px solid var(--border-color);
@@ -80,7 +78,7 @@
             display: flex;
             flex-direction: column;
             justify-content: space-between;
-            min-height: 190px; /* Forzar simetría visual */
+            min-height: 210px; 
         }
 
         .pokemon-header {
@@ -125,10 +123,13 @@
             height: 34px;
             border: 1px dashed #475569;
             border-radius: 6px;
-            background-color: transparent;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 0.65em;
+            color: var(--text-muted);
         }
 
-        /* Detalles en formato cuadrícula limpia y ordenada */
         .pokemon-details {
             font-size: 0.88em;
             display: grid;
@@ -151,7 +152,6 @@
             padding-top: 4px;
         }
 
-        /* Estilos de la Tabla de Turnos */
         .table-responsive {
             overflow-x: auto;
             background-color: var(--panel-bg);
@@ -202,7 +202,6 @@
             font-size: 1em;
         }
 
-        /* Contenido de celda simétrico */
         .table-cell-content {
             display: flex;
             flex-direction: column;
@@ -241,7 +240,7 @@
                     <span class="pokemon-title">Hippowdon</span>
                     <div class="pokemon-images">
                         <img class="item-img" src="assets/items/amuleto_puro.png" alt="Amuleto Puro" title="Amuleto Puro">
-                        <img class="pokemon-img" src="assets/sprites/hippowdon.png" alt="Hippowdon">
+                        <img class="pokemon-img" src="https://play.pokemonshowdown.com/sprites/ani/hippowdon.gif" alt="Hippowdon">
                     </div>
                 </div>
                 <div class="pokemon-details">
@@ -259,7 +258,7 @@
                     <span class="pokemon-title">Whimsicott</span>
                     <div class="pokemon-images">
                         <img class="item-img" src="assets/items/refleluz.png" alt="Refleluz" title="Refleluz">
-                        <img class="pokemon-img" src="assets/sprites/whimsicott.png" alt="Whimsicott">
+                        <img class="pokemon-img" src="https://play.pokemonshowdown.com/sprites/ani/whimsicott.gif" alt="Whimsicott">
                     </div>
                 </div>
                 <div class="pokemon-details">
@@ -277,7 +276,7 @@
                     <span class="pokemon-title">Darmanitan</span>
                     <div class="pokemon-images">
                         <img class="item-img" src="assets/items/cinta_elegida.png" alt="Cinta Elegida" title="Cinta Elegida">
-                        <img class="pokemon-img" src="assets/sprites/darmanitan.png" alt="Darmanitan">
+                        <img class="pokemon-img" src="https://play.pokemonshowdown.com/sprites/ani/darmanitan.gif" alt="Darmanitan">
                     </div>
                 </div>
                 <div class="pokemon-details">
@@ -295,7 +294,7 @@
                     <span class="pokemon-title">Braviary</span>
                     <div class="pokemon-images">
                         <img class="item-img" src="assets/items/baya_magua.png" alt="Baya Magua" title="Baya Magua">
-                        <img class="pokemon-img" src="assets/sprites/braviary.png" alt="Braviary">
+                        <img class="pokemon-img" src="https://play.pokemonshowdown.com/sprites/ani/braviary.gif" alt="Braviary">
                     </div>
                 </div>
                 <div class="pokemon-details">
@@ -312,7 +311,7 @@
                     <span class="pokemon-title">Milotic</span>
                     <div class="pokemon-images">
                         <img class="item-img" src="assets/items/manto_encubierto.png" alt="Manto Encubierto" title="Manto Encubierto">
-                        <img class="pokemon-img" src="assets/sprites/milotic.png" alt="Milotic">
+                        <img class="pokemon-img" src="https://play.pokemonshowdown.com/sprites/ani/milotic.gif" alt="Milotic">
                     </div>
                 </div>
                 <div class="pokemon-details">
@@ -329,7 +328,7 @@
                     <span class="pokemon-title">Empoleon</span>
                     <div class="pokemon-images">
                         <img class="item-img" src="assets/items/gafas_elegidas.png" alt="Gafas Elegidas" title="Gafas Elegidas">
-                        <img class="pokemon-img" src="assets/sprites/empoleon.png" alt="Empoleon">
+                        <img class="pokemon-img" src="https://play.pokemonshowdown.com/sprites/ani/empoleon.gif" alt="Empoleon">
                     </div>
                 </div>
                 <div class="pokemon-details">
@@ -350,7 +349,7 @@
                     <span class="pokemon-title">Weavile</span>
                     <div class="pokemon-images">
                         <img class="item-img" src="assets/items/flecha_veneno.png" alt="Flecha Veneno" title="Flecha Veneno">
-                        <img class="pokemon-img" src="assets/sprites/weavile.png" alt="Weavile">
+                        <img class="pokemon-img" src="https://play.pokemonshowdown.com/sprites/ani/weavile.gif" alt="Weavile">
                     </div>
                 </div>
                 <div class="pokemon-details">
@@ -367,7 +366,7 @@
                     <span class="pokemon-title">Bisharp</span>
                     <div class="pokemon-images">
                         <img class="item-img" src="assets/items/vidasfera.png" alt="Vidasfera" title="Vidasfera">
-                        <img class="pokemon-img" src="assets/sprites/bisharp.png" alt="Bisharp">
+                        <img class="pokemon-img" src="https://play.pokemonshowdown.com/sprites/ani/bisharp.gif" alt="Bisharp">
                     </div>
                 </div>
                 <div class="pokemon-details">
@@ -384,7 +383,7 @@
                     <span class="pokemon-title">Sharpedo</span>
                     <div class="pokemon-images">
                         <img class="item-img" src="assets/items/cinta_elegida.png" alt="Cinta Elegida" title="Cinta Elegida">
-                        <img class="pokemon-img" src="assets/sprites/sharpedo.png" alt="Sharpedo">
+                        <img class="pokemon-img" src="https://play.pokemonshowdown.com/sprites/ani/sharpedo.gif" alt="Sharpedo">
                     </div>
                 </div>
                 <div class="pokemon-details">
@@ -401,7 +400,7 @@
                     <span class="pokemon-title">Braviary</span>
                     <div class="pokemon-images">
                         <img class="item-img" src="assets/items/equipo_de_asalto.png" alt="Equipo de Asalto" title="Equipo de Asalto">
-                        <img class="pokemon-img" src="assets/sprites/braviary.png" alt="Braviary">
+                        <img class="pokemon-img" src="https://play.pokemonshowdown.com/sprites/ani/braviary.gif" alt="Braviary">
                     </div>
                 </div>
                 <div class="pokemon-details">
@@ -418,7 +417,7 @@
                     <span class="pokemon-title">Milotic</span>
                     <div class="pokemon-images">
                         <img class="item-img" src="assets/items/manto_encubierto.png" alt="Manto Encubierto" title="Manto Encubierto">
-                        <img class="pokemon-img" src="assets/sprites/milotic.png" alt="Milotic">
+                        <img class="pokemon-img" src="https://play.pokemonshowdown.com/sprites/ani/milotic.gif" alt="Milotic">
                     </div>
                 </div>
                 <div class="pokemon-details">
@@ -435,7 +434,7 @@
                     <span class="pokemon-title">Empoleon</span>
                     <div class="pokemon-images">
                         <img class="item-img" src="assets/items/gafas_elegidas.png" alt="Gafas Elegidas" title="Gafas Elegidas">
-                        <img class="pokemon-img" src="assets/sprites/empoleon.png" alt="Empoleon">
+                        <img class="pokemon-img" src="https://play.pokemonshowdown.com/sprites/ani/empoleon.gif" alt="Empoleon">
                     </div>
                 </div>
                 <div class="pokemon-details">
@@ -455,8 +454,8 @@
                 <div class="pokemon-header">
                     <span class="pokemon-title">Kadabra</span>
                     <div class="pokemon-images">
-                        <div class="item-placeholder"></div>
-                        <img class="pokemon-img" src="assets/sprites/kadabra.png" alt="Kadabra">
+                        <div class="item-placeholder">Ninguno</div>
+                        <img class="pokemon-img" src="https://play.pokemonshowdown.com/sprites/ani/kadabra.gif" alt="Kadabra">
                     </div>
                 </div>
                 <div class="pokemon-details">
@@ -473,7 +472,7 @@
                     <span class="pokemon-title">Bisharp</span>
                     <div class="pokemon-images">
                         <img class="item-img" src="assets/items/cinta_elegida.png" alt="Cinta Elegida" title="Cinta Elegida">
-                        <img class="pokemon-img" src="assets/sprites/bisharp.png" alt="Bisharp">
+                        <img class="pokemon-img" src="https://play.pokemonshowdown.com/sprites/ani/bisharp.gif" alt="Bisharp">
                     </div>
                 </div>
                 <div class="pokemon-details">
@@ -489,8 +488,8 @@
                 <div class="pokemon-header">
                     <span class="pokemon-title">Crobat</span>
                     <div class="pokemon-images">
-                        <div class="item-placeholder"></div>
-                        <img class="pokemon-img" src="assets/sprites/crobat.png" alt="Crobat">
+                        <div class="item-placeholder">Ninguno</div>
+                        <img class="pokemon-img" src="https://play.pokemonshowdown.com/sprites/ani/crobat.gif" alt="Crobat">
                     </div>
                 </div>
                 <div class="pokemon-details">
@@ -508,7 +507,7 @@
                     <span class="pokemon-title">Gothitelle</span>
                     <div class="pokemon-images">
                         <img class="item-img" src="assets/items/gafas_elegidas.png" alt="Gafas Elegidas" title="Gafas Elegidas">
-                        <img class="pokemon-img" src="assets/sprites/gothitelle.png" alt="Gothitelle">
+                        <img class="pokemon-img" src="https://play.pokemonshowdown.com/sprites/ani/gothitelle.gif" alt="Gothitelle">
                     </div>
                 </div>
                 <div class="pokemon-details">
@@ -525,7 +524,7 @@
                     <span class="pokemon-title">Crawdaunt</span>
                     <div class="pokemon-images">
                         <img class="item-img" src="assets/items/flecha_veneno.png" alt="Flecha Veneno" title="Flecha Veneno">
-                        <img class="pokemon-img" src="assets/sprites/crawdaunt.png" alt="Crawdaunt">
+                        <img class="pokemon-img" src="https://play.pokemonshowdown.com/sprites/ani/crawdaunt.gif" alt="Crawdaunt">
                     </div>
                 </div>
                 <div class="pokemon-details">
@@ -542,7 +541,7 @@
                     <span class="pokemon-title">Tyranitar</span>
                     <div class="pokemon-images">
                         <img class="item-img" src="assets/items/bola_ferrea.png" alt="Bola Férrea" title="Bola Férrea">
-                        <img class="pokemon-img" src="assets/sprites/tyranitar.png" alt="Tyranitar">
+                        <img class="pokemon-img" src="https://play.pokemonshowdown.com/sprites/ani/tyranitar.gif" alt="Tyranitar">
                     </div>
                 </div>
                 <div class="pokemon-details">
@@ -563,7 +562,7 @@
                     <span class="pokemon-title">Xatu</span>
                     <div class="pokemon-images">
                         <img class="item-img" src="assets/items/panuelo_elegido.png" alt="Pañuelo Elegido" title="Pañuelo Elegido">
-                        <img class="pokemon-img" src="assets/sprites/xatu.png" alt="Xatu">
+                        <img class="pokemon-img" src="https://play.pokemonshowdown.com/sprites/ani/xatu.gif" alt="Xatu">
                     </div>
                 </div>
                 <div class="pokemon-details">
@@ -580,7 +579,7 @@
                     <span class="pokemon-title">Bisharp</span>
                     <div class="pokemon-images">
                         <img class="item-img" src="assets/items/vidasfera.png" alt="Vidasfera" title="Vidasfera">
-                        <img class="pokemon-img" src="assets/sprites/bisharp.png" alt="Bisharp">
+                        <img class="pokemon-img" src="https://play.pokemonshowdown.com/sprites/ani/bisharp.gif" alt="Bisharp">
                     </div>
                 </div>
                 <div class="pokemon-details">
@@ -597,7 +596,7 @@
                     <span class="pokemon-title">Gengar</span>
                     <div class="pokemon-images">
                         <img class="item-img" src="assets/items/gema_fantasma.png" alt="Gema Fantasma" title="Gema Fantasma">
-                        <img class="pokemon-img" src="assets/sprites/gengar.png" alt="Gengar">
+                        <img class="pokemon-img" src="https://play.pokemonshowdown.com/sprites/ani/gengar.gif" alt="Gengar">
                     </div>
                 </div>
                 <div class="pokemon-details">
@@ -614,7 +613,7 @@
                     <span class="pokemon-title">Gothitelle</span>
                     <div class="pokemon-images">
                         <img class="item-img" src="assets/items/gafas_elegidas.png" alt="Gafas Elegidas" title="Gafas Elegidas">
-                        <img class="pokemon-img" src="assets/sprites/gothitelle.png" alt="Gothitelle">
+                        <img class="pokemon-img" src="https://play.pokemonshowdown.com/sprites/ani/gothitelle.gif" alt="Gothitelle">
                     </div>
                 </div>
                 <div class="pokemon-details">
@@ -631,7 +630,7 @@
                     <span class="pokemon-title">Jynx</span>
                     <div class="pokemon-images">
                         <img class="item-img" src="assets/items/baya_magua.png" alt="Baya Magua" title="Baya Magua">
-                        <img class="pokemon-img" src="assets/sprites/jynx.png" alt="Jynx">
+                        <img class="pokemon-img" src="https://play.pokemonshowdown.com/sprites/ani/jynx.gif" alt="Jynx">
                     </div>
                 </div>
                 <div class="pokemon-details">
@@ -648,7 +647,7 @@
                     <span class="pokemon-title">Krookodile</span>
                     <div class="pokemon-images">
                         <img class="item-img" src="assets/items/cinta_elegida.png" alt="Cinta Elegida" title="Cinta Elegida">
-                        <img class="pokemon-img" src="assets/sprites/krookodile.png" alt="Krookodile">
+                        <img class="pokemon-img" src="https://play.pokemonshowdown.com/sprites/ani/krookodile.gif" alt="Krookodile">
                     </div>
                 </div>
                 <div class="pokemon-details">
@@ -680,25 +679,25 @@
                     <td class="turno-col">T1</td>
                     <td>
                         <div class="table-cell-content">
-                            <img class="table-sprite" src="assets/sprites/hippowdon.png" alt="Hippowdon">
+                            <img class="table-sprite" src="https://play.pokemonshowdown.com/sprites/ani/hippowdon.gif" alt="Hippowdon">
                             <span class="table-move-name">SEDUCCIÓN</span>
                         </div>
                     </td>
                     <td>
                         <div class="table-cell-content">
-                            <img class="table-sprite" src="assets/sprites/weavile.png" alt="Weavile">
+                            <img class="table-sprite" src="https://play.pokemonshowdown.com/sprites/ani/weavile.gif" alt="Weavile">
                             <span class="table-move-name">LANZAMIENTO</span>
                         </div>
                     </td>
                     <td>
                         <div class="table-cell-content">
-                            <img class="table-sprite" src="assets/sprites/kadabra.png" alt="Kadabra">
+                            <img class="table-sprite" src="https://play.pokemonshowdown.com/sprites/ani/kadabra.gif" alt="Kadabra">
                             <span class="table-move-name">VELOSAGRADO</span>
                         </div>
                     </td>
                     <td>
                         <div class="table-cell-content">
-                            <img class="table-sprite" src="assets/sprites/xatu.png" alt="Xatu">
+                            <img class="table-sprite" src="https://play.pokemonshowdown.com/sprites/ani/xatu.gif" alt="Xatu">
                             <span class="table-move-name">CONJURO</span>
                         </div>
                     </td>
@@ -708,25 +707,25 @@
                     <td class="turno-col">T2</td>
                     <td>
                         <div class="table-cell-content">
-                            <img class="table-sprite" src="assets/sprites/hippowdon.png" alt="Hippowdon">
+                            <img class="table-sprite" src="https://play.pokemonshowdown.com/sprites/ani/hippowdon.gif" alt="Hippowdon">
                             <span class="table-move-name" style="font-style: italic;">Dead Ay Ay*</span>
                         </div>
                     </td>
                     <td>
                         <div class="table-cell-content">
-                            <img class="table-sprite" src="assets/sprites/bisharp.png" alt="Bisharp">
+                            <img class="table-sprite" src="https://play.pokemonshowdown.com/sprites/ani/bisharp.gif" alt="Bisharp">
                             <span class="table-move-name">GOLPE BAJO</span>
                         </div>
                     </td>
                     <td>
                         <div class="table-cell-content">
-                            <img class="table-sprite" src="assets/sprites/bisharp.png" alt="Bisharp">
+                            <img class="table-sprite" src="https://play.pokemonshowdown.com/sprites/ani/bisharp.gif" alt="Bisharp">
                             <span class="table-move-name">GOLPE BAJO</span>
                         </div>
                     </td>
                     <td>
                         <div class="table-cell-content">
-                            <img class="table-sprite" src="assets/sprites/bisharp.png" alt="Bisharp">
+                            <img class="table-sprite" src="https://play.pokemonshowdown.com/sprites/ani/bisharp.gif" alt="Bisharp">
                             <span class="table-move-name">GOLPE BAJO</span>
                         </div>
                     </td>
@@ -736,25 +735,25 @@
                     <td class="turno-col">T3</td>
                     <td>
                         <div class="table-cell-content">
-                            <img class="table-sprite" src="assets/sprites/whimsicott.png" alt="Whimsicott">
+                            <img class="table-sprite" src="https://play.pokemonshowdown.com/sprites/ani/whimsicott.gif" alt="Whimsicott">
                             <span class="table-move-name">PANTALLA LUZ</span>
                         </div>
                     </td>
                     <td>
                         <div class="table-cell-content">
-                            <img class="table-sprite" src="assets/sprites/bisharp.png" alt="Bisharp">
+                            <img class="table-sprite" src="https://play.pokemonshowdown.com/sprites/ani/bisharp.gif" alt="Bisharp">
                             <span class="table-move-name">GOLPE BAJO</span>
                         </div>
                     </td>
                     <td>
                         <div class="table-cell-content">
-                            <img class="table-sprite" src="assets/sprites/bisharp.png" alt="Bisharp">
+                            <img class="table-sprite" src="https://play.pokemonshowdown.com/sprites/ani/bisharp.gif" alt="Bisharp">
                             <span class="table-move-name">GOLPE BAJO</span>
                         </div>
                     </td>
                     <td>
                         <div class="table-cell-content">
-                            <img class="table-sprite" src="assets/sprites/bisharp.png" alt="Bisharp">
+                            <img class="table-sprite" src="https://play.pokemonshowdown.com/sprites/ani/bisharp.gif" alt="Bisharp">
                             <span class="table-move-name">GOLPE BAJO</span>
                         </div>
                     </td>
@@ -764,25 +763,25 @@
                     <td class="turno-col">T4</td>
                     <td>
                         <div class="table-cell-content">
-                            <img class="table-sprite" src="assets/sprites/darmanitan.png" alt="Darmanitan">
+                            <img class="table-sprite" src="https://play.pokemonshowdown.com/sprites/ani/darmanitan.gif" alt="Darmanitan">
                             <span class="table-move-name">ENVITE IGNEO</span>
                         </div>
                     </td>
                     <td>
                         <div class="table-cell-content">
-                            <img class="table-sprite" src="assets/sprites/sharpedo.png" alt="Sharpedo">
+                            <img class="table-sprite" src="https://play.pokemonshowdown.com/sprites/ani/sharpedo.gif" alt="Sharpedo">
                             <span class="table-move-name">BUENA BAZA</span>
                         </div>
                     </td>
                     <td>
                         <div class="table-cell-content">
-                            <img class="table-sprite" src="assets/sprites/crobat.png" alt="Crobat">
+                            <img class="table-sprite" src="https://play.pokemonshowdown.com/sprites/ani/crobat.gif" alt="Crobat">
                             <span class="table-move-name">BOMBA ÁCIDA</span>
                         </div>
                     </td>
                     <td>
                         <div class="table-cell-content">
-                            <img class="table-sprite" src="assets/sprites/gengar.png" alt="Gengar">
+                            <img class="table-sprite" src="https://play.pokemonshowdown.com/sprites/ani/gengar.gif" alt="Gengar">
                             <span class="table-move-name">INFORTUNIO</span>
                         </div>
                     </td>
@@ -792,25 +791,25 @@
                     <td class="turno-col">T5</td>
                     <td>
                         <div class="table-cell-content">
-                            <img class="table-sprite" src="assets/sprites/braviary.png" alt="Braviary">
+                            <img class="table-sprite" src="https://play.pokemonshowdown.com/sprites/ani/braviary.gif" alt="Braviary">
                             <span class="table-move-name">BUENA BAZA</span>
                         </div>
                     </td>
                     <td>
                         <div class="table-cell-content">
-                            <img class="table-sprite" src="assets/sprites/braviary.png" alt="Braviary">
+                            <img class="table-sprite" src="https://play.pokemonshowdown.com/sprites/ani/braviary.gif" alt="Braviary">
                             <span class="table-move-name">BUENA BAZA</span>
                         </div>
                     </td>
                     <td>
                         <div class="table-cell-content">
-                            <img class="table-sprite" src="assets/sprites/gothitelle.png" alt="Gothitelle">
+                            <img class="table-sprite" src="https://play.pokemonshowdown.com/sprites/ani/gothitelle.gif" alt="Gothitelle">
                             <span class="table-move-name">BOLA SOMBRA</span>
                         </div>
                     </td>
                     <td>
                         <div class="table-cell-content">
-                            <img class="table-sprite" src="assets/sprites/gothitelle.png" alt="Gothitelle">
+                            <img class="table-sprite" src="https://play.pokemonshowdown.com/sprites/ani/gothitelle.gif" alt="Gothitelle">
                             <span class="table-move-name">BOLA SOMBRA</span>
                         </div>
                     </td>
@@ -820,25 +819,25 @@
                     <td class="turno-col">T6</td>
                     <td>
                         <div class="table-cell-content">
-                            <img class="table-sprite" src="assets/sprites/milotic.png" alt="Milotic">
+                            <img class="table-sprite" src="https://play.pokemonshowdown.com/sprites/ani/milotic.gif" alt="Milotic">
                             <span class="table-move-name">VELOSAGRADO</span>
                         </div>
                     </td>
                     <td>
                         <div class="table-cell-content">
-                            <img class="table-sprite" src="assets/sprites/milotic.png" alt="Milotic">
+                            <img class="table-sprite" src="https://play.pokemonshowdown.com/sprites/ani/milotic.gif" alt="Milotic">
                             <span class="table-move-name">SALMUERA</span>
                         </div>
                     </td>
                     <td>
                         <div class="table-cell-content">
-                            <img class="table-sprite" src="assets/sprites/crawdaunt.png" alt="Crawdaunt">
+                            <img class="table-sprite" src="https://play.pokemonshowdown.com/sprites/ani/crawdaunt.gif" alt="Crawdaunt">
                             <span class="table-move-name">LANZAMIENTO</span>
                         </div>
                     </td>
                     <td>
                         <div class="table-cell-content">
-                            <img class="table-sprite" src="assets/sprites/jynx.png" alt="Jynx">
+                            <img class="table-sprite" src="https://play.pokemonshowdown.com/sprites/ani/jynx.gif" alt="Jynx">
                             <span class="table-move-name">CONJURO</span>
                         </div>
                     </td>
@@ -848,25 +847,25 @@
                     <td class="turno-col">T7</td>
                     <td>
                         <div class="table-cell-content">
-                            <img class="table-sprite" src="assets/sprites/milotic.png" alt="Milotic">
+                            <img class="table-sprite" src="https://play.pokemonshowdown.com/sprites/ani/milotic.gif" alt="Milotic">
                             <span class="table-move-name">CHAPOTEOLODO</span>
                         </div>
                     </td>
                     <td>
                         <div class="table-cell-content">
-                            <img class="table-sprite" src="assets/sprites/milotic.png" alt="Milotic">
+                            <img class="table-sprite" src="https://play.pokemonshowdown.com/sprites/ani/milotic.gif" alt="Milotic">
                             <span class="table-move-name">SALMUERA</span>
                         </div>
                     </td>
                     <td>
                         <div class="table-cell-content">
-                            <img class="table-sprite" src="assets/sprites/tyranitar.png" alt="Tyranitar">
+                            <img class="table-sprite" src="https://play.pokemonshowdown.com/sprites/ani/tyranitar.gif" alt="Tyranitar">
                             <span class="table-move-name">SEDUCCIÓN</span>
                         </div>
                     </td>
                     <td>
                         <div class="table-cell-content">
-                            <img class="table-sprite" src="assets/sprites/krookodile.png" alt="Krookodile">
+                            <img class="table-sprite" src="https://play.pokemonshowdown.com/sprites/ani/krookodile.gif" alt="Krookodile">
                             <span class="table-move-name">BUENA BAZA</span>
                         </div>
                     </td>
@@ -876,25 +875,25 @@
                     <td class="turno-col">T8</td>
                     <td>
                         <div class="table-cell-content">
-                            <img class="table-sprite" src="assets/sprites/milotic.png" alt="Milotic">
+                            <img class="table-sprite" src="https://play.pokemonshowdown.com/sprites/ani/milotic.gif" alt="Milotic">
                             <span class="table-move-name">SALMUERA</span>
                         </div>
                     </td>
                     <td>
                         <div class="table-cell-content">
-                            <img class="table-sprite" src="assets/sprites/milotic.png" alt="Milotic">
+                            <img class="table-sprite" src="https://play.pokemonshowdown.com/sprites/ani/milotic.gif" alt="Milotic">
                             <span class="table-move-name">SALMUERA</span>
                         </div>
                     </td>
                     <td>
                         <div class="table-cell-content">
-                            <img class="table-sprite" src="assets/sprites/tyranitar.png" alt="Tyranitar">
+                            <img class="table-sprite" src="https://play.pokemonshowdown.com/sprites/ani/tyranitar.gif" alt="Tyranitar">
                             <span class="table-move-name">BUENA BAZA</span>
                         </div>
                     </td>
                     <td>
                         <div class="table-cell-content">
-                            <img class="table-sprite" src="assets/sprites/krookodile.png" alt="Krookodile">
+                            <img class="table-sprite" src="https://play.pokemonshowdown.com/sprites/ani/krookodile.gif" alt="Krookodile">
                             <span class="table-move-name">BUENA BAZA</span>
                         </div>
                     </td>
@@ -904,25 +903,25 @@
                     <td class="turno-col">T9</td>
                     <td>
                         <div class="table-cell-content">
-                            <img class="table-sprite" src="assets/sprites/empoleon.png" alt="Empoleon">
+                            <img class="table-sprite" src="https://play.pokemonshowdown.com/sprites/ani/empoleon.gif" alt="Empoleon">
                             <span class="table-move-name">SALMUERA</span>
                         </div>
                     </td>
                     <td>
                         <div class="table-cell-content">
-                            <img class="table-sprite" src="assets/sprites/empoleon.png" alt="Empoleon">
+                            <img class="table-sprite" src="https://play.pokemonshowdown.com/sprites/ani/empoleon.gif" alt="Empoleon">
                             <span class="table-move-name">SALMUERA</span>
                         </div>
                     </td>
                     <td>
                         <div class="table-cell-content">
-                            <img class="table-sprite" src="assets/sprites/tyranitar.png" alt="Tyranitar">
+                            <img class="table-sprite" src="https://play.pokemonshowdown.com/sprites/ani/tyranitar.gif" alt="Tyranitar">
                             <span class="table-move-name">BUENA BAZA</span>
                         </div>
                     </td>
                     <td>
                         <div class="table-cell-content">
-                            <img class="table-sprite" src="assets/sprites/krookodile.png" alt="Krookodile">
+                            <img class="table-sprite" src="https://play.pokemonshowdown.com/sprites/ani/krookodile.gif" alt="Krookodile">
                             <span class="table-move-name">BUENA BAZA</span>
                         </div>
                     </td>
@@ -932,25 +931,25 @@
                     <td class="turno-col">T10</td>
                     <td>
                         <div class="table-cell-content">
-                            <img class="table-sprite" src="assets/sprites/empoleon.png" alt="Empoleon">
+                            <img class="table-sprite" src="https://play.pokemonshowdown.com/sprites/ani/empoleon.gif" alt="Empoleon">
                             <span class="table-move-name">SALMUERA</span>
                         </div>
                     </td>
                     <td>
                         <div class="table-cell-content">
-                            <img class="table-sprite" src="assets/sprites/empoleon.png" alt="Empoleon">
+                            <img class="table-sprite" src="https://play.pokemonshowdown.com/sprites/ani/empoleon.gif" alt="Empoleon">
                             <span class="table-move-name">SALMUERA</span>
                         </div>
                     </td>
                     <td>
                         <div class="table-cell-content">
-                            <img class="table-sprite" src="assets/sprites/tyranitar.png" alt="Tyranitar">
+                            <img class="table-sprite" src="https://play.pokemonshowdown.com/sprites/ani/tyranitar.gif" alt="Tyranitar">
                             <span class="table-move-name">BUENA BAZA</span>
                         </div>
                     </td>
                     <td>
                         <div class="table-cell-content">
-                            <img class="table-sprite" src="assets/sprites/krookodile.png" alt="Krookodile">
+                            <img class="table-sprite" src="https://play.pokemonshowdown.com/sprites/ani/krookodile.gif" alt="Krookodile">
                             <span class="table-move-name">BUENA BAZA</span>
                         </div>
                     </td>
@@ -962,4 +961,4 @@
 </div>
 
 </body>
-</html>            
+</html>
