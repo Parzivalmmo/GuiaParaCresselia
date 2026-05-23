@@ -1,130 +1,49 @@
-import React from 'react';
-import pokemonList from './pokemonData.json';
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Guía de Raid de Cresselia</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="bg-gray-100 p-4 font-sans select-none">
 
-export default function PokemonTeam() {
-  return (
-    <div className="w-full max-w-6xl mx-auto p-4 space-y-6 bg-gray-100 font-sans select-none">
-      {/* Cabecera Principal del Jugador */}
-      <div className="bg-[#3366FF] text-white text-center py-1 font-bold text-sm tracking-widest border-2 border-black uppercase">
-        JUGADOR 1
-      </div>
-
-      {pokemonList.map((pkmn, index) => (
-        <div key={index} className="border-2 border-black overflow-hidden bg-white shadow-md mb-6">
-          
-          {/* Nombre del Pokémon con su color de fondo dinámico */}
-          <div className={`${pkmn.headerColor} text-white text-center py-1 font-bold text-xs tracking-wider border-b-2 border-black uppercase`}>
-            {pkmn.name}
-          </div>
-
-          {/* Grid Principal */}
-          <div className="grid grid-cols-1 md:grid-cols-12 text-center text-xs">
-            
-            {/* COLUMNA 1: Stats (IVs y EVs) */}
-            <div className="md:col-span-3 border-r-2 border-black grid grid-cols-3 bg-[#3366FF] text-white font-semibold">
-              <div className="border-b border-r border-black p-1 bg-[#1e40af]">STATS</div>
-              <div className="border-b border-r border-black p-1 bg-[#1e40af]">IVs</div>
-              <div className="border-b border-black p-1 bg-[#1e40af]">EVs</div>
-
-              {pkmn.stats.map((stat, sIdx) => {
-                const isIvMax = stat.iv === 31;
-                const isVelZero = stat.name === 'VEL' && stat.iv === 0;
-                
-                return (
-                  <React.Fragment key={sIdx}>
-                    <div className="border-b border-r border-black p-1 bg-[#3366FF] flex items-center justify-center font-bold">
-                      {stat.name}
-                    </div>
-                    <div className={`border-b border-r border-black p-1 flex items-center justify-center font-bold text-black
-                      ${isIvMax ? 'bg-[#00FF00]' : isVelZero ? 'bg-[#FF0000] text-white' : 'bg-[#7aa2f7]'}`}>
-                      {stat.iv > 0 || isVelZero ? stat.iv : '-'}
-                    </div>
-                    <div className={`border-b border-black p-1 flex items-center justify-center text-black font-bold
-                      ${stat.ev > 0 ? 'bg-[#00FF00]' : 'bg-[#7aa2f7]'}`}>
-                      {stat.ev > 0 ? stat.ev : '-'}
-                    </div>
-                  </React.Fragment>
-                );
-              })}
-            </div>
-
-            {/* COLUMNA 2: Movimientos */}
-            <div className="md:col-span-3 border-r-2 border-black flex flex-col bg-white">
-              <div className="bg-[#3366FF] text-white font-semibold p-1 border-b-2 border-black">
-                Movimientos
-              </div>
-              {pkmn.moves.map((move, mIdx) => (
-                <div 
-                  key={mIdx} 
-                  className={`flex-1 flex items-center justify-center p-2 font-bold border-b border-black last:border-b-0
-                    ${move === 'SEDUCCIÓN' ? 'bg-[#FFFFCC] text-black' : ''}
-                    ${move === 'PANTALLA LUZ' ? 'bg-[#FF00FF] text-white' : ''}
-                    ${move === 'ENVITE IGNEO' ? 'bg-[#FF0000] text-white' : ''}
-                    ${move === 'BUENA BAZA' ? 'bg-[#444444] text-white' : ''}
-                    ${move.includes('SALMUERA') ? 'bg-[#3399FF] text-white' : ''}
-                    ${move === '-' ? 'text-gray-400 font-normal' : 'text-black'}`}
-                >
-                  {move}
-                </div>
-              ))}
-            </div>
-
-            {/* COLUMNA 3: Naturaleza y Habilidad */}
-            <div className="md:col-span-2 border-r-2 border-black flex flex-col justify-between bg-white">
-              <div>
-                <div className="bg-[#3366FF] text-white font-semibold p-1 border-b-2 border-black">
-                  Naturaleza
-                </div>
-                <div className={`p-3 font-bold border-b-2 border-black text-black
-                  ${pkmn.nature.includes('FIRME') ? 'bg-[#FF0000] text-white' : ''}
-                  ${pkmn.nature.includes('MANSA') ? 'bg-[#FF9900] text-white' : ''}
-                  ${pkmn.nature.includes('MODESTA') ? 'bg-[#FFCCE6] text-black' : 'bg-[#7aa2f7]'}`}>
-                  {pkmn.nature}
-                </div>
-              </div>
-              <div className="flex-1 flex flex-col justify-end">
-                <div className="bg-[#3366FF] text-white font-semibold p-1 border-t border-b-2 border-black">
-                  Habilidad
-                </div>
-                <div className={`p-3 font-bold text-black uppercase tracking-wider bg-white
-                  ${pkmn.ability === 'COMPETITIVO (HO)' ? 'bg-[#FFFF00]' : ''}`}>
-                  {pkmn.ability}
-                </div>
-              </div>
-            </div>
-
-            {/* COLUMNA 4: Notas */}
-            <div className="md:col-span-2 border-r-2 border-black flex flex-col bg-white text-left">
-              <div className="bg-[#3366FF] text-white font-semibold p-1 border-b-2 border-black text-center">
-                Notas
-              </div>
-              <div className="p-2 text-[11px] text-gray-700 leading-tight font-medium overflow-y-auto max-h-[160px]">
-                {pkmn.notes || ''}
-              </div>
-            </div>
-
-            {/* COLUMNA 5: Item e Imagen */}
-            <div className="md:col-span-2 grid grid-cols-2 bg-white">
-              <div className="border-r border-black flex flex-col">
-                <div className="bg-[#3366FF] text-white font-semibold p-1 border-b-2 border-black text-[10px] truncate">
-                  Items
-                </div>
-                <div className="bg-[#00FFFF] text-black text-[9px] font-bold p-0.5 border-b border-black truncate uppercase">
-                  {pkmn.item.name}
-                </div>
-                <div className="flex-1 flex items-center justify-center p-1">
-                  <img src={pkmn.item.image} alt={pkmn.item.name} className="w-10 h-10 object-contain" />
-                </div>
-              </div>
-
-              <div className="flex items-center justify-center p-1 bg-white">
-                <img src={pkmn.sprite} alt={pkmn.name} className="w-16 h-16 object-contain" />
-              </div>
-            </div>
-
-          </div>
-        </div>
-      ))}
+  <div class="w-full max-w-6xl mx-auto space-y-6">
+    
+    <div class="bg-[#3366FF] text-white text-center py-1 font-bold text-sm tracking-widest border-2 border-black uppercase">
+      JUGADOR 1
     </div>
-  );
-}
+
+    <div class="border-2 border-black overflow-hidden bg-white shadow-md">
+      <div class="bg-[#8B5A2B] text-white text-center py-1 font-bold text-xs tracking-wider border-b-2 border-black uppercase">
+        HIPPOWDON
+      </div>
+      <div class="grid grid-cols-1 md:grid-cols-12 text-center text-xs">
+        <div class="md:col-span-3 border-r-2 border-black grid grid-cols-3 bg-[#3366FF] text-white font-semibold">
+          <div class="border-b border-r border-black p-1 bg-[#1e40af]">STATS</div>
+          <div class="border-b border-r border-black p-1 bg-[#1e40af]">IVs</div>
+          <div class="border-b border-black p-1 bg-[#1e40af]">EVs</div>
+          <div class="border-b border-r border-black p-1 flex items-center justify-center font-bold">PS</div>
+          <div class="border-b border-r border-black p-1 bg-[#00FF00] text-black font-bold flex items-center justify-center">31</div>
+          <div class="border-b border-black p-1 bg-[#7aa2f7] text-black font-bold flex items-center justify-center">-</div>
+          <div class="border-b border-r border-black p-1 flex items-center justify-center font-bold">ATK</div>
+          <div class="border-b border-r border-black p-1 bg-[#7aa2f7] text-black font-bold flex items-center justify-center">-</div>
+          <div class="border-b border-black p-1 bg-[#7aa2f7] text-black font-bold flex items-center justify-center">-</div>
+          <div class="border-b border-r border-black p-1 flex items-center justify-center font-bold">DEF</div>
+          <div class="border-b border-r border-black p-1 bg-[#7aa2f7] text-black font-bold flex items-center justify-center">-</div>
+          <div class="border-b border-black p-1 bg-[#00FF00] text-black font-bold flex items-center justify-center">238</div>
+          <div class="border-b border-r border-black p-1 flex items-center justify-center font-bold">ATK ESP</div>
+          <div class="border-b border-r border-black p-1 bg-[#7aa2f7] text-black font-bold flex items-center justify-center">-</div>
+          <div class="border-b border-black p-1 bg-[#7aa2f7] text-black font-bold flex items-center justify-center">-</div>
+          <div class="border-b border-r border-black p-1 flex items-center justify-center font-bold">DEF ESP</div>
+          <div class="border-b border-r border-black p-1 bg-[#00FF00] text-black font-bold flex items-center justify-center">31</div>
+          <div class="border-b border-black p-1 bg-[#00FF00] text-black font-bold flex items-center justify-center">20</div>
+          <div class="border-r border-black p-1 flex items-center justify-center font-bold">VEL</div>
+          <div class="border-r border-black p-1 bg-[#00FF00] text-black font-bold flex items-center justify-center">31</div>
+          <div class="p-1 bg-[#00FF00] text-black font-bold flex items-center justify-center">252</div>
+        </div>
+        <div class="md:col-span-3 border-r-2 border-black flex flex-col bg-white">
+          <div class="bg-[#3366FF] text-white font-semibold p-1 border-b-2 border-black">Movimientos</div>
+          <div class="flex-1 flex items-center justify-center p-2 font-bold border-b border-black bg-[#FFFFCC] text-black">SEDUCCIÓN</div>
+          <div class="flex-1 flex items-center justify-center p-2 font-bold border-b border-black text-gray-400">-</div>
+          <div class="flex
