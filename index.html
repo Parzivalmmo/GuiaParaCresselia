@@ -3,33 +3,21 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Guía de Raid de Cresselia</title>
+    <title>Guía de Raid de Cresselia </title>
     <style>
         :root {
-            /* Paleta Galáctica y Cyberpunk */
-            --bg-color: #060814;       
-            --panel-bg: rgba(15, 23, 42, 0.85);       
-            --border-color: #3b82f6;   
+            --bg-color: #0f172a;       
+            --panel-bg: #1e293b;       
+            --border-color: #334155;   
             --text-main: #f8fafc;      
             --text-muted: #94a3b8;     
             --accent-blue: #38bdf8;    
-            --accent-purple: #a855f7;
             --hp-color: #f43f5e;       
-            --neon-glow: 0 0 15px rgba(56, 189, 248, 0.4);
-            --neon-purple-glow: 0 0 15px rgba(168, 85, 247, 0.4);
         }
 
         body {
-            font-family: 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
             background-color: var(--bg-color);
-            /* Fondo espacial con estrellas sutiles y nebulosa simulada */
-            background-image: 
-                radial-gradient(circle at 20% 30%, rgba(168, 85, 247, 0.15) 0%, transparent 40%),
-                radial-gradient(circle at 80% 70%, rgba(56, 189, 248, 0.15) 0%, transparent 40%),
-                radial-gradient(white, rgba(255,255,255,.2) 2px, transparent 40px),
-                radial-gradient(white, rgba(255,255,255,.15) 1px, transparent 30px);
-            background-size: 100% 100%, 100% 100%, 550px 550px, 350px 350px;
-            background-attachment: fixed;
             color: var(--text-main);
             margin: 0;
             padding: 20px;
@@ -41,38 +29,18 @@
             margin: 0 auto;
         }
 
-        h1 {
+        h1, h2 {
             text-align: center;
-            color: #ffffff;
+            color: #f1f5f9;
             margin-bottom: 5px;
-            font-size: 2.5em;
-            letter-spacing: 2px;
-            text-transform: uppercase;
-            text-shadow: 0 0 20px rgba(168, 85, 247, 0.65);
-            background: linear-gradient(to right, #38bdf8, #a855f7);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-        }
-
-        h2 {
-            text-align: center;
-            color: #ffffff;
-            margin-top: 40px;
-            margin-bottom: 20px;
-            font-size: 1.8em;
-            letter-spacing: 1px;
-            text-shadow: 0 0 10px rgba(56, 189, 248, 0.5);
         }
 
         .subtitle {
             text-align: center;
             color: var(--accent-blue);
             margin-top: 0;
-            margin-bottom: 40px;
+            margin-bottom: 30px;
             font-size: 1.2em;
-            letter-spacing: 3px;
-            text-transform: uppercase;
-            text-shadow: var(--neon-glow);
         }
 
         .grid-jugadores {
@@ -83,50 +51,34 @@
         }
 
         .card-jugador {
-            background: linear-gradient(135deg, rgba(30, 41, 59, 0.9), rgba(15, 23, 42, 0.9));
-            border-radius: 14px;
+            background-color: var(--panel-bg);
+            border-radius: 10px;
             padding: 20px;
-            border: 1px solid rgba(56, 189, 248, 0.2);
-            backdrop-filter: blur(8px);
-            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
+            border: 1px solid var(--border-color);
             display: flex;
             flex-direction: column;
-            transition: all 0.3s ease;
-        }
-
-        .card-jugador:hover {
-            border-color: rgba(168, 85, 247, 0.5);
-            box-shadow: var(--neon-purple-glow);
-            transform: translateY(-2px);
         }
 
         .card-jugador h3 {
             margin-top: 0;
             margin-bottom: 15px;
             padding-bottom: 8px;
-            border-bottom: 2px solid var(--accent-purple);
-            color: #ffffff;
-            font-size: 1.4em;
-            letter-spacing: 2px;
+            border-bottom: 2px solid var(--border-color);
+            color: var(--accent-blue);
+            font-size: 1.3em;
             text-align: center;
-            text-shadow: 0 0 10px rgba(168, 85, 247, 0.6);
         }
 
         .pokemon-block {
-            background-color: rgba(10, 15, 30, 0.75);
-            border: 1px solid rgba(255, 255, 255, 0.08);
-            border-radius: 10px;
+            background-color: #111827;
+            border: 1px solid var(--border-color);
+            border-radius: 8px;
             padding: 14px;
             margin-bottom: 14px;
             display: flex;
             flex-direction: column;
             justify-content: space-between;
             min-height: 210px; 
-            transition: border-color 0.2s ease;
-        }
-
-        .pokemon-block:hover {
-            border-color: rgba(56, 189, 248, 0.4);
         }
 
         .pokemon-header {
@@ -134,16 +86,14 @@
             justify-content: space-between;
             align-items: center;
             margin-bottom: 8px;
-            border-bottom: 1px dashed rgba(56, 189, 248, 0.2);
+            border-bottom: 1px dashed var(--border-color);
             padding-bottom: 6px;
         }
 
         .pokemon-title {
             font-weight: bold;
-            font-size: 1.25em;
+            font-size: 1.2em;
             color: #ffffff;
-            letter-spacing: 0.5px;
-            text-shadow: 0 0 5px rgba(255,255,255,0.2);
         }
 
         .pokemon-images {
@@ -156,18 +106,16 @@
             width: 55px;
             height: 55px;
             object-fit: contain;
-            filter: drop-shadow(0 0 5px rgba(255,255,255,0.15));
         }
 
         .item-img {
             width: 34px;
             height: 34px;
             object-fit: contain;
-            border: 1px solid rgba(56, 189, 248, 0.3);
-            background-color: #0f172a;
+            border: 1px solid var(--border-color);
+            background-color: var(--panel-bg);
             border-radius: 6px;
             padding: 2px;
-            box-shadow: inset 0 0 5px rgba(56, 189, 248, 0.2);
         }
 
         .item-placeholder {
@@ -180,7 +128,6 @@
             justify-content: center;
             font-size: 0.65em;
             color: var(--text-muted);
-            background-color: rgba(0,0,0,0.2);
         }
 
         .pokemon-details {
@@ -192,7 +139,7 @@
         }
 
         .detail-item span {
-            color: var(--accent-blue);
+            color: var(--text-muted);
             font-weight: 600;
         }
 
@@ -201,87 +148,58 @@
             color: #fb923c;
             margin-top: 5px;
             font-size: 0.82em;
-            border-top: 1px solid rgba(255, 255, 255, 0.05);
+            border-top: 1px solid #1e293b;
             padding-top: 4px;
         }
 
-        /* Estilos de la Tabla Futurista Galáctica */
         .table-responsive {
             overflow-x: auto;
-            background: linear-gradient(180deg, rgba(15, 23, 42, 0.9), rgba(6, 8, 20, 0.95));
-            border-radius: 14px;
-            padding: 24px;
-            border: 1px solid rgba(168, 85, 247, 0.3);
-            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5), inset 0 0 20px rgba(168, 85, 247, 0.05);
-            backdrop-filter: blur(10px);
+            background-color: var(--panel-bg);
+            border-radius: 10px;
+            padding: 20px;
+            border: 1px solid var(--border-color);
         }
 
         table {
             width: 100%;
-            border-collapse: separate;
-            border-spacing: 0;
+            border-collapse: collapse;
             text-align: center;
             min-width: 1000px;
         }
 
         th, td {
-            padding: 14px 12px;
-            border-bottom: 1px solid rgba(51, 65, 85, 0.4);
-            border-right: 1px solid rgba(51, 65, 85, 0.2);
-            font-size: 0.95em;
+            padding: 12px 10px;
+            border: 1px solid var(--border-color);
+            font-size: 0.9em;
             vertical-align: middle;
-        }
-        
-        th:last-child, td:last-child {
-            border-right: none;
         }
 
         th {
-            background: linear-gradient(90deg, #1e1b4b, #0f172a);
+            background-color: #0f172a;
             font-weight: bold;
-            color: #ffffff;
-            text-transform: uppercase;
-            letter-spacing: 1.5px;
-            border-top: 1px solid rgba(56, 189, 248, 0.3);
-            border-bottom: 2px solid var(--accent-blue);
-            text-shadow: 0 0 5px rgba(56, 189, 248, 0.6);
-        }
-
-        th:first-child {
-            border-top-left-radius: 8px;
-        }
-        th:last-child {
-            border-top-right-radius: 8px;
+            color: var(--accent-blue);
         }
 
         tr:nth-child(even) td {
-            background-color: rgba(30, 41, 59, 0.4);
+            background-color: #1e293b;
         }
 
         tr:nth-child(odd) td {
-            background-color: rgba(20, 30, 48, 0.4);
-        }
-
-        tr:hover td {
-            background-color: rgba(56, 189, 248, 0.08) !important;
-            transition: background-color 0.2s ease;
+            background-color: #141e30;
         }
 
         .turno-col {
             font-weight: bold;
-            background: linear-gradient(135deg, #0f172a, #1e1b4b) !important;
-            color: var(--accent-blue);
-            text-shadow: var(--neon-glow);
+            background-color: #0f172a !important;
+            color: #ffffff;
             width: 70px;
-            border-left: 2px solid var(--accent-blue);
         }
 
         .hp-col {
             font-weight: bold;
             color: var(--hp-color);
             width: 90px;
-            font-size: 1.05em;
-            text-shadow: 0 0 8px rgba(244, 63, 94, 0.4);
+            font-size: 1em;
         }
 
         .table-cell-content {
@@ -310,7 +228,7 @@
 
 <div class="container">
     <h1>Guía de Raid de Cresselia</h1>
-    <p class="subtitle">Equipo Para Cresselia y Secuencia por Turnos</p>
+    <p class="subtitle">Equipo Para Cresseila y Secuencia por Turnos</p>
 
     <div class="grid-jugadores">
         
@@ -759,11 +677,283 @@
             <tbody>
                 <tr>
                     <td class="turno-col">T1</td>
-                    <td>-</td>
-                    <td>-</td>
-                    <td>-</td>
-                    <td>-</td>
-                    <td class="hp-col">100%</td>
+                    <td>
+                        <div class="table-cell-content">
+                            <img class="table-sprite" src="https://play.pokemonshowdown.com/sprites/ani/hippowdon.gif" alt="Hippowdon">
+                            <span class="table-move-name">SEDUCCIÓN</span>
+                        </div>
+                    </td>
+                    <td>
+                        <div class="table-cell-content">
+                            <img class="table-sprite" src="https://play.pokemonshowdown.com/sprites/ani/weavile.gif" alt="Weavile">
+                            <span class="table-move-name">LANZAMIENTO</span>
+                        </div>
+                    </td>
+                    <td>
+                        <div class="table-cell-content">
+                            <img class="table-sprite" src="https://play.pokemonshowdown.com/sprites/ani/kadabra.gif" alt="Kadabra">
+                            <span class="table-move-name">VELOSAGRADO</span>
+                        </div>
+                    </td>
+                    <td>
+                        <div class="table-cell-content">
+                            <img class="table-sprite" src="https://play.pokemonshowdown.com/sprites/ani/xatu.gif" alt="Xatu">
+                            <span class="table-move-name">CONJURO</span>
+                        </div>
+                    </td>
+                    <td class="hp-col">98%</td>
+                </tr>
+                <tr>
+                    <td class="turno-col">T2</td>
+                    <td>
+                        <div class="table-cell-content">
+                            <img class="table-sprite" src="https://play.pokemonshowdown.com/sprites/ani/hippowdon.gif" alt="Hippowdon">
+                            <span class="table-move-name" style="font-style: italic;">Dead Ay Ay*</span>
+                        </div>
+                    </td>
+                    <td>
+                        <div class="table-cell-content">
+                            <img class="table-sprite" src="https://play.pokemonshowdown.com/sprites/ani/bisharp.gif" alt="Bisharp">
+                            <span class="table-move-name">GOLPE BAJO</span>
+                        </div>
+                    </td>
+                    <td>
+                        <div class="table-cell-content">
+                            <img class="table-sprite" src="https://play.pokemonshowdown.com/sprites/ani/bisharp.gif" alt="Bisharp">
+                            <span class="table-move-name">GOLPE BAJO</span>
+                        </div>
+                    </td>
+                    <td>
+                        <div class="table-cell-content">
+                            <img class="table-sprite" src="https://play.pokemonshowdown.com/sprites/ani/bisharp.gif" alt="Bisharp">
+                            <span class="table-move-name">GOLPE BAJO</span>
+                        </div>
+                    </td>
+                    <td class="hp-col">85%</td>
+                </tr>
+                <tr>
+                    <td class="turno-col">T3</td>
+                    <td>
+                        <div class="table-cell-content">
+                            <img class="table-sprite" src="https://play.pokemonshowdown.com/sprites/ani/whimsicott.gif" alt="Whimsicott">
+                            <span class="table-move-name">PANTALLA LUZ</span>
+                        </div>
+                    </td>
+                    <td>
+                        <div class="table-cell-content">
+                            <img class="table-sprite" src="https://play.pokemonshowdown.com/sprites/ani/bisharp.gif" alt="Bisharp">
+                            <span class="table-move-name">GOLPE BAJO</span>
+                        </div>
+                    </td>
+                    <td>
+                        <div class="table-cell-content">
+                            <img class="table-sprite" src="https://play.pokemonshowdown.com/sprites/ani/bisharp.gif" alt="Bisharp">
+                            <span class="table-move-name">GOLPE BAJO</span>
+                        </div>
+                    </td>
+                    <td>
+                        <div class="table-cell-content">
+                            <img class="table-sprite" src="https://play.pokemonshowdown.com/sprites/ani/bisharp.gif" alt="Bisharp">
+                            <span class="table-move-name">GOLPE BAJO</span>
+                        </div>
+                    </td>
+                    <td class="hp-col">72%</td>
+                </tr>
+                <tr>
+                    <td class="turno-col">T4</td>
+                    <td>
+                        <div class="table-cell-content">
+                            <img class="table-sprite" src="https://play.pokemonshowdown.com/sprites/ani/darmanitan.gif" alt="Darmanitan">
+                            <span class="table-move-name">ENVITE IGNEO</span>
+                        </div>
+                    </td>
+                    <td>
+                        <div class="table-cell-content">
+                            <img class="table-sprite" src="https://play.pokemonshowdown.com/sprites/ani/sharpedo.gif" alt="Sharpedo">
+                            <span class="table-move-name">BUENA BAZA</span>
+                        </div>
+                    </td>
+                    <td>
+                        <div class="table-cell-content">
+                            <img class="table-sprite" src="https://play.pokemonshowdown.com/sprites/ani/crobat.gif" alt="Crobat">
+                            <span class="table-move-name">BOMBA ÁCIDA</span>
+                        </div>
+                    </td>
+                    <td>
+                        <div class="table-cell-content">
+                            <img class="table-sprite" src="https://play.pokemonshowdown.com/sprites/ani/gengar.gif" alt="Gengar">
+                            <span class="table-move-name">INFORTUNIO</span>
+                        </div>
+                    </td>
+                    <td class="hp-col">63%</td>
+                </tr>
+                <tr>
+                    <td class="turno-col">T5</td>
+                    <td>
+                        <div class="table-cell-content">
+                            <img class="table-sprite" src="https://play.pokemonshowdown.com/sprites/ani/braviary.gif" alt="Braviary">
+                            <span class="table-move-name">BUENA BAZA</span>
+                        </div>
+                    </td>
+                    <td>
+                        <div class="table-cell-content">
+                            <img class="table-sprite" src="https://play.pokemonshowdown.com/sprites/ani/braviary.gif" alt="Braviary">
+                            <span class="table-move-name">BUENA BAZA</span>
+                        </div>
+                    </td>
+                    <td>
+                        <div class="table-cell-content">
+                            <img class="table-sprite" src="https://play.pokemonshowdown.com/sprites/ani/gothitelle.gif" alt="Gothitelle">
+                            <span class="table-move-name">BOLA SOMBRA</span>
+                        </div>
+                    </td>
+                    <td>
+                        <div class="table-cell-content">
+                            <img class="table-sprite" src="https://play.pokemonshowdown.com/sprites/ani/gothitelle.gif" alt="Gothitelle">
+                            <span class="table-move-name">BOLA SOMBRA</span>
+                        </div>
+                    </td>
+                    <td class="hp-col">45%</td>
+                </tr>
+                <tr>
+                    <td class="turno-col">T6</td>
+                    <td>
+                        <div class="table-cell-content">
+                            <img class="table-sprite" src="https://play.pokemonshowdown.com/sprites/ani/milotic.gif" alt="Milotic">
+                            <span class="table-move-name">VELOSAGRADO</span>
+                        </div>
+                    </td>
+                    <td>
+                        <div class="table-cell-content">
+                            <img class="table-sprite" src="https://play.pokemonshowdown.com/sprites/ani/milotic.gif" alt="Milotic">
+                            <span class="table-move-name">SALMUERA</span>
+                        </div>
+                    </td>
+                    <td>
+                        <div class="table-cell-content">
+                            <img class="table-sprite" src="https://play.pokemonshowdown.com/sprites/ani/crawdaunt.gif" alt="Crawdaunt">
+                            <span class="table-move-name">LANZAMIENTO</span>
+                        </div>
+                    </td>
+                    <td>
+                        <div class="table-cell-content">
+                            <img class="table-sprite" src="https://play.pokemonshowdown.com/sprites/ani/jynx.gif" alt="Jynx">
+                            <span class="table-move-name">CONJURO</span>
+                        </div>
+                    </td>
+                    <td class="hp-col">39%</td>
+                </tr>
+                <tr>
+                    <td class="turno-col">T7</td>
+                    <td>
+                        <div class="table-cell-content">
+                            <img class="table-sprite" src="https://play.pokemonshowdown.com/sprites/ani/milotic.gif" alt="Milotic">
+                            <span class="table-move-name">CHAPOTEOLODO</span>
+                        </div>
+                    </td>
+                    <td>
+                        <div class="table-cell-content">
+                            <img class="table-sprite" src="https://play.pokemonshowdown.com/sprites/ani/milotic.gif" alt="Milotic">
+                            <span class="table-move-name">SALMUERA</span>
+                        </div>
+                    </td>
+                    <td>
+                        <div class="table-cell-content">
+                            <img class="table-sprite" src="https://play.pokemonshowdown.com/sprites/ani/tyranitar.gif" alt="Tyranitar">
+                            <span class="table-move-name">SEDUCCIÓN</span>
+                        </div>
+                    </td>
+                    <td>
+                        <div class="table-cell-content">
+                            <img class="table-sprite" src="https://play.pokemonshowdown.com/sprites/ani/krookodile.gif" alt="Krookodile">
+                            <span class="table-move-name">BUENA BAZA</span>
+                        </div>
+                    </td>
+                    <td class="hp-col">33%</td>
+                </tr>
+                <tr>
+                    <td class="turno-col">T8</td>
+                    <td>
+                        <div class="table-cell-content">
+                            <img class="table-sprite" src="https://play.pokemonshowdown.com/sprites/ani/milotic.gif" alt="Milotic">
+                            <span class="table-move-name">SALMUERA</span>
+                        </div>
+                    </td>
+                    <td>
+                        <div class="table-cell-content">
+                            <img class="table-sprite" src="https://play.pokemonshowdown.com/sprites/ani/milotic.gif" alt="Milotic">
+                            <span class="table-move-name">SALMUERA</span>
+                        </div>
+                    </td>
+                    <td>
+                        <div class="table-cell-content">
+                            <img class="table-sprite" src="https://play.pokemonshowdown.com/sprites/ani/tyranitar.gif" alt="Tyranitar">
+                            <span class="table-move-name">BUENA BAZA</span>
+                        </div>
+                    </td>
+                    <td>
+                        <div class="table-cell-content">
+                            <img class="table-sprite" src="https://play.pokemonshowdown.com/sprites/ani/krookodile.gif" alt="Krookodile">
+                            <span class="table-move-name">BUENA BAZA</span>
+                        </div>
+                    </td>
+                    <td class="hp-col">22%</td>
+                </tr>
+                <tr>
+                    <td class="turno-col">T9</td>
+                    <td>
+                        <div class="table-cell-content">
+                            <img class="table-sprite" src="https://play.pokemonshowdown.com/sprites/ani/empoleon.gif" alt="Empoleon">
+                            <span class="table-move-name">SALMUERA</span>
+                        </div>
+                    </td>
+                    <td>
+                        <div class="table-cell-content">
+                            <img class="table-sprite" src="https://play.pokemonshowdown.com/sprites/ani/empoleon.gif" alt="Empoleon">
+                            <span class="table-move-name">SALMUERA</span>
+                        </div>
+                    </td>
+                    <td>
+                        <div class="table-cell-content">
+                            <img class="table-sprite" src="https://play.pokemonshowdown.com/sprites/ani/tyranitar.gif" alt="Tyranitar">
+                            <span class="table-move-name">BUENA BAZA</span>
+                        </div>
+                    </td>
+                    <td>
+                        <div class="table-cell-content">
+                            <img class="table-sprite" src="https://play.pokemonshowdown.com/sprites/ani/krookodile.gif" alt="Krookodile">
+                            <span class="table-move-name">BUENA BAZA</span>
+                        </div>
+                    </td>
+                    <td class="hp-col">11%</td>
+                </tr>
+                <tr>
+                    <td class="turno-col">T10</td>
+                    <td>
+                        <div class="table-cell-content">
+                            <img class="table-sprite" src="https://play.pokemonshowdown.com/sprites/ani/empoleon.gif" alt="Empoleon">
+                            <span class="table-move-name">SALMUERA</span>
+                        </div>
+                    </td>
+                    <td>
+                        <div class="table-cell-content">
+                            <img class="table-sprite" src="https://play.pokemonshowdown.com/sprites/ani/empoleon.gif" alt="Empoleon">
+                            <span class="table-move-name">SALMUERA</span>
+                        </div>
+                    </td>
+                    <td>
+                        <div class="table-cell-content">
+                            <img class="table-sprite" src="https://play.pokemonshowdown.com/sprites/ani/tyranitar.gif" alt="Tyranitar">
+                            <span class="table-move-name">BUENA BAZA</span>
+                        </div>
+                    </td>
+                    <td>
+                        <div class="table-cell-content">
+                            <img class="table-sprite" src="https://play.pokemonshowdown.com/sprites/ani/krookodile.gif" alt="Krookodile">
+                            <span class="table-move-name">BUENA BAZA</span>
+                        </div>
+                    </td>
+                    <td class="hp-col">-</td>
                 </tr>
             </tbody>
         </table>
